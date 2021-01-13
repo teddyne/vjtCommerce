@@ -1,0 +1,35 @@
+@import '../assets/scss/colors';
+@import '../assets/scss/variables';
+
+.header {
+ background: $color-sun;
+ height: 130px;
+ @include non-desktop {
+    background: $color-sun;
+    height: 70px;
+    position: relative;
+ }
+
+ .hamberger-menu {
+    display: none;
+    @include non-desktop {
+        display: block;
+        float: left;
+        padding: 20px 0 0 15px;
+    }
+  }
+ .site-logo {
+    float: right;
+    position: absolute;
+    left: 15.5%;
+    top: 5%;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 30px;
+    @include non-desktop {
+        left: 35%;
+        top: 10px;
+    }
+  }
+}

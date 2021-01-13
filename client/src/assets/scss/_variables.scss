@@ -1,0 +1,6 @@
+$desktop-width: 992px;
+
+@mixin non-desktop { @media only screen and (max-width: $desktop-width - 1) {
+        @content;
+    }
+}

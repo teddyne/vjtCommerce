@@ -1,0 +1,26 @@
+@import '../assets/scss/colors';
+
+.side-bar {
+    background-color: $color-white;
+    border: 1px solid $color-white-darker;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+    ul {
+        list-style-type: none;
+        margin: 10px 10px 10px 20px;
+        padding: 0;
+        .side-bar-item {
+            padding-bottom: 5%;
+            .side-bar-item-content {
+                text-decoration: none;
+                color: $color-black;
+                .side-bar-icon {
+                    padding-right: 2%;
+                }
+            }
+        }
+    }
+}

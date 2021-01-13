@@ -1,0 +1,11 @@
+@import '../assets/scss/colors';
+
+.footer {
+    background: $color-white;
+    height: 100px;
+    .copyright {
+        text-align: center;
+        margin: auto;
+        padding: 2%;
+    }
+}

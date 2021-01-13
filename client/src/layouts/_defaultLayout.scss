@@ -1,0 +1,30 @@
+@import '../assets/scss/colors';
+@import '../assets/scss/variables';
+
+body {
+    background-color: $color-bg !important;
+}
+
+.wrap {
+    margin-top: 0.5%;
+    .container {
+        padding-right: 0;
+        padding-left: 0;
+        .row {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .content {
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
+        @include non-desktop {
+            width: 100%;
+            .side-bar {
+                display: none;
+            }
+        }
+    }
+}
+
