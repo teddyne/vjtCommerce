@@ -1,6 +1,8 @@
 @import '../../assets/scss/colors';
+@import '../../assets/scss/variables';
 
 .home {
-    background-color: $color-white;
-    padding: 2%;
+    // background-color: $color-white;
+    // padding: 2%;
+    // @include bede-thang(5);
 }

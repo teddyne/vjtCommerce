@@ -1,13 +1,13 @@
 import React from 'react'
-import ProductItem from './product-item'
+import './_productBox.scss'
 
-const ProductBox = ({ title, products }) => {
+const ProductBox = (props) => {
     return (
         <div className="product-box">
             <div className="box-title">
-                <p>{title}</p>
+                <span>{props.title}</span>
             </div>
-            <ProductItem products={products} />
+             {props.children}
         </div>
     )
 }

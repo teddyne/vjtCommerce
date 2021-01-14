@@ -2,10 +2,10 @@
 @import '../assets/scss/variables';
 
 .header {
- background: $color-sun;
+ background: $color-solo-travel-shop;
  height: 130px;
  @include non-desktop {
-    background: $color-sun;
+    background: $color-solo-travel-shop;
     height: 70px;
     position: relative;
  }

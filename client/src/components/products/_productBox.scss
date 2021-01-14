@@ -1,0 +1,15 @@
+@import '../../assets/scss/colors';
+@import '../../assets/scss/variables';
+
+.product-box {
+    background-color: $color-white;
+    padding: 2%;
+    margin-bottom: 2%;
+    @include bede-thang(5);
+
+    .box-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        border-bottom: 2px $color-solo-travel-shop solid;
+    }
+}
