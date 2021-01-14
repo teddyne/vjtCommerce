@@ -1,8 +1,16 @@
 import React from 'react'
 
-const ProductItem = () => {
+const ProductItem = ({ products }) => {
     return (
-        <h1>Product Items</h1>
+        products.map((product) => {
+            return (
+                <div className="product-item">
+                    <p>{product.name}</p>
+                    <p>{product.price}</p>
+                    <p>{product.description}</p>
+                </div>
+            )
+        })
     )
 }
 export default ProductItem
