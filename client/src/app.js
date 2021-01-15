@@ -8,8 +8,8 @@ class App extends React.Component {
   buildPages() {
     return [
       { exact : true, path: '/', key: 'home', render: () => withLayout(<Home /> ) },
-      { path: '/home', key: 'home', render: () => withLayout(<Home /> ) },
-      { path: '/contact', key: 'about', render: () => withLayout(<Contact /> ) }
+      { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<Contact /> ) },
+      { path: '/contact', key: 'contact', render: () => withLayout(<Contact /> ) }
     ]
   }
 

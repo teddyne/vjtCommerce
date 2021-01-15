@@ -2,9 +2,18 @@
 @import '../../assets/scss/variables';
 
 .product-item {
+    text-align: center;
+    cursor: pointer;
+
     &:hover {
         box-shadow: $color-product-item-box 0px 0px 20px;
         z-index: 1;
+    }
+
+    .product-thumb {
+        img {
+            max-width: 100%;
+        }
     }
 
     .product-price {

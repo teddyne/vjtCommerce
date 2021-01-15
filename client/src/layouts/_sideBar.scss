@@ -4,7 +4,7 @@
 .side-bar {
     background-color: $color-white;
     border: 1px solid $color-white-darker;
-    @include bede-thang(5);
+    @include border-radius(5);
     ul {
         list-style-type: none;
         margin: 10px 10px 10px 20px;
@@ -15,7 +15,7 @@
                 text-decoration: none;
                 color: $color-black;
                 .side-bar-icon {
-                    padding-right: 2%;
+                    padding-right: 4%;
                 }
             }
         }

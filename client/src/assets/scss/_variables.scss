@@ -5,7 +5,7 @@ $desktop-width: 992px;
     }
 }
 
-@mixin bede-thang($numberOfPx) {
+@mixin border-radius($numberOfPx) {
     -moz-border-radius: #{$numberOfPx}px;
     -webkit-border-radius: #{$numberOfPx}px;
     -ms-border-radius: #{$numberOfPx}px;

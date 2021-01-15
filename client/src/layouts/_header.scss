@@ -4,32 +4,59 @@
 .header {
  background: $color-solo-travel-shop;
  height: 130px;
+ display: flex;
  @include non-desktop {
     background: $color-solo-travel-shop;
     height: 70px;
-    position: relative;
  }
 
  .hamberger-menu {
     display: none;
     @include non-desktop {
         display: block;
-        float: left;
         padding: 20px 0 0 15px;
     }
   }
  .site-logo {
-    float: right;
-    position: absolute;
-    left: 15.5%;
-    top: 5%;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
     font-size: 30px;
+    padding: 45px;
+
+    .wrap-logo {
+      position: relative;
+      .shopping-cart {
+        position: absolute;
+        left: 97%;
+        @include non-desktop {
+          left: 80%;
+        }
+      }
+      .item-cart-qty {
+        position: absolute;
+        background-color: $color-red;
+        height: 20px;
+        width: 20px;
+        top: 8px;
+        left: 27px;
+        @include border-radius(10);
+        .qty-text {
+          font-size: 15px;
+          position: absolute;
+          left: 6px;
+          top: -1px;
+          color: $color-black;
+        }
+      }
+    }
+
     @include non-desktop {
-        left: 35%;
-        top: 10px;
+      padding: 10px 0;
+      margin: 0 auto;
+      .center-logo {
+        margin: 0 auto;
+      }
     }
   }
 }

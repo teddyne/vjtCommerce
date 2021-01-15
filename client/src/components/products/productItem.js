@@ -5,7 +5,7 @@ import './_productItem.scss'
 
 const ProductItem = ({ product }) => {
   return (
-    <Col className="product-item" sm={3}>
+    <Col className="product-item" md={6} xl={3}>
       <div className="product-thumb">
         <img src={product.thumbUrl} alt={product.name} />
       </div>

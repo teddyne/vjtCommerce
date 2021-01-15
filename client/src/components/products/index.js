@@ -9,6 +9,11 @@ import * as Constant from '../constant/index'
 import ProductItem from './productItem'
 
 const Product = () => {
+
+    const handleClickProductDetail = () => {
+        console.log("PRoduct detail")
+    }
+
     return (
         productBoxes.map((item) => 
         {
@@ -23,7 +28,7 @@ const Product = () => {
                         {
                             _.map(productItems, (item) => {
                                 return (
-                                    <ProductItem product={item} />
+                                    <ProductItem product={item} onClick={() => console.log("Ssdsd")} />
                                 )
                             })
                         }
