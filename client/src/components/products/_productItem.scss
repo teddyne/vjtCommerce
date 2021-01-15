@@ -1,0 +1,14 @@
+@import '../../assets/scss/colors';
+@import '../../assets/scss/variables';
+
+.product-item {
+    &:hover {
+        box-shadow: $color-product-item-box 0px 0px 20px;
+        z-index: 1;
+    }
+
+    .product-price {
+        color: $color-solo-travel-shop;
+        font-weight: bold;
+    }
+}
