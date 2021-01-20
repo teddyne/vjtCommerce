@@ -1,17 +1,16 @@
 import React from 'react'
 import _ from 'lodash'
-import Row from 'react-bootstrap/Row'
-import Container from 'react-bootstrap/Container'
 import { productBoxes, products } from '../data'
 import ProductBox from './productBox'
 import ProductLine from './productLine'
-import * as Constant from '../constant/index'
 import ProductItem from './productItem'
+import { Redirect } from 'react-router-dom'
 
 const Product = () => {
 
     const handleClickProductDetail = () => {
-        console.log("PRoduct detail")
+        console.log('dfdf')
+        //return <Redirect to='/contact' />
     }
 
     return (
@@ -28,7 +27,7 @@ const Product = () => {
                         {
                             _.map(productItems, (item) => {
                                 return (
-                                    <ProductItem product={item} onClick={() => console.log("Ssdsd")} />
+                                    <ProductItem product={item} onProductItemClick={handleClickProductDetail} />
                                 )
                             })
                         }

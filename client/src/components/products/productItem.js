@@ -1,11 +1,10 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import './_productItem.scss'
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, onProductItemClick }) => {
   return (
-    <Col className="product-item" md={6} xl={3}>
+    <Col onClick={onProductItemClick} className="product-item" md={6} xl={3}>
       <div className="product-thumb">
         <img src={product.thumbUrl} alt={product.name} />
       </div>
