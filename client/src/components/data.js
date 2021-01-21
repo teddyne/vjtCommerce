@@ -9,7 +9,7 @@ const products = [
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
-        "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
+        "id": "45932451-8d97-4792-b7e0-1ea9a5793eda",
         "name": "Mũ bảo hiểm AGV 2",
         "type": 1,
         "price": 1200000,
@@ -18,7 +18,7 @@ const products = [
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
-        "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
+        "id": "80db6ddf-4d33-47b4-b8f5-ed33282dbad4",
         "name": "Mũ bảo hiểm AGV 3",
         "type": 1,
         "price": 1200000,
@@ -27,7 +27,7 @@ const products = [
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
-        "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
+        "id": "313599bc-f8b8-4a3a-b7a5-6f4e8616127d",
         "name": "Mũ bảo hiểm AGV 4",
         "type": 1,
         "price": 1200000,
@@ -36,7 +36,7 @@ const products = [
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
-        "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
+        "id": "6d71ad4a-10ca-406a-b33e-1436d25bd46b",
         "name": "Mũ bảo hiểm AGV 5",
         "type": 1,
         "price": 1200000,
@@ -45,7 +45,7 @@ const products = [
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
-        "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
+        "id": "b0218380-4f4e-4e3c-8621-97ab506c4632",
         "name": "Mũ bảo hiểm AGV 5",
         "type": 1,
         "price": 1200000,
@@ -54,7 +54,7 @@ const products = [
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
     {
-        "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
+        "id": "b5c7c680-2751-4bed-a827-82832e56c377",
         "name": "Găng tay chống nắng",
         "type": 1,
         "price": 1200000,

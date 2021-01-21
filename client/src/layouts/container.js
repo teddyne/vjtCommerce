@@ -24,9 +24,9 @@ const withContainer = (Component) => {
     return ContainerWrapper
 }
 
-const withLayout = (component) => {
+const withLayout = (component, isHome) => {
     return (
-        <DefaultLayout>
+        <DefaultLayout isHome={isHome}>
             {component}
         </DefaultLayout>
     )

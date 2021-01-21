@@ -4,13 +4,13 @@ import { productBoxes, products } from '../data'
 import ProductBox from './productBox'
 import ProductLine from './productLine'
 import ProductItem from './productItem'
-import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const Product = () => {
+    let history = useHistory();
 
-    const handleClickProductDetail = () => {
-        console.log('dfdf')
-        //return <Redirect to='/contact' />
+    const handleClickProductDetail = (productId) => {
+        history.push(`/products/${productId}`)
     }
 
     return (
@@ -27,7 +27,7 @@ const Product = () => {
                         {
                             _.map(productItems, (item) => {
                                 return (
-                                    <ProductItem product={item} onProductItemClick={handleClickProductDetail} />
+                                    <ProductItem product={item} onProductItemClick={() => handleClickProductDetail(item.id)} />
                                 )
                             })
                         }

@@ -49,6 +49,9 @@
           color: $color-black;
         }
       }
+      .center-logo {
+        cursor: pointer;
+      }
     }
 
     @include non-desktop {
