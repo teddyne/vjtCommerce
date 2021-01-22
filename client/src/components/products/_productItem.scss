@@ -4,6 +4,7 @@
 .product-item {
     text-align: center;
     cursor: pointer;
+    padding-bottom: 1%;
 
     &:hover {
         box-shadow: $color-product-item-box 0px 0px 20px;
@@ -17,7 +18,7 @@
     }
 
     .product-price {
-        color: $color-solo-travel-shop;
+        color: $color-red;
         font-weight: bold;
     }
 }

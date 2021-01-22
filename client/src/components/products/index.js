@@ -5,6 +5,7 @@ import ProductBox from './productBox'
 import ProductLine from './productLine'
 import ProductItem from './productItem'
 import { useHistory } from 'react-router-dom'
+import { Constant } from '../constant/index'
 
 const Product = () => {
     let history = useHistory();
@@ -18,7 +19,7 @@ const Product = () => {
         {
             let currentProducts = _.filter(products, p => _.includes(p.productBoxIds, item.id))
             if (!_.isEmpty(currentProducts)) {
-                const totalLines = Math.ceil(currentProducts.length / 4)
+                const totalLines = Math.ceil(currentProducts.length / Constant.MAX_ITEM_PER_LINE)
                 const productLines = []
                 for (let index = 0; index < totalLines; index++) {
                     const productItems = _.slice(currentProducts, index * 4, index < totalLines - 1 ? (index + 1) * 4 : 5)

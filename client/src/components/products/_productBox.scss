@@ -10,7 +10,7 @@
     .box-title {
         text-transform: uppercase;
         font-weight: bold;
-        border-bottom: 2px $color-solo-travel-shop solid;
+        @include boder-b-colorSts(2);
         margin-bottom: 2%;
     }
 }

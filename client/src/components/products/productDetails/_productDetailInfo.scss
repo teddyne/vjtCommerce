@@ -1,0 +1,8 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
+
+.product-detail-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    @include boder-b-colorSts(2);
+}

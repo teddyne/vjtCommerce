@@ -12,3 +12,7 @@ $desktop-width: 992px;
     -o-border-radius: #{$numberOfPx}px;
     border-radius: #{$numberOfPx}px;
 }
+
+@mixin  boder-b-colorSts($number) {
+    border-bottom: #{$number}px $color-solo-travel-shop solid;
+}

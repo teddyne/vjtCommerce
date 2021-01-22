@@ -1,10 +1,12 @@
-const products = [
+export const products = [
     {
         "id": "b24b93ac-37ef-450a-8e8f-7b138de61870",
         "name": "Mũ bảo hiểm AGV 1",
         "type": 1,
         "price": 1200000,
+        "discount": 90,
         "productBoxIds": "ca658f5f-2e5e-4913-8c10-af5e8a87dfd4,1de8dbd2-fa6c-478c-ac3c-e3b19cc588b6",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/3a/ee/4a62e9f1fb51d2551cd44e3aea10c084.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -13,7 +15,9 @@ const products = [
         "name": "Mũ bảo hiểm AGV 2",
         "type": 1,
         "price": 1200000,
+        "discount": 45,
         "productBoxIds": "ca658f5f-2e5e-4913-8c10-af5e8a87dfd4",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -22,7 +26,9 @@ const products = [
         "name": "Mũ bảo hiểm AGV 3",
         "type": 1,
         "price": 1200000,
+        "discount": 55,
         "productBoxIds": "ca658f5f-2e5e-4913-8c10-af5e8a87dfd4",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/64/ad/1e/6d4ce9a11ca7b60787788eafa62afdc3.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -31,7 +37,9 @@ const products = [
         "name": "Mũ bảo hiểm AGV 4",
         "type": 1,
         "price": 1200000,
+        "discount": 23,
         "productBoxIds": "ca658f5f-2e5e-4913-8c10-af5e8a87dfd4",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/18/98/10/b397d0f543c26056786ff6b845a82750.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -40,7 +48,9 @@ const products = [
         "name": "Mũ bảo hiểm AGV 5",
         "type": 1,
         "price": 1200000,
+        "discount": 10,
         "productBoxIds": "ca658f5f-2e5e-4913-8c10-af5e8a87dfd4,1de8dbd2-fa6c-478c-ac3c-e3b19cc588b6",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/64/ad/1e/6d4ce9a11ca7b60787788eafa62afdc3.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -49,7 +59,9 @@ const products = [
         "name": "Mũ bảo hiểm AGV 5",
         "type": 1,
         "price": 1200000,
+        "discount": 18,
         "productBoxIds": "1de8dbd2-fa6c-478c-ac3c-e3b19cc588b6",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     },
@@ -58,13 +70,15 @@ const products = [
         "name": "Găng tay chống nắng",
         "type": 1,
         "price": 1200000,
+        "discount": 68,
         "productBoxIds": "1de8dbd2-fa6c-478c-ac3c-e3b19cc588b6",
+        "imageUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
         "thumbUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/3a/ee/4a62e9f1fb51d2551cd44e3aea10c084.jpg",
         "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
     }
 ]
 
-const productBoxes = [
+export const productBoxes = [
     {
         "id": "1de8dbd2-fa6c-478c-ac3c-e3b19cc588b6",
         "title": "Sản phẩm nổi bật"
@@ -82,4 +96,3 @@ const productBoxes = [
         "title": "Khăn đa năng"
     },
 ]
-export { products, productBoxes }

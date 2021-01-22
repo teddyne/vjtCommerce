@@ -4,29 +4,42 @@ import Col from 'react-bootstrap/Col'
 import { useParams } from 'react-router-dom'
 import ProductThumb from './productThumb'
 import ProductInfo from './productInfo'
+import ProductDetailInfo from './productDetailInfo'
 import { products } from '../../data'
 import _ from 'lodash'
-
 
 import './_productDetail.scss'
 
 
-const ProductDetail = (props) => {
-  let { productId } = useParams();
+function ProductDetail ()  {
+  let { productId } = useParams()
 
-  const product = (productId) => {
-    //console.log(products)
-    return _.filter(products, x => x.id == productId)
+  const product1 = () => {
+    const product = _.find(products, x => x.id === productId)
+    return product
   }
+
+  function getProduct () {
+    const product = _.find(products, x => x.id === productId)
+    return product
+  }
+
+  const product2 = getProduct() 
+
   return (
-    <Row className="product-detail">
-      <Col lg={4}>
-          <ProductThumb product={product} />
-      </Col>
-      <Col lg={8}>
-        <ProductInfo />
-      </Col>
-    </Row>
+    <React.Fragment>
+      <Row className="product-detail">
+        <Col lg={5}>
+          <ProductThumb product={product1()} />
+        </Col>
+        <Col lg={7}>
+          <ProductInfo product={product1()} />
+        </Col>
+      </Row>
+      <Row className="product-detail">
+        <ProductDetailInfo />
+      </Row>
+    </React.Fragment>
   );
-};
-export default ProductDetail;
+}
+export default ProductDetail
