@@ -1,0 +1,12 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
+
+.quality-input {
+    width: 20%;
+    @include non-desktop {
+        width: 40%;
+    }
+    .quality {
+        text-align: center;
+    }
+}

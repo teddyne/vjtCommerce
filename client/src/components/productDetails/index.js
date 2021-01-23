@@ -5,26 +5,26 @@ import { useParams } from 'react-router-dom'
 import ProductThumb from './productThumb'
 import ProductInfo from './productInfo'
 import ProductDetailInfo from './productDetailInfo'
-import { products } from '../../data'
+import { products } from '../../constants/data'
 import _ from 'lodash'
+import ProductDescription from './productDescription'
 
-import './_productDetail.scss'
+import './scss/_productDetail.scss'
 
-
-function ProductDetail ()  {
+function ProductDetail() {
   let { productId } = useParams()
 
   const product1 = () => {
-    const product = _.find(products, x => x.id === productId)
+    const product = _.find(products, (x) => x.id === productId)
     return product
   }
 
-  function getProduct () {
-    const product = _.find(products, x => x.id === productId)
+  function getProduct() {
+    const product = _.find(products, (x) => x.id === productId)
     return product
   }
 
-  const product2 = getProduct() 
+  const product2 = getProduct()
 
   return (
     <React.Fragment>
@@ -36,10 +36,9 @@ function ProductDetail ()  {
           <ProductInfo product={product1()} />
         </Col>
       </Row>
-      <Row className="product-detail">
-        <ProductDetailInfo />
-      </Row>
+      <ProductDetailInfo />
+      <ProductDescription product={product1()} />
     </React.Fragment>
-  );
+  )
 }
 export default ProductDetail

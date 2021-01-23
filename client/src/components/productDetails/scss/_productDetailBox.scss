@@ -1,0 +1,13 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
+
+.product-detail-box {
+    background-color: #fff;
+    margin-bottom: 2%;
+    padding: 2%;
+    .product-detail-box-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        @include boder-b-colorSts(2);
+    }
+}

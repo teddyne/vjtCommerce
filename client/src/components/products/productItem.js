@@ -1,7 +1,7 @@
-import React from "react";
-import Col from "react-bootstrap/Col";
-import { formatCurrency } from '../helpers/stringHelper'
-import './_productItem.scss'
+import React from 'react'
+import Col from 'react-bootstrap/Col'
+import { formatCurrency } from '../../helpers/stringHelper'
+import './scss/_productItem.scss'
 
 const ProductItem = ({ product, onProductItemClick }) => {
   return (
@@ -14,6 +14,6 @@ const ProductItem = ({ product, onProductItemClick }) => {
         <div className="product-price">{formatCurrency(product.price)} ₫</div>
       </div>
     </Col>
-  );
-};
-export default ProductItem;
+  )
+}
+export default ProductItem

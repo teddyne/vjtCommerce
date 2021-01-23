@@ -1,15 +1,13 @@
 import React from 'react';
 import { withContainer, withLayout } from './layouts/container'
-import Home from './components/home/index'
-import Contact from './components/contact'
-import ProductDetail from './components/products/productDetails/index'
+import ProductDetail from './components/productDetails/index'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Product from './components/products';
 class App extends React.Component {
   buildPages() {
     return [
-      { exact : true, path: '/', key: 'home', render: () => withLayout(<Home />, true) },
-      { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
-      { path: '/contact', key: 'contact', render: () => withLayout(<Contact /> ) }
+      { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />, true) },
+      { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) }
     ]
   }
 

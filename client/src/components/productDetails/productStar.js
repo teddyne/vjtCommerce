@@ -1,7 +1,7 @@
-import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faStarHalf } from "@fortawesome/free-solid-svg-icons";
-import './_productStar.scss'
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
+import './scss/_productStar.scss'
 
 const ProductStar = ({ color, size, numberStar }) => {
   let finalNumberStar = 5
@@ -23,13 +23,8 @@ const ProductStar = ({ color, size, numberStar }) => {
   }
 
   productStarTemplate.push(
-      <span className="product-review">(Xem 23 đánh giá)</span>
+    <span className="product-review">(Xem 23 đánh giá)</span>
   )
-  return (
-      <div className="product-star">
-          {productStarTemplate}
-      </div>
-
-  )
+  return <div className="product-star">{productStarTemplate}</div>
 }
 export default ProductStar

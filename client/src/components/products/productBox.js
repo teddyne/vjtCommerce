@@ -1,5 +1,5 @@
 import React from 'react'
-import './_productBox.scss'
+import './scss/_productBox.scss'
 
 const ProductBox = (props) => {
     return (

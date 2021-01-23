@@ -6,6 +6,9 @@
     .final-price {
         color: $color-red;
         font-size: 40px;
+        @include non-desktop {
+            font-size: 25px;
+        }
         font-weight: bold;
     }
     .original-price {

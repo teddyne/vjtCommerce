@@ -3,7 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 
-import './_qualityInput.scss'
+import './scss/_qualityInput.scss'
 
 const QualityInput = () => {
     return (

@@ -21,7 +21,7 @@ const Header = () => {
       <Container className="site-logo">
         <Row className="wrap-logo">
           <div onClick={handleClickLogo} className="center-logo">
-            Header title
+            Solo Travel Shop
           </div>
           <div className="shopping-cart">
             <img src={ShoppingCart} alt="Shopping cart" />

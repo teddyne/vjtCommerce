@@ -1,6 +1,6 @@
 import React from 'react'
 import ImageGallery from 'react-image-gallery'
-import './_productThumb.scss'
+import './scss/_productThumb.scss'
 
 const ProductThumb = ({ product }) => {
     const imnages = [

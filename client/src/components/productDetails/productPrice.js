@@ -1,6 +1,7 @@
 import React from 'react'
-import './_productPrice.scss'
 import { formatCurrency } from '../../helpers/stringHelper'
+
+import './scss/_productPrice.scss'
 
 const ProductPrice = ({ price, discount }) => {
     const finalPrice = price - ((price * discount) / 100)
