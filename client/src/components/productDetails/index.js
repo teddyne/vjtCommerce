@@ -8,6 +8,7 @@ import ProductDetailInfo from './productDetailInfo'
 import { products } from '../../constants/data'
 import _ from 'lodash'
 import ProductDescription from './productDescription'
+import Review from './review'
 
 import './scss/_productDetail.scss'
 
@@ -38,6 +39,7 @@ function ProductDetail() {
       </Row>
       <ProductDetailInfo />
       <ProductDescription product={product1()} />
+      <Review />
     </React.Fragment>
   )
 }

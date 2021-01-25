@@ -1,11 +1,12 @@
 import React from 'react'
-import './_header.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import ShoppingCart from '../assets/images/shopping-cart.png'
 import { useHistory} from 'react-router-dom'
+
+import './scss/_header.scss'
 
 const Header = () => {
   let history = useHistory()

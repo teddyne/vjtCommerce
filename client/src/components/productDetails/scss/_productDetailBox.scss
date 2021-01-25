@@ -8,6 +8,7 @@
     .product-detail-box-title {
         text-transform: uppercase;
         font-weight: bold;
+        margin-bottom: 1%;
         @include boder-b-colorSts(2);
     }
 }

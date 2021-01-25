@@ -1,9 +1,10 @@
 import React from 'react'
-import './_sideBar.scss'
 import helmet from '../assets/images/menu/helmet.png'
 import wipe from '../assets/images/menu/wipe.png'
 import gloves from '../assets/images/menu/gloves.png'
 import towel from '../assets/images/menu/towel.png'
+
+import './scss/_sideBar.scss'
 
 class SideBar extends React.Component {
   render() {
