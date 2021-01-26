@@ -11,7 +11,7 @@ const ProductInfo = ({ product }) => {
   return (
     <div className="product-info">
       <div className="product-name">{product.name}</div>
-      <ProductStar color={color.colorSts} size="sm" numberStar={4.5} />
+      <ProductStar isShowTotalReviews={true} color={color.colorSts} size="sm" numberStar={4.5} />
       <ProductPrice price={product.price} discount={product.discount} />
       <QualityInput />
       <Button className="btn-buy-right-now">Mua Ngay</Button>

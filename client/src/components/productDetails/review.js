@@ -15,10 +15,11 @@ const Review = () => {
           <Container className="review-star">
             <Row>
               <Col xs={3}>
-                <div className="avarage-point">4.5</div>
-                <ProductStar numberStar={4.5} />
+                <div className="average-point">4.5</div>
+                <ProductStar numberStar={4.5} size={"sm"} />
+                <div className="total-reviews">93 nhận xét</div>
               </Col>
-              <Col xs={9}>review detail</Col>
+              <Col xs={9}></Col>
             </Row>
           </Container>
         </div>

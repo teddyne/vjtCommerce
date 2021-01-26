@@ -2,7 +2,16 @@
 @import '../../../assets/scss/variables';
 
 .product-review {
-    .review-star {
-       // display: flex;
+    .average-point {
+        font-size: 80px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 1;
+    }
+    .product-star {
+        text-align: center;
+    }
+    .total-reviews {
+        text-align: center;
     }
 }
