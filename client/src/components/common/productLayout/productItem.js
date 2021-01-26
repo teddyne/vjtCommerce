@@ -1,7 +1,7 @@
 import React from 'react'
 import Col from 'react-bootstrap/Col'
 import { formatCurrency } from '../../../helpers/stringHelper'
-import './/_productItem.scss'
+import './scss/_productItem.scss'
 
 const ProductItem = ({ product, onProductItemClick }) => {
   return (
