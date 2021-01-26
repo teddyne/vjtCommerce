@@ -1,12 +1,10 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table'
-import ProductDetailBox from './productDetailBox'
-
-import './scss/_productDetailInfo.scss'
+import Box from '../common/box'
 
 const ProductDetailInfo = () => {
   return (
-    <ProductDetailBox title={"chi tiết sản phẩm"}>
+    <Box title={"chi tiết sản phẩm"}>
       <div className="product-detail-table">
         <Table striped bordered>
           <tbody>
@@ -54,7 +52,7 @@ const ProductDetailInfo = () => {
           </tbody>
         </Table>
       </div>
-    </ProductDetailBox>
+    </Box>
   )
 }
 export default ProductDetailInfo

@@ -9,6 +9,7 @@ import { products } from '../../constants/data'
 import _ from 'lodash'
 import ProductDescription from './productDescription'
 import Review from './review'
+import ProductSimilar from '../products/productSimilar'
 
 import './scss/_productDetail.scss'
 
@@ -31,15 +32,16 @@ function ProductDetail() {
     <React.Fragment>
       <Row className="product-detail">
         <Col lg={5}>
-          <ProductThumb product={product1()} />
+          <ProductThumb key="1" product={product1()} />
         </Col>
         <Col lg={7}>
-          <ProductInfo product={product1()} />
+          <ProductInfo key="2" product={product1()} />
         </Col>
       </Row>
-      <ProductDetailInfo />
-      <ProductDescription product={product1()} />
-      <Review />
+      <ProductDetailInfo key="3" />
+      <ProductDescription key="4" product={product1()} />
+      <Review key="5" />
+      <ProductSimilar key="6" />
     </React.Fragment>
   )
 }

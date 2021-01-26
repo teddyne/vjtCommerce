@@ -1,15 +1,13 @@
 import React from 'react'
-import ProductDetailBox from './productDetailBox'
-
-import './scss/_productDescription.scss'
+import Box from '../common/box'
 
 const ProductDescription = ({ product }) => {
   return (
-    <ProductDetailBox title="mô tả sản phẩm">
+    <Box title="mô tả sản phẩm">
       <div className="product-description">
         <span>{product.description}</span>
       </div>
-    </ProductDetailBox>
+    </Box>
   )
 }
 export default ProductDescription

@@ -6,7 +6,7 @@ import Product from './components/products';
 class App extends React.Component {
   buildPages() {
     return [
-      { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />, true) },
+      { exact : true, path: '/', key: 'product-1', render: () => withLayout(<Product />, true) },
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) }
     ]
   }
