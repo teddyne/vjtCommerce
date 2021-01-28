@@ -3,9 +3,10 @@ import Box from '../common/box'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
+import ProductStar from './productStar'
+import ReviewChart from './reviewChart'
 
 import './scss/_review.scss'
-import ProductStar from './productStar'
 
 const Review = () => {
   return (
@@ -19,7 +20,9 @@ const Review = () => {
                 <ProductStar numberStar={4.5} size={"sm"} />
                 <div className="total-reviews">93 nhận xét</div>
               </Col>
-              <Col xs={9}></Col>
+              <Col xs={9}>
+                <ReviewChart numberReviews={[23, 46, 15, 24]} />
+              </Col>
             </Row>
           </Container>
         </div>

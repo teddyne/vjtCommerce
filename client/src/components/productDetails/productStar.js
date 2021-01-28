@@ -2,11 +2,14 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
 import color from '../../assets/scss/_colors.scss'
+import { Constant } from '../../constants'
 
 import './scss/_productStar.scss'
 
-const ProductStar = ({ color, size, numberStar, isShowTotalReviews }) => {
+const ProductStar = ({ color, emptyColor, size, numberStar, isShowTotalReviews, isShowEmptyStar }) => {
   let finalNumberStar = 5
+  const totalStarRendered = Math.ceil(numberStar)
+  const totalEmptyStar = Constant.MAX_STAR - totalStarRendered
 
   if (numberStar % 1 === 0 || numberStar % 1 === 0.5)
     finalNumberStar = numberStar
@@ -29,12 +32,23 @@ const ProductStar = ({ color, size, numberStar, isShowTotalReviews }) => {
       <span key='product-review-index' className="product-review">(Xem 23 đánh giá)</span>
     )
   }
+
+  if (isShowEmptyStar && totalEmptyStar > 0) {
+    for (let index = 0; index < totalEmptyStar; index++) {
+      productStarTemplate.push(
+        <FontAwesomeIcon key={index} icon={faStar} size={size} color={emptyColor} />
+      )
+    }
+  }
+
   return <div className="product-star">{productStarTemplate}</div>
 }
 
 ProductStar.defaultProps = {
-  color: color.colorSts,
-  size: "xs",
-  isShowTotalReviews: false
+  color: color.color_sts,
+  emptyColor: color.color_gray,
+  size: 'xs',
+  isShowTotalReviews: false,
+  isShowEmptyStar: false
 }
 export default ProductStar
