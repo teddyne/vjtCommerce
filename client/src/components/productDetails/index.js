@@ -40,7 +40,7 @@ function ProductDetail() {
       </Row>
       <ProductDetailInfo key="3" />
       <ProductDescription key="4" product={product1()} />
-      <Review key="5" />
+      <Review numberReviews={[13, 8, 4, 1, 0]} />
       <ProductSimilar key="6" />
     </React.Fragment>
   )

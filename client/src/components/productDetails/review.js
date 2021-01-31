@@ -8,7 +8,8 @@ import ReviewChart from './reviewChart'
 
 import './scss/_review.scss'
 
-const Review = () => {
+const Review = ({ numberReviews }) => {
+  let totalReviews = numberReviews.reduce((a, b) => a + b)
   return (
     <Box title="đánh giá sản phẩm">
       <div className="product-review">
@@ -18,10 +19,10 @@ const Review = () => {
               <Col xs={3}>
                 <div className="average-point">4.5</div>
                 <ProductStar numberStar={4.5} size={"sm"} />
-                <div className="total-reviews">93 nhận xét</div>
+                <div className="total-reviews">{totalReviews} nhận xét</div>
               </Col>
               <Col xs={9}>
-                <ReviewChart numberReviews={[23, 46, 15, 24]} />
+                <ReviewChart totalReviews={totalReviews} numberReviews={numberReviews} />
               </Col>
             </Row>
           </Container>

@@ -1,3 +1,16 @@
 @import '../../../assets/scss/colors';
 @import '../../../assets/scss/variables';
 
+.review-chart {
+    display: flex;
+    align-items: center;
+    .product-star {
+        width: 60%;
+    }
+    .review-chart {
+        width: 100%;
+        .progress {
+            width: 100%;
+        }
+    }
+}
