@@ -5,12 +5,16 @@
     display: flex;
     align-items: center;
     .product-star {
-        width: 60%;
+        margin-right: 30px;
     }
-    .review-chart {
-        width: 100%;
+    .review-bar-chart {
+        width: 40%;
+        margin-right: 20px;
         .progress {
             width: 100%;
         }
+    }
+    .number-review {
+        font-weight: 700;
     }
 }

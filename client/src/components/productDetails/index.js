@@ -32,16 +32,16 @@ function ProductDetail() {
     <React.Fragment>
       <Row className="product-detail">
         <Col lg={5}>
-          <ProductThumb key="1" product={product1()} />
+          <ProductThumb product={product1()} />
         </Col>
         <Col lg={7}>
-          <ProductInfo key="2" product={product1()} />
+          <ProductInfo product={product1()} />
         </Col>
       </Row>
-      <ProductDetailInfo key="3" />
-      <ProductDescription key="4" product={product1()} />
+      <ProductDetailInfo />
+      <ProductDescription product={product1()} />
       <Review numberReviews={[13, 8, 4, 1, 0]} />
-      <ProductSimilar key="6" />
+      <ProductSimilar />
     </React.Fragment>
   )
 }

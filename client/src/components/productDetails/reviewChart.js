@@ -12,11 +12,13 @@ const ReviewChart = ({ totalReviews, numberReviews }) => {
         star = star - 1
         return (
             <div className="review-chart">
+                <div>
                 <ProductStar className="product-star" key={index} numberStar={star} isShowEmptyStar={true} />
-                <div className="review-chart">
+                </div>
+                <div className="review-bar-chart">
                     <ProgressBar now={Math.ceil((numberReview / totalReviews) * 100)} />
                 </div>
-                <div>{numberReview}</div>
+                <div className="number-review">{numberReview}</div>
             </div>
         )
     })
