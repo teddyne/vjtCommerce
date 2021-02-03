@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container'
 import ProductStar from './productStar'
 import ReviewChart from './reviewChart'
 import ReviewList from './reviewList'
+import { reviews } from '../.././constants/data'
 
 import './scss/_review.scss'
 
@@ -26,9 +27,9 @@ const Review = ({ numberReviews }) => {
                 <ReviewChart totalReviews={totalReviews} numberReviews={numberReviews} />
               </Col>
             </Row>
-            <Row className="review-list">
-              <ReviewList />
-            </Row>
+            <div className="review-list">
+              <ReviewList items={reviews} />
+            </div>
           </Container>
         </div>
       </div>

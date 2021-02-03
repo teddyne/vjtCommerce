@@ -96,3 +96,22 @@ export const productBoxes = [
         "title": "Khăn đa năng"
     },
 ]
+
+export const reviews = [
+    {
+        "id": "1de8dbd2-fa6c-478c-ac3c-e3b19cc588b6",
+        "title": "Sản phẩm nổi bật"
+    },
+    {
+        "id": "ca658f5f-2e5e-4913-8c10-af5e8a87dfd4",
+        "title": "Mũ bảo hiểm"
+    },
+    {
+        "id": "b56bb8df-4cde-4c56-b629-0502d4f5d903",
+        "title": "Găng tay xe máy"
+    },
+    {
+        "id": "7c8bb5dc-ae74-4990-92b0-e72ff608f471",
+        "title": "Khăn đa năng"
+    },
+]
