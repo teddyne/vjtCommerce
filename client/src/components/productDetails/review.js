@@ -14,7 +14,7 @@ const Review = ({ numberReviews }) => {
   let totalReviews = numberReviews.reduce((a, b) => a + b)
   return (
     <Box title="đánh giá sản phẩm">
-      <div className="product-review">
+      <div className="customer-review">
         <div className="review-star">
           <Container className="review-star">
             <Row>

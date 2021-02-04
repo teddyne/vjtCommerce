@@ -4,5 +4,22 @@
 .review-item {
  .review-general-info {
      display: flex;
+     .review-avatar {
+         img {
+             width: 50px;
+             border-radius: 50%;
+         }
+     }
  }
+ .review-info {
+     margin-left: 2%;
+    .review-user {
+        display: flex;
+    }
+  }
+  .review-star {
+      .product-star {
+        text-align: left;
+      }
+  }
 }
