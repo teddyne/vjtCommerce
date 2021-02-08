@@ -6,6 +6,7 @@ import Header from './header'
 import Footer from './footer'
 import SideBar from './sideBar'
 import Slider from './slider'
+import ContactBox from './contactBox'
 
 import './scss/_defaultLayout.scss'
 
@@ -27,6 +28,7 @@ const DefaultLayout = (props) => {
         </Container>
       </main>
       <Footer />
+      <ContactBox />
     </React.Fragment>
   ) : (
     <React.Fragment>
@@ -35,6 +37,7 @@ const DefaultLayout = (props) => {
         <Container className="main">{props.children}</Container>
       </main>
       <Footer />
+      <ContactBox />
     </React.Fragment>
   )
 }

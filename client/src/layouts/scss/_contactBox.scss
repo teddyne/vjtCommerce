@@ -1,0 +1,13 @@
+@import '../../assets/scss/colors';
+@import '../../assets/scss/variables';
+
+.contact-box {
+    display: grid;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+    img {
+        margin-top: 10%;
+    }
+}

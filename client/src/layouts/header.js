@@ -5,6 +5,9 @@ import Row from 'react-bootstrap/Row'
 import Container from 'react-bootstrap/Container'
 import ShoppingCart from '../assets/images/shopping-cart.png'
 import { useHistory} from 'react-router-dom'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 import './scss/_header.scss'
 
@@ -24,6 +27,12 @@ const Header = () => {
           <div onClick={handleClickLogo} className="center-logo">
             Solo Travel Shop
           </div>
+          <div className='search-box'>
+            <Form.Group>
+             <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua" />
+             <Button className="btn-search"><FontAwesomeIcon icon={faSearch} color={'white'} />Tìm Kiếm</Button>
+            </Form.Group>
+          </div>
           <div className="shopping-cart">
             <img src={ShoppingCart} alt="Shopping cart" />
             <span className="item-cart-qty">
@@ -36,4 +45,4 @@ const Header = () => {
   )
 }
 
-export default Header;
+export default Header

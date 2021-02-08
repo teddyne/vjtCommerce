@@ -54,6 +54,7 @@ const ProductLayout = (props) => {
 
       return <Box title={item.title}>{productLines}</Box>
     }
+    return null
   })
 }
 export default ProductLayout

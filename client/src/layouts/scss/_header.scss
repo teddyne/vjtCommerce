@@ -33,6 +33,48 @@
           left: 80%;
         }
       }
+      .search-box {
+        width: 60%;
+        margin-left: 6%;
+        input.form-control-lg {
+          border-radius: 0;
+        }
+        .search-input {
+          &:focus {
+            border-color: transparent;
+            box-shadow: none;
+          }
+        }
+        .form-group {
+          display: flex;
+          position: relative;
+        }
+        .btn-search {
+          position: absolute;
+          right: 5px;
+          top: 5px;
+          color: $color-white;
+          background-color: $color-solo-travel-shop;
+          border-color: transparent;
+          font-weight: 600;
+          &:hover {
+              opacity: 0.8;
+              color: $color-white;
+              background-color: $color-solo-travel-shop;
+              border-color: transparent;
+          }
+          :active {
+              color: $color-white;
+              background-color: $color-solo-travel-shop;
+              border-color: transparent;
+          }
+          &:focus {
+              color: $color-white;
+              background-color: $color-solo-travel-shop;
+              border-color: transparent;
+          }
+        }
+      }
       .item-cart-qty {
         position: absolute;
         background-color: $color-red;
@@ -46,7 +88,7 @@
           position: absolute;
           left: 6px;
           top: -1px;
-          color: $color-black;
+          color: $color-white;
         }
       }
       .center-logo {
