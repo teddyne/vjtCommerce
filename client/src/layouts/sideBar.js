@@ -3,9 +3,9 @@ import helmet from '../assets/images/menu/helmet.png'
 import wipe from '../assets/images/menu/wipe.png'
 import gloves from '../assets/images/menu/gloves.png'
 import towel from '../assets/images/menu/towel.png'
+import book from '../assets/images/menu/book.png'
 
 import './scss/_sideBar.scss'
-
 class SideBar extends React.Component {
   render() {
     return (
@@ -42,6 +42,14 @@ class SideBar extends React.Component {
                   <img src={wipe} />
                 </span>
                 <span>Khăn Đa Năng</span>
+              </a>
+            </li>
+            <li className="side-bar-item">
+              <a className="side-bar-item-content" href="#about">
+                <span className="side-bar-icon">
+                  <img src={book} />
+                </span>
+                <span>Sách Cũ</span>
               </a>
             </li>
           </ul>

@@ -91,6 +91,22 @@
           color: $color-white;
         }
       }
+      .item-cart-qty-large {
+        position: absolute;
+        background-color: $color-red;
+        height: 20px;
+        width: 30px;
+        top: 8px;
+        left: 27px;
+        @include border-radius-percent(50%);
+        .qty-text {
+          font-size: 15px;
+          position: absolute;
+          left: 6px;
+          top: -1px;
+          color: $color-white;
+        }
+      }
       .center-logo {
         cursor: pointer;
       }

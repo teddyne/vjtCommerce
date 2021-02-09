@@ -13,6 +13,14 @@ $desktop-width: 992px;
     border-radius: #{$numberOfPx}px;
 }
 
+@mixin border-radius-percent($percent) {
+    -moz-border-radius: #{$percent};
+    -webkit-border-radius: #{$percent};
+    -ms-border-radius: #{$percent};
+    -o-border-radius: #{$percent};
+    border-radius: #{$percent};
+}
+
 @mixin  boder-b-colorSts($number) {
     border-bottom: #{$number}px $color-solo-travel-shop solid;
 }

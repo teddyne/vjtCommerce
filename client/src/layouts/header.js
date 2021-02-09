@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -8,17 +8,20 @@ import { useHistory} from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { Context } from '../store/store'
 
 import './scss/_header.scss'
 
 const Header = () => {
-  let history = useHistory()
+  const history = useHistory()
+  const [state, dispatch] = useContext(Context)
+
   const handleClickLogo = () => {
     history.push('/')
   }
 
   return (
-    <header className="header">
+    <header className="header fixed-top">
       <div className="hamberger-menu">
         <FontAwesomeIcon icon={faBars} size="2x" color="white" />
       </div>
@@ -35,9 +38,14 @@ const Header = () => {
           </div>
           <div className="shopping-cart">
             <img src={ShoppingCart} alt="Shopping cart" />
-            <span className="item-cart-qty">
-              <span className="qty-text">3</span>
+            <span className={state.carts.length >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
+              <span className="qty-text">{state.carts.length}</span>
             </span>
+          </div>
+        </Row>
+        <Row>
+          <div>
+            <span>Story</span>
           </div>
         </Row>
       </Container>
