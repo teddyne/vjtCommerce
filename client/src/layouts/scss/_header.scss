@@ -22,7 +22,7 @@
     font-weight: bold;
     text-transform: uppercase;
     font-size: 30px;
-    padding: 45px 45px 45px 15px;
+    padding: 35px 45px 45px 15px;
 
     .wrap-logo {
       position: relative;
@@ -109,6 +109,27 @@
       }
       .center-logo {
         cursor: pointer;
+      }
+    }
+
+    .header-menu {
+      font-size: 15px;
+      text-transform: capitalize;
+      width: 100%;
+      margin-left: 70%;
+      ul {
+        list-style-type: none;
+        display: flex;
+        .side-bar-item {
+          width: 30%;
+          .side-bar-item-content {
+              text-decoration: none;
+              color: $color-white;
+              .side-bar-icon {
+                  padding-right: 4%;
+              }
+          }
+      }
       }
     }
 
