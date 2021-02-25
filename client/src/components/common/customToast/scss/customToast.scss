@@ -1,3 +1,6 @@
+@import '../../../../assets/scss/colors';
+@import '../../../../assets/scss/variables';
+
 .custom-toast {
     z-index: 3000;
     &:before {
@@ -9,5 +12,11 @@
         border-style: solid;
         border-color: transparent transparent rgb(255, 255, 255);
         border-image: initial;
+    }
+    .toast-body {
+        background-color: $color-white;
+    }
+    .check-circle {
+        padding-right: 5px;
     }
 }

@@ -9,25 +9,25 @@ import './scss/customToast.scss'
 const CustomToast = ({ isShow, onClose }) => {
     return (
         <Toast className='custom-toast'
-            //onClose={onClose}
+            onClose={onClose}
             show={isShow}
             delay={3000}
-            //autohide
+            autohide
             style={{
-                position: 'absolute',
-                top: -65,
-                right: -60,
+                position: 'fixed',
+                top: 90,
+                right: 340,
                 zindex: 3000
             }}
         >
             <Toast.Header>
-                <div className='review-check-circle'>
+                <div className='check-circle'>
                     <FontAwesomeIcon icon={faCheckCircle} color={'green'} />
                 </div>
-                <span className='bougth-verified'>Đã thêm một em vào giỏ hàng!</span>
+                <span>Đã thêm một em vào giỏ hàng!</span>
             </Toast.Header>
             <Toast.Body>
-                <Button className="btn-buy-right-now">Xem Giỏ hàng và Thanh toán</Button>
+                <Button variant="info">Xem Giỏ hàng và Thanh toán</Button>
             </Toast.Body>
         </Toast>
     )
