@@ -22,8 +22,6 @@
     font-weight: bold;
     text-transform: uppercase;
     font-size: 30px;
-    padding: 35px 45px 45px 15px;
-
     .wrap-logo {
       position: relative;
       .shopping-cart {
@@ -34,10 +32,9 @@
         }
       }
       .search-box {
-        width: 60%;
-        margin-left: 6%;
+        width: 85%;
         input.form-control-lg {
-          border-radius: 0;
+          @include border-radius(5);
         }
         .search-input {
           &:focus {
@@ -109,6 +106,11 @@
       }
       .center-logo {
         cursor: pointer;
+        margin-top: 10%;
+      }
+      .header-col-2 {
+        display: flex;
+        padding-top: 35px;
       }
     }
 
@@ -116,12 +118,12 @@
       font-size: 15px;
       text-transform: capitalize;
       width: 100%;
-      margin-left: 70%;
+      margin-left: 60%;
       ul {
         list-style-type: none;
         display: flex;
         .side-bar-item {
-          width: 30%;
+          width: 13%;
           .side-bar-item-content {
               text-decoration: none;
               color: $color-white;
@@ -129,7 +131,7 @@
                   padding-right: 4%;
               }
           }
-      }
+        }
       }
     }
 

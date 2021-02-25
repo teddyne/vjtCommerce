@@ -26,7 +26,7 @@ const ProductInfo = ({ product }) => {
       <ProductPrice price={product.price} discount={product.discount} />
       <QualityInput />
       <Button className="btn-buy-right-now" onClick={handleClickBuyNow}>Mua Ngay</Button>
-      <CustomToast isShow={showingAddedToast} />
+      <CustomToast isShow={showingAddedToast} onClose={() => setShowingAddedToast(false)} />
     </div>
   )
 }
