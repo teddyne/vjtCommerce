@@ -13,15 +13,25 @@ import { Context } from '../store/store'
 import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
+import { Redirect } from 'react-router-dom'
 
 import './scss/_header.scss'
 
 const Header = () => {
   const history = useHistory()
   const [state, dispatch] = useContext(Context)
+  var cartNumber
+
+  useEffect(() => {
+    cartNumber = localStorage.getItem('carts')
+    //var aa = JSON.parse(carts)
+    console.log('cartNumber', cartNumber)
+    //cartNumber = carts.length
+  })
 
   const handleClickLogo = () => {
-    history.push('/')
+    //history.push('/')
+    return <Redirect to="/" />
   }
 
   return (
@@ -46,8 +56,8 @@ const Header = () => {
             </div>
             <div className="shopping-cart">
               <img src={ShoppingCart} alt="Shopping cart" />
-              <span className={state.carts.length >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
-                <span className="qty-text">{state.carts.length}</span>
+              <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
+                <span className="qty-text">{cartNumber}</span>
               </span>
             </div>
             </div>

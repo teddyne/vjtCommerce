@@ -5,6 +5,7 @@ import {
     ApolloProvider
 } from '@apollo/client'
 import DefaultLayout from './defaultLayout'
+import Store from '../store/store'
 
 const client = new ApolloClient({
     uri: 'http://localhost:4000',
@@ -26,9 +27,11 @@ const withContainer = (Component) => {
 
 const withLayout = (component, isHome) => {
     return (
-        <DefaultLayout isHome={isHome}>
-            {component}
-        </DefaultLayout>
+        <Store>
+            <DefaultLayout isHome={isHome}>
+                {component}
+            </DefaultLayout>
+        </Store>
     )
 }
 
