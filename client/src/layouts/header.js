@@ -20,18 +20,10 @@ import './scss/_header.scss'
 const Header = () => {
   const history = useHistory()
   const [state, dispatch] = useContext(Context)
-  var cartNumber
-
-  useEffect(() => {
-    cartNumber = localStorage.getItem('carts')
-    //var aa = JSON.parse(carts)
-    console.log('cartNumber', cartNumber)
-    //cartNumber = carts.length
-  })
+  const cartNumber = localStorage.getItem('carts')
 
   const handleClickLogo = () => {
-    //history.push('/')
-    return <Redirect to="/" />
+    history.push('/')
   }
 
   return (
