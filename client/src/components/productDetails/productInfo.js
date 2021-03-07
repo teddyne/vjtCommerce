@@ -17,8 +17,9 @@ const ProductInfo = ({ product }) => {
   const handleClickBuyNow = () => {
     dispatch({ type: ADD_TO_CARTS, payload: product })
     setShowingAddedToast(true)
+    console.log('carts', state.carts);
     const currentCartNumber = localStorage.getItem('carts') ?? 0
-    localStorage.setItem('carts', parseInt(currentCartNumber) + state.carts.length)
+    localStorage.setItem('carts', parseInt(currentCartNumber) + 1)
   }
 
   return (

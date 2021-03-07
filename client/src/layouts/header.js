@@ -20,7 +20,7 @@ import './scss/_header.scss'
 const Header = () => {
   const history = useHistory()
   const [state, dispatch] = useContext(Context)
-  const cartNumber = localStorage.getItem('carts')
+  const cartNumber = localStorage.getItem('carts') ?? 0
 
   const handleClickLogo = () => {
     history.push('/')

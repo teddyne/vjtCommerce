@@ -1,48 +1,19 @@
-const { GraphQLServer } = require('graphql-yoga');
-const mongoose = require("mongoose");
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import cors from 'cors';
 
-mongoose.connect("mongodb://localhost/test");
+const app = express();
 
-const User = mongoose.model('User', {
-    firstname: String,
-    lastname: String,
-    email: String,
-    phoneNumber: String
-});
+app.use(bodyParser.json({ limit: '30mb', extended: true }))
+app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
+app.use(cors());
 
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-    users: [User]
-  }
-  type User {
-      id: ID!
-      firstname: String!
-      lastname: String!
-      email: String!,
-      phoneNumber: String!
-  }
-  type Mutation {
-      createUser(firstname: String!, lastname: String!, email: String!, phoneNumber: String!): User
-  }
-`
+const CONNECTION_URL = 'mongodb+srv://vunh811:Abc123123@cluster0.fw8ks.mongodb.net/myFirstDatabase1?retryWrites=true&w=majority';
+const PORT = process.env.PORT || 5000;
 
-const resolvers = {
-  Query: {
-    hello: (_, { name }) => `Hello ${name || 'World'}`,
-    users: () => User.find()
-  },
-  Mutation: {
-      createUser: async (_, { firstname, lastname, email, phoneNumber }) => {
-        const user = new User({ firstname, lastname, email, phoneNumber });
-        user.save();
-        return user;
-      }
-  }
-}
+mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => app.listen(PORT, () => console.log(`Server Running on Port: http://localhost:${PORT}`)))
+    .catch((error) => console.log(`${error} did not connect`));
 
-const server = new GraphQLServer({ typeDefs, resolvers })
-
-mongoose.connection.once("open", function() {
-    server.start(() => console.log('Server is running on localhost:4000'))
-});
+mongoose.set('useFindAndModify', false);
