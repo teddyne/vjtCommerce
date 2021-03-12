@@ -12,7 +12,7 @@ const DefaultLayout = (props) => {
       <Header />
       <main className="wrap">
         <Container className="main">
-         {props.children}
+          {props.children}
         </Container>
       </main>
       <Footer />

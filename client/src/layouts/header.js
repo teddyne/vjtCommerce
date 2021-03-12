@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -9,22 +9,27 @@ import { useHistory } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { Context } from '../store/store'
 import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
-import { Redirect } from 'react-router-dom'
 
 import './scss/_header.scss'
 
 const Header = () => {
   const history = useHistory()
-  const [state, dispatch] = useContext(Context)
   const cartNumber = localStorage.getItem('carts') ?? 0
 
   const handleClickLogo = () => {
     history.push('/')
   }
+
+  const handleClickCart = () => {
+    history.push('/cart')
+  }
+
+  useEffect(() => {
+    console.log('cartNumber', cartNumber)
+  }, [cartNumber])
 
   return (
     <header className="header fixed-top">

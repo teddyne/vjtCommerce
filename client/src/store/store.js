@@ -2,7 +2,8 @@ import React, { createContext, useReducer } from 'react'
 import Reducer from './reducer'
 
 const initialState = {
-    carts: []
+    carts: [],
+    itemQuantity: 1
 }
 
 const Store = ({ children }) => {

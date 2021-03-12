@@ -27,6 +27,7 @@
       .shopping-cart {
         position: absolute;
         left: 97%;
+        cursor: pointer;
         @include non-desktop {
           left: 80%;
         }
