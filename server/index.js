@@ -17,7 +17,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/api/products', productRoutes)
-app.use('/api/categories1', categoryRoutes)
+app.use('/api/categories', categoryRoutes)
 
 const PORT = process.env.PORT || 5000
 

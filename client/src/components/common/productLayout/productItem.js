@@ -7,7 +7,7 @@ const ProductItem = ({ product, onProductItemClick }) => {
   return (
     <Col onClick={onProductItemClick} className="product-item" md={6} xl={3}>
       <div className="product-thumb">
-        <img src={product.thumbUrl} alt={product.name} />
+        <img src={product.images[0].thumbnailUrl} alt={product.name} />
       </div>
       <div className="product-info">
         <p>{product.name}</p>

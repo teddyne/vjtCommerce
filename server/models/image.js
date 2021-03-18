@@ -1,7 +1,11 @@
 import mongoose from 'mongoose'
 
 export const imageSchema = mongoose.Schema({
-    original: {
+    originalUrl: {
+        type: String,
+        required: true
+    },
+    thumbnailUrl: {
         type: String,
         required: true
     },
@@ -14,6 +18,6 @@ export const imageSchema = mongoose.Schema({
     timestamps: true
 })
 
-var Category = mongoose.model('Category', categorySchema)
+var Image = mongoose.model('Image', imageSchema)
 
-export default Category
+export default Image

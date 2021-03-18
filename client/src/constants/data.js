@@ -115,3 +115,24 @@ export const reviews = [
         "title": "Khăn đa năng"
     },
 ]
+
+// {
+//     "name": "Mũ bảo hiểm AGV 13",
+//     "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+//     "price": "5400000",
+//     "discount": 24,
+//     "category": {
+//       "name": "Mũ bảo hiểm"
+//     },
+//     "images": [
+//       {
+//         "originalUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+//         "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg"
+//       }
+//     ],
+//     "widgets": [
+//       {
+//         "name": "Mũ bảo hiểm"
+//       }
+//     ]
+//   }

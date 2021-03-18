@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const schema = mongoose.Schema({
+export const widgetSchema = mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -14,6 +14,6 @@ const schema = mongoose.Schema({
     timestamps: true
 })
 
-var Widget = mongoose.model('Widget', schema)
+var Widget = mongoose.model('Widget', widgetSchema)
 
 export default Widget

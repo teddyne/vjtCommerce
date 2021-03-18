@@ -19,42 +19,42 @@ const ProductLayout = (props) => {
     history.push(`/products/${productId}`)
   }
 
-  return props.productBoxes.map((item) => {
+  return _.map(props.widgets, (widget) => {
     let currentProducts =
-      props.productBoxes.length === 1
-        ? props.products
-        : _.filter(props.products, (p) => _.includes(p.productBoxIds, item.id))
-    if (!_.isEmpty(currentProducts)) {
-      const totalLines = Math.ceil(
-        currentProducts.length / Constant.MAX_ITEM_PER_LINE
+    props.widgets.length === 1
+      ? props.products
+      : _.filter(props.products, (p) => _.filter(p.widgets, w => w.name === widget).length > 0)
+  if (!_.isEmpty(currentProducts)) {
+    const totalLines = Math.ceil(
+      currentProducts.length / Constant.MAX_ITEM_PER_LINE
+    )
+    const productLines = []
+    for (let index = 0; index < totalLines; index++) {
+      const productItems = _.slice(
+        currentProducts,
+        index * Constant.MAX_ITEM_PER_LINE,
+        index < totalLines - 1
+          ? (index + 1) * Constant.MAX_ITEM_PER_LINE
+          : Constant.MAX_ITEM_PER_LINE + 1
       )
-      const productLines = []
-      for (let index = 0; index < totalLines; index++) {
-        const productItems = _.slice(
-          currentProducts,
-          index * Constant.MAX_ITEM_PER_LINE,
-          index < totalLines - 1
-            ? (index + 1) * Constant.MAX_ITEM_PER_LINE
-            : Constant.MAX_ITEM_PER_LINE + 1
-        )
-        productLines.push(
-          <ProductLine key={`product_line_index_${index}`}>
-            {_.map(productItems, (item, index) => {
-              return (
-                <ProductItem
-                key={`product_item_index_${index}`}
-                  product={item}
-                  onProductItemClick={() => handleClickProductDetail(item.id)}
-                />
-              )
-            })}
-          </ProductLine>
-        )
-      }
-
-      return <Box title={item.title}>{productLines}</Box>
+      productLines.push(
+        <ProductLine key={`product_line_index_${index}`}>
+          {_.map(productItems, (item, index) => {
+            return (
+              <ProductItem
+              key={`product_item_index_${index}`}
+                product={item}
+                onProductItemClick={() => handleClickProductDetail(item._id)}
+              />
+            )
+          })}
+        </ProductLine>
+      )
     }
-    return null
+
+    return <Box title={widget}>{productLines}</Box>
+  }
+  return null
   })
 }
 export default ProductLayout

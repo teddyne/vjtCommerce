@@ -17,7 +17,7 @@ const ProductInfo = ({ product }) => {
   const handleClickBuyNow = () => {
     dispatch({ type: ADD_TO_CARTS, payload: product })
     setShowingAddedToast(true)
-    console.log('carts', state.carts);
+    console.log('carts', state.carts)
     const currentCartNumber = localStorage.getItem('carts') ?? 0
     localStorage.setItem('carts', parseInt(currentCartNumber) + 1)
   }
@@ -26,7 +26,7 @@ const ProductInfo = ({ product }) => {
     <div className="product-info">
       <div className="product-name">{product.name}</div>
       <ProductStar isShowTotalReviews={true} color={color.colorSts} size="sm" numberStar={4.5} />
-      <ProductPrice price={product.price} discount={product.discount} />
+      <ProductPrice price={product.price ?? 0} discount={product.discount ?? 0} />
       <QualityInput />
       <Button className="btn-buy-right-now" onClick={handleClickBuyNow}>Mua Ngay</Button>
       <CustomToast isShow={showingAddedToast} onClose={() => setShowingAddedToast(false)} />
