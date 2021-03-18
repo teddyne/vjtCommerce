@@ -1,21 +1,13 @@
 import Product from '../models/product.js'
 
-
 export const getProducts = async (req, res) => {
     try {
-        console.log(req.query)
-        var a = req.query
-        var b = a.category
-        console.log(b)
-        // let products = []
-        // if (req.query != null) {
-        //     //product = await Product.findById(req.params.id)
-        //     console.log(req.query)
-        // } else {
-        //     products = await Product.find()
-        // }
-        const products = await Product.find({ 'category.name': req.query.category })
-        //const products = await Product.find()
+        const filter = req.query.category ? { 'category.name': req.query.category } : {}
+        const query = Product.find(filter)
+        if (req.query.currentProductId){
+            query.where('_id').ne(req.query.currentProductId)
+        }
+        const products = await query
         res.status(200).json(products)
     } catch (ex) {
         res.status(404).json({ message: ex.message })
@@ -26,16 +18,6 @@ export const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id)
         res.status(200).json(product)
-    } catch (ex) {
-        res.status(404).json({ message: ex.message })
-    }
-}
-
-export const getSimilarProducts = async (req, res) => {
-    try {
-        console.log(req)
-        //const product = await Product.findById(req.params.id)
-        //res.status(200).json('')
     } catch (ex) {
         res.status(404).json({ message: ex.message })
     }

@@ -6,6 +6,10 @@ const ProductService = {
     },
     getProductById (id) {
         return http.get(`/products/${id}`)
+    },
+    getSimilarProducts (currentProductId, category, top) {
+        const url = `?currentProductId=${currentProductId}&category=${category}&top=${top}`
+        return http.get(`/products${url}`)
     }
 }
 export default ProductService

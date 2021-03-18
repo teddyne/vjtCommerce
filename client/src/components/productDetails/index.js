@@ -8,7 +8,7 @@ import ProductDetailInfo from './productDetailInfo'
 import _ from 'lodash'
 import ProductDescription from './productDescription'
 import Review from './review'
-import ProductSimilar from '../products/productSimilar'
+import SimilarProduct from '../products/similarProduct'
 import ProductService from '../products/product.service'
 
 import './scss/_productDetail.scss'
@@ -43,7 +43,7 @@ function ProductDetail() {
       <ProductDetailInfo />
       <ProductDescription product={product} />
       <Review numberReviews={[13, 8, 4, 1, 0]} />
-      {/* <ProductSimilar category={product.category} /> */}
+      <SimilarProduct product={product} />
     </React.Fragment>
   )
 }
