@@ -5,11 +5,11 @@ import { useParams } from 'react-router-dom'
 import ProductThumb from './productThumb'
 import ProductInfo from './productInfo'
 import ProductDetailInfo from './productDetailInfo'
-import _ from 'lodash'
 import ProductDescription from './productDescription'
 import Review from './review'
 import SimilarProduct from '../products/similarProduct'
 import ProductService from '../products/product.service'
+import _ from 'lodash'
 
 import './scss/_productDetail.scss'
 
@@ -19,16 +19,24 @@ function ProductDetail() {
 
   useEffect(() => {
     getProduct()
-  }, [productId])
+    console.log('useEffect');
+  }, [])
 
   const getProduct = async () => {
     try {
       const product = await ProductService.getProductById(productId)
+      console.log('product', product);
       setProduct(product.data)
     } catch (ex) {
       console.log(ex)
     }
   }
+
+  const similarProductInfo = {
+    _id: product._id,
+    categoryName: product.category?.name
+  }
+  console.log('ll', similarProductInfo)
 
   return (
     <React.Fragment>
@@ -43,7 +51,7 @@ function ProductDetail() {
       <ProductDetailInfo />
       <ProductDescription product={product} />
       <Review numberReviews={[13, 8, 4, 1, 0]} />
-      <SimilarProduct product={product} />
+      <SimilarProduct {...similarProductInfo} />
     </React.Fragment>
   )
 }
