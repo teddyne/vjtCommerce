@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 import ProductStar from './productStar'
 import ProductPrice from './productPrice'
 import color from '../../assets/scss/_colors.scss'
-import QualityInput from './qualityInput'
+import QuantityInput from '../common/quantityInput'
 import Button from 'react-bootstrap/Button'
 import { Context } from '../../store/store'
 import { ADD_TO_CARTS } from '../../store/action'
@@ -15,6 +15,11 @@ const ProductInfo = ({ product }) => {
   const [showingAddedToast, setShowingAddedToast] = useState(false)
 
   const handleClickBuyNow = () => {
+    const cart = {
+      name: product.name,
+      price: product.price,
+      quantity: state.itemQuantity
+    }
     dispatch({ type: ADD_TO_CARTS, payload: product })
     setShowingAddedToast(true)
     console.log('carts', state.carts)
@@ -25,9 +30,9 @@ const ProductInfo = ({ product }) => {
   return (
     <div className="product-info">
       <div className="product-name">{product.name}</div>
-      <ProductStar isShowTotalReviews={true} color={color.colorSts} size="sm" numberStar={4.5} />
+      <ProductStar psKey={'product-info'} isShowTotalReviews={true} color={color.colorSts} size="sm" numberStar={4.5} />
       <ProductPrice price={product.price ?? 0} discount={product.discount ?? 0} />
-      <QualityInput />
+      <QuantityInput />
       <Button className="btn-buy-right-now" onClick={handleClickBuyNow}>Mua Ngay</Button>
       <CustomToast isShow={showingAddedToast} onClose={() => setShowingAddedToast(false)} />
     </div>

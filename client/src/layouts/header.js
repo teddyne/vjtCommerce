@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -12,12 +12,20 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
+import { Context } from '../store/store'
 
 import './scss/_header.scss'
 
 const Header = () => {
   const history = useHistory()
+  const [state] = useContext(Context)
+
   const cartNumber = localStorage.getItem('carts') ?? 0
+  const [, updateState] = React.useState();
+  React.useCallback(() => updateState({}), [state.carts])
+
+  console.log('con cac', cartNumber)
+  console.log('cai lon', state.carts)
 
   const handleClickLogo = () => {
     history.push('/')
@@ -40,7 +48,7 @@ const Header = () => {
         <Row className="wrap-logo">
           <Col lg={3}>
           <div onClick={handleClickLogo} className="center-logo">
-            <img src={logo} />
+            <img src={logo} alt='logo' />
           </div>
           </Col>
           <Col lg={9}>
@@ -51,7 +59,7 @@ const Header = () => {
                 <Button className="btn-search"><FontAwesomeIcon icon={faSearch} color={'white'} />Tìm Kiếm</Button>
               </Form.Group>
             </div>
-            <div className="shopping-cart">
+            <div onClick={handleClickCart} className="shopping-cart">
               <img src={ShoppingCart} alt="Shopping cart" />
               <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
                 <span className="qty-text">{cartNumber}</span>
@@ -63,7 +71,7 @@ const Header = () => {
               <li className="side-bar-item">
                 <a className="side-bar-item-content" href="#home">
                   <span className="side-bar-icon">
-                    <img src={story} />
+                    <img src={story} alt='story' />
                   </span>
                   <span>Story</span>
                 </a>
@@ -71,7 +79,7 @@ const Header = () => {
               <li className="side-bar-item">
                 <a className="side-bar-item-content" href="#home">
                   <span className="side-bar-icon">
-                    <img src={blog} />
+                    <img src={blog} alt='blog' />
                   </span>
                   <span>Blog</span>
                 </a>

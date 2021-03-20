@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
-import { QualityActionEnum } from './enums/enum'
-import { Context } from '../../store/store'
-import { INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY } from '../../store/action'
+import { QualityActionEnum } from '../enums/enum'
+import { Context } from '../../../store/store'
+import { INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY } from '../../../store/action'
 
-import './scss/_qualityInput.scss'
+import './scss/_quantityInput.scss'
 
-const QualityInput = () => {
+const QuantityInput = () => {
   const [state, dispatch] = useContext(Context)
 
   const handleChangeQuality = (action) => {
@@ -16,13 +16,13 @@ const QualityInput = () => {
   }
 
   return (
-      <div className="quality-input">
+      <div className="quantity-input">
           <span>Số Lượng</span>
         <InputGroup className="mt-3">
           <InputGroup.Prepend>
             <Button variant="outline-secondary" disabled={state.itemQuantity === 1} onClick={() => handleChangeQuality(QualityActionEnum.Minus)}>-</Button>
           </InputGroup.Prepend>
-          <FormControl className="quality" aria-describedby="basic-addon1" value={state.itemQuantity} />
+          <FormControl className="quantity" aria-describedby="basic-addon1" readOnly value={state.itemQuantity} />
           <InputGroup.Prepend>
             <Button variant="outline-secondary" disabled={state.itemQuantity > 4} onClick={() => handleChangeQuality(QualityActionEnum.Add)}>+</Button>
           </InputGroup.Prepend>
@@ -31,4 +31,4 @@ const QualityInput = () => {
   )
 }
 
-export default QualityInput
+export default QuantityInput

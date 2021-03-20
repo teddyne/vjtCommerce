@@ -7,6 +7,9 @@ export const getProducts = async (req, res) => {
         if (req.query.currentProductId){
             query.where('_id').ne(req.query.currentProductId)
         }
+        if (req.query.top) {
+            query.limit(parseInt(req.query.top))
+        }
         const products = await query
         res.status(200).json(products)
     } catch (ex) {

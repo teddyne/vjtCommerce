@@ -9,7 +9,7 @@ class App extends React.Component {
     return [
       { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />, true) },
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
-      //{ path: '/cart', key: 'cart', render: () => withLayout(<Cart />) }
+      { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) }
     ]
   }
 

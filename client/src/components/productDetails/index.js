@@ -9,7 +9,6 @@ import ProductDescription from './productDescription'
 import Review from './review'
 import SimilarProduct from '../products/similarProduct'
 import ProductService from '../products/product.service'
-import _ from 'lodash'
 
 import './scss/_productDetail.scss'
 
@@ -19,8 +18,7 @@ function ProductDetail() {
 
   useEffect(() => {
     getProduct()
-    console.log('useEffect');
-  }, [])
+  }, [productId])
 
   const getProduct = async () => {
     try {
@@ -32,11 +30,7 @@ function ProductDetail() {
     }
   }
 
-  const similarProductInfo = {
-    _id: product._id,
-    categoryName: product.category?.name
-  }
-  console.log('ll', similarProductInfo)
+  console.log('dkm', product)
 
   return (
     <React.Fragment>
@@ -48,10 +42,10 @@ function ProductDetail() {
           <ProductInfo product={product} />
         </Col>
       </Row>
-      <ProductDetailInfo />
-      <ProductDescription product={product} />
-      <Review numberReviews={[13, 8, 4, 1, 0]} />
-      <SimilarProduct {...similarProductInfo} />
+      <ProductDetailInfo key='similar-product-ind1ex' />
+      <ProductDescription key='similar-product-in323dex' product={product} />
+      <Review key='similar-product-ind323ex' numberReviews={[13, 8, 4, 1, 0]} />
+      <SimilarProduct key='similar-product-ind32ex' {...{_id: product._id,categoryName: product.category?.name}} />
     </React.Fragment>
   )
 }

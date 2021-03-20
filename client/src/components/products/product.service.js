@@ -4,6 +4,12 @@ const ProductService = {
     getProducts () {
         return http.get('/products')
     },
+    getWidgets () {
+        return http.get('/widgets')
+    },
+    getSimilarProductsWidget (name) {
+        return http.get(`/widgets?name=${name}`)
+    },
     getProductById (id) {
         return http.get(`/products/${id}`)
     },

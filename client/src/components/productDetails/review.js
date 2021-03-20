@@ -20,11 +20,11 @@ const Review = ({ numberReviews }) => {
             <Row>
               <Col sm={3}>
                 <div className="average-point">4.5</div>
-                <ProductStar numberStar={4.5} size={"sm"} />
+                <ProductStar psKey={'review'} numberStar={4.5} size={"sm"} />
                 <div className="total-reviews">{totalReviews} nhận xét</div>
               </Col>
               <Col sm={9}>
-                <ReviewChart totalReviews={totalReviews} numberReviews={numberReviews} />
+                <ReviewChart key={'review-chart'} totalReviews={totalReviews} numberReviews={numberReviews} />
               </Col>
             </Row>
             <div className="review-list">

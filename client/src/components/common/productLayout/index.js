@@ -19,11 +19,11 @@ const ProductLayout = (props) => {
     history.push(`/products/${productId}`)
   }
 
-  return _.map(props.widgets, (widget) => {
+  return _.map(props.widgets, (widget, widgetIndex) => {
     let currentProducts =
     props.widgets.length === 1
       ? props.products
-      : _.filter(props.products, (p) => _.filter(p.widgets, w => w.name === widget).length > 0)
+      : _.filter(props.products, (p) => _.filter(p.widgets, w => w.name === widget.name).length > 0)
   if (!_.isEmpty(currentProducts)) {
     const totalLines = Math.ceil(
       currentProducts.length / Constant.MAX_ITEM_PER_LINE
@@ -52,7 +52,7 @@ const ProductLayout = (props) => {
       )
     }
 
-    return <Box title={widget}>{productLines}</Box>
+    return <Box key={`box_${widgetIndex}`} title={widget.name}>{productLines}</Box>
   }
   return null
   })

@@ -1,0 +1,13 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
+
+.cart {
+    background-color: $color-white;
+    margin-bottom: 2%;
+    padding: 2%;
+}
+.cart-item {
+    img {
+        width: 100%;
+    }
+}

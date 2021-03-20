@@ -13,31 +13,25 @@ const Product = () => {
 
   useEffect(() => {
     getProducts()
+    getWidgets()
   }, [])
 
   const getProducts = async () => {
     try {
       const result = await ProductService.getProducts()
       setProducts(result.data)
-      const widgetData = getWidgets(result.data)
-      setWidgets(widgetData)
     } catch (ex) {
       console.log(ex)
     }
   }
-
-  const getWidgets = (products) => {
-    let widgets = []
-    _.forEach(products, e => {
-      if(!_.isEmpty(e.widgets)) {
-        _.forEach(e.widgets, widget => {
-          if(!_.includes(widgets, widget.name)) {
-            widgets.push(widget.name)
-          }
-        })
-      }
-    })
-    return widgets
+  
+  const getWidgets = async () => {
+    try {
+      const result = await ProductService.getWidgets()
+      setWidgets(result.data)
+    } catch(ex) {
+      console.log(ex)
+    }
   }
 
   return (

@@ -11,12 +11,12 @@ const ReviewChart = ({ totalReviews, numberReviews }) => {
     return _.map(numberReviews, (numberReview, index) => {
         star = star - 1
         return (
-            <div className="review-chart">
+            <div key={`parent-review-chart-${index}`} className="review-chart">
                 <div>
-                <ProductStar className="product-star" key={index} numberStar={star} isShowEmptyStar={true} />
+                <ProductStar className="product-star" key={`review-chart-${index}`} psKey={`review-chart-${index}`} numberStar={star} isShowEmptyStar={true} />
                 </div>
                 <div className="review-bar-chart">
-                    <ProgressBar now={Math.ceil((numberReview / totalReviews) * 100)} />
+                    <ProgressBar key={`progress-bar-${index}`} now={Math.ceil((numberReview / totalReviews) * 100)} />
                 </div>
                 <div className="number-review">{numberReview}</div>
             </div>

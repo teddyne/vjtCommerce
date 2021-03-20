@@ -4,6 +4,7 @@ import cors from 'cors'
 import connectDb from './config/db.js'
 import productRoutes from './routers/productRoutes.js'
 import categoryRoutes from './routers/categoryRoutes.js'
+import widgetRoutes from './routers/widgetRoutes.js'
 
 connectDb()
 
@@ -18,6 +19,7 @@ app.use(express.json())
 
 app.use('/api/products', productRoutes)
 app.use('/api/categories', categoryRoutes)
+app.use('/api/widgets', widgetRoutes)
 
 const PORT = process.env.PORT || 5000
 

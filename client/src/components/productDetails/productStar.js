@@ -6,7 +6,7 @@ import { Constant } from '../../constants'
 
 import './scss/_productStar.scss'
 
-const ProductStar = ({ color, emptyColor, size, numberStar, isShowTotalReviews, isShowEmptyStar }) => {
+const ProductStar = ({ color, emptyColor, size, numberStar, isShowTotalReviews, isShowEmptyStar, psKey }) => {
   let finalNumberStar = 5
   const totalStarRendered = Math.ceil(numberStar)
   const totalEmptyStar = Constant.MAX_STAR - totalStarRendered
@@ -18,12 +18,12 @@ const ProductStar = ({ color, emptyColor, size, numberStar, isShowTotalReviews, 
 
   for (let index = 0; index < Math.floor(finalNumberStar); index++) {
     productStarTemplate.push(
-      <FontAwesomeIcon key={index} icon={faStar} size={size} color={color} />
+      <FontAwesomeIcon key={`${psKey}-${index}`} icon={faStar} size={size} color={color} />
     )
   }
   if (finalNumberStar % 1 === 0.5) {
     productStarTemplate.push(
-      <FontAwesomeIcon key='half-star-index' icon={faStarHalf} size={size} color={color} />
+      <FontAwesomeIcon key={`${psKey}-half-star`} icon={faStarHalf} size={size} color={color} />
     )
   }
 
@@ -36,12 +36,12 @@ const ProductStar = ({ color, emptyColor, size, numberStar, isShowTotalReviews, 
   if (isShowEmptyStar && totalEmptyStar > 0) {
     for (let index = 0; index < totalEmptyStar; index++) {
       productStarTemplate.push(
-        <FontAwesomeIcon key={index} icon={faStar} size={size} color={emptyColor} />
+        <FontAwesomeIcon key={`${psKey}-${index}-empty`} icon={faStar} size={size} color={emptyColor} />
       )
     }
   }
 
-  return <div className="product-star">{productStarTemplate}</div>
+  return <div className='product-star' key={psKey}>{productStarTemplate}</div>
 }
 
 ProductStar.defaultProps = {

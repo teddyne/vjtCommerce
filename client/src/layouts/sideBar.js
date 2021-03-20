@@ -15,7 +15,7 @@ class SideBar extends React.Component {
             <li className="side-bar-item">
               <a className="side-bar-item-content" href="#home">
                 <span className="side-bar-icon">
-                  <img src={helmet} />
+                  <img src={helmet} alt='mu-bao-hiem' />
                 </span>
                 <span>Mũ Bảo Hiểm</span>
               </a>
@@ -23,7 +23,7 @@ class SideBar extends React.Component {
             <li className="side-bar-item">
               <a className="side-bar-item-content" href="#news">
                 <span className="side-bar-icon">
-                  <img src={gloves} />
+                  <img src={gloves} alt='gang-tay-xe-may' />
                 </span>
                 <span>Găng Tay Xe Máy</span>
               </a>
@@ -31,7 +31,7 @@ class SideBar extends React.Component {
             <li className="side-bar-item">
               <a className="side-bar-item-content" href="#contact">
                 <span className="side-bar-icon">
-                  <img src={towel} />
+                  <img src={towel} alt='gang-tay-chong-nang' />
                 </span>
                 <span>Găng Tay Chống Nắng</span>
               </a>
@@ -39,7 +39,7 @@ class SideBar extends React.Component {
             <li className="side-bar-item">
               <a className="side-bar-item-content" href="#about">
                 <span className="side-bar-icon">
-                  <img src={wipe} />
+                  <img src={wipe} alt='khan-da-nang' />
                 </span>
                 <span>Khăn Đa Năng</span>
               </a>
@@ -47,7 +47,7 @@ class SideBar extends React.Component {
             <li className="side-bar-item">
               <a className="side-bar-item-content" href="#about">
                 <span className="side-bar-icon">
-                  <img src={book} />
+                  <img src={book} alt='sach' />
                 </span>
                 <span>Sách Cũ</span>
               </a>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import ImageGallery from 'react-image-gallery'
 import _ from 'lodash'
 

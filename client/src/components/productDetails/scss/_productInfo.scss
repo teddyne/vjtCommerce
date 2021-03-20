@@ -35,4 +35,10 @@
             border-color: transparent;
         }
     }
+    .quantity-input {
+        width: 20%;
+        @include non-desktop {
+            width: 40%;
+        }
+    }
 }
