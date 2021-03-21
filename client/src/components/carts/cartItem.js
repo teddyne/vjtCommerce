@@ -9,14 +9,14 @@ const CartItem = ({ cart }) => {
             <Col lg={2}>
                 <img src={cart.images[0].thumbnailUrl} alt={cart.name} />
             </Col>
-            <Col lg={5}>
+            <Col lg={6}>
                 <p>{cart.name}</p>
             </Col>
             <Col lg={2}>
                 <p>{cart.price}</p>
             </Col>
-            <Col lg={3}>
-                <QuantityInput />
+            <Col lg={2}>
+                <QuantityInput isShowText={false} />
             </Col>
       </Row>
     )

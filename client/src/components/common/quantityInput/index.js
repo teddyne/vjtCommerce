@@ -8,27 +8,31 @@ import { INCREASE_ITEM_QUANTITY, DECREASE_ITEM_QUANTITY } from '../../../store/a
 
 import './scss/_quantityInput.scss'
 
-const QuantityInput = () => {
+const QuantityInput = ({ isShowText }) => {
   const [state, dispatch] = useContext(Context)
 
   const handleChangeQuality = (action) => {
     dispatch({ type: action === QualityActionEnum.Add ? INCREASE_ITEM_QUANTITY : DECREASE_ITEM_QUANTITY })
   }
-
+  
   return (
       <div className="quantity-input">
-          <span>Số Lượng</span>
+          <span>{isShowText ? 'Số Lượng' : ''}</span>
         <InputGroup className="mt-3">
           <InputGroup.Prepend>
             <Button variant="outline-secondary" disabled={state.itemQuantity === 1} onClick={() => handleChangeQuality(QualityActionEnum.Minus)}>-</Button>
           </InputGroup.Prepend>
-          <FormControl className="quantity" aria-describedby="basic-addon1" readOnly value={state.itemQuantity} />
+          <FormControl className="quantity" aria-describedby="basic-addon1" value={state.itemQuantity} />
           <InputGroup.Prepend>
             <Button variant="outline-secondary" disabled={state.itemQuantity > 4} onClick={() => handleChangeQuality(QualityActionEnum.Add)}>+</Button>
           </InputGroup.Prepend>
         </InputGroup>
       </div>
   )
+}
+
+QuantityInput.defaultProps = {
+  isShowText: true
 }
 
 export default QuantityInput

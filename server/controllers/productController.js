@@ -53,3 +53,17 @@ export const addProduct = async (req, res) => {
         res.status(409).json({ message: error.message })
     }
 }
+
+export const updateProductImages = async (req, res) => {
+    const {
+        images
+    } = req.body
+    try {
+        const product = await Product.findById(req.params.id)
+        product.images.push(...images)
+        await product.save()
+        res.status(201).json(product)
+    } catch (ex) {
+        res.status(409).json({ message: error.message })
+    }
+}
