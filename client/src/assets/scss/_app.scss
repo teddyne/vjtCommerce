@@ -1,0 +1,9 @@
+@import './colors';
+@import './variables';
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: $color-bg;
+}
