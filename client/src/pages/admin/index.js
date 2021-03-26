@@ -1,8 +1,9 @@
 import React from 'react'
+import ProductAdmin from './products/index'
 
 const Admin = () => {
     return (
-        <h1>Admin</h1>
+        <ProductAdmin />
     )
 }
 

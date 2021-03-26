@@ -8,10 +8,10 @@ import Admin from './pages/admin'
 class App extends React.Component {
   buildPages() {
     return [
-      { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />, true) },
+      { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />) },
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
-      { path: '/admin', key: 'cart', render: () => <Admin /> }
+      { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) }
     ]
   }
 
