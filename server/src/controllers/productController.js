@@ -32,7 +32,7 @@ export const addProduct = async (req, res) => {
         description,
         price,
         discount,
-        category,
+        _categoryId,
         images,
         widgets
     } = req.body
@@ -42,7 +42,7 @@ export const addProduct = async (req, res) => {
             description,
             price,
             discount,
-            category,
+            _categoryId,
             images,
             widgets
         })

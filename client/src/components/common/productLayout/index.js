@@ -23,7 +23,7 @@ const ProductLayout = (props) => {
     let currentProducts =
     props.widgets.length === 1
       ? props.products
-      : _.filter(props.products, (p) => _.filter(p.widgets, w => w.name === widget.name).length > 0)
+      : _.filter(props.products, (p) => _.filter(p.widgets, widgetId => widgetId === widget._id).length > 0)
   if (!_.isEmpty(currentProducts)) {
     const totalLines = Math.ceil(
       currentProducts.length / Constant.MAX_ITEM_PER_LINE

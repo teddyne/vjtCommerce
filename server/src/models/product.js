@@ -1,9 +1,9 @@
 import mongoose from 'mongoose'
-import { categorySchema } from './category.js'
 import { imageSchema } from './image.js'
-import { widgetSchema } from './widget.js'
 
-const productSchema = mongoose.Schema({
+var Schema = mongoose.Schema
+
+const productSchema = Schema({
     name: {
         type: String,
         required: true
@@ -13,14 +13,14 @@ const productSchema = mongoose.Schema({
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     discount: {
         type: Number
     },
-    category: {
-        type: categorySchema,
+    _categoryId: {
+        type: Schema.Types.ObjectId,
         required: true
     },
     images: {
@@ -28,7 +28,7 @@ const productSchema = mongoose.Schema({
         required: true
     },
     widgets: {
-        type: [widgetSchema]
+        type: [Schema.Types.ObjectId]
     },
     isActive: {
         type: Boolean,

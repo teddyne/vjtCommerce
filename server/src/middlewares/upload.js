@@ -8,15 +8,15 @@ var storage = multer.diskStorage({
     callback(null, path.join(`${__dirname}/public/static/assets/uploads`))
   },
   filename: (req, file, callback) => {
-    const match = ["image/png", "image/jpeg"];
+    const match = ["image/png", "image/jpeg"]
 
     if (match.indexOf(file.mimetype) === -1) {
       var message = `<strong>${file.originalname}</strong> is invalid. Only accept png/jpeg.`
-      return callback(message, null);
+      return callback(message, null)
     }
 
-    var filename = `${Date.now()}-${file.originalname}`
-    callback(null, filename);
+    var filename = `${file.originalname}`
+    callback(null, filename)
   }
 })
 

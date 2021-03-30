@@ -5,7 +5,7 @@ import connectDb from './config/db.js'
 import productRoutes from './routers/productRoutes.js'
 import categoryRoutes from './routers/categoryRoutes.js'
 import widgetRoutes from './routers/widgetRoutes.js'
-import uploadRoutes from './routers/uploadRoutes.js'
+import fileRoutes from './routers/fileRoutes.js'
 
 connectDb()
 
@@ -21,7 +21,7 @@ app.use(express.json())
 app.use('/api/products', productRoutes)
 app.use('/api/categories', categoryRoutes)
 app.use('/api/widgets', widgetRoutes)
-app.use('/api', uploadRoutes)
+app.use('/api', fileRoutes)
 
 const PORT = process.env.PORT || 5000
 

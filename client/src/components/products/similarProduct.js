@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import ProductLayout from '../common/productLayout'
-import ProductService from '../products/product.service'
+import ProductService from '../../services/productService'
 
 const SimilarProduct = ({ _id, categoryName }) => {
     const [similarProducts, setSimilarProducts] = useState([])

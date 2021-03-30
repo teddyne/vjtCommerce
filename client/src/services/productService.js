@@ -1,4 +1,4 @@
-import http from '../../httpCommon'
+import http from '../httpCommon'
 
 const ProductService = {
     getProducts () {

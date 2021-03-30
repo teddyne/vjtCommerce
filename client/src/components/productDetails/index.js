@@ -8,7 +8,7 @@ import ProductDetailInfo from './productDetailInfo'
 import ProductDescription from './productDescription'
 import Review from './review'
 import SimilarProduct from '../products/similarProduct'
-import ProductService from '../products/product.service'
+import ProductService from '../../services/productService'
 
 import './scss/_productDetail.scss'
 
@@ -23,14 +23,11 @@ function ProductDetail() {
   const getProduct = async () => {
     try {
       const product = await ProductService.getProductById(productId)
-      console.log('product', product);
       setProduct(product.data)
     } catch (ex) {
       console.log(ex)
     }
   }
-
-  console.log('dkm', product)
 
   return (
     <React.Fragment>
@@ -45,7 +42,7 @@ function ProductDetail() {
       <ProductDetailInfo key='similar-product-ind1ex' />
       <ProductDescription key='similar-product-in323dex' product={product} />
       <Review key='similar-product-ind323ex' numberReviews={[13, 8, 4, 1, 0]} />
-      <SimilarProduct key='similar-product-ind32ex' {...{_id: product._id,categoryName: product.category?.name}} />
+      <SimilarProduct key='similar-product-ind32ex' {...{_id: product._id, categoryName: product.category?.name}} />
     </React.Fragment>
   )
 }
