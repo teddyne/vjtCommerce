@@ -2,6 +2,7 @@ import React from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import QuantityInput from '../common/quantityInput'
+import { formatCurrency } from '../../helpers/stringHelper'
 
 const CartItem = ({ cart }) => {
     return (
@@ -13,7 +14,7 @@ const CartItem = ({ cart }) => {
                 <p>{cart.name}</p>
             </Col>
             <Col lg={2}>
-                <p>{cart.price}</p>
+                <p>{formatCurrency(cart.price)}</p>
             </Col>
             <Col lg={2}>
                 <QuantityInput isShowText={false} />
