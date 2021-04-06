@@ -2,17 +2,19 @@
 @import '../../../assets/scss/variables';
 
 .cart {
-    // background-color: $color-white;
-    // margin-bottom: 2%;
-    // padding: 2%;
     .cart-list {
         background-color: $color-white;
         padding: 2%;
     }
     .check-out {
         background-color: $color-white;
-        padding: 2%;
-        //position: fixed;
+        padding: 10%;
+        .currency {
+            color: $color-red;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 20px;
+        }
     }
     .btn-check-out {
         width: 100%;
@@ -24,6 +26,5 @@
         width: 100%;
     }
     .quantity-input {
-        //width: 60%;
     }
 }

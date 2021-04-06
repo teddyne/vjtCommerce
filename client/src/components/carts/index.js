@@ -4,6 +4,7 @@ import CartItem from './cartItem'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { formatCurrency } from '../../helpers/stringHelper'
 
 import './scss/_cart.scss'
 
@@ -450,7 +451,7 @@ const Cart = () => {
       </Col>
       <Col lg={3}>
         <div className='check-out'>
-              Tổng tiền: 50.000000
+              Tổng tiền: <span className='currency'>{formatCurrency(50000000)}</span>
         </div>
         <Button className="btn-check-out">Đặt hàng</Button>
       </Col>
