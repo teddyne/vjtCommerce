@@ -8,13 +8,17 @@ const CartItem = ({ cart }) => {
     return (
         <Row className='cart-item'>
             <Col lg={2}>
-                <img src={cart.images[0].thumbnailUrl} alt={cart.name} />
+                <img src={cart.thumbnail.thumbnailUrl} alt={cart.name} />
             </Col>
             <Col lg={6}>
-                <p>{cart.name}</p>
+                <div className='product-name'>{cart.name}</div>
+                <div className='cart-control'>
+                    <span><a href='#'>Xóa</a></span>
+                    <span><a href='#'>Để lại mua sau</a></span>
+                </div>
             </Col>
             <Col lg={2}>
-                <p>{formatCurrency(cart.price)}</p>
+                <div className='item-price'>{formatCurrency(cart.price)}</div>
             </Col>
             <Col lg={2}>
                 <QuantityInput isShowText={false} />

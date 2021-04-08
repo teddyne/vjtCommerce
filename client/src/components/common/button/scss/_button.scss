@@ -1,18 +1,8 @@
-@import '../../../assets/scss/colors';
-@import '../../../assets/scss/variables';
+@import '../../../../assets/scss/colors';
+@import '../../../../assets/scss/variables';
 
-.product-info {
-    .product-name {
-        font-size: 30px;
-        font-weight: bold;
-    }
-    .product-detail-price {
-        background-color: $color-bg;
-        padding: 2%;
-        @include border-radius(5);
-        margin-top: 2%;
-    }
-    .btn-buy-right-now {
+button {
+    &.solo {
         color: $color-white;
         background-color: $color-solo-travel-shop;
         margin: 2% 0 2% 0;
@@ -33,12 +23,6 @@
             color: $color-white;
             background-color: $color-solo-travel-shop;
             border-color: transparent;
-        }
-    }
-    .quantity-input {
-        width: 20%;
-        @include non-desktop {
-            width: 40%;
         }
     }
 }

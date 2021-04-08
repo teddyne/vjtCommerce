@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import _ from 'lodash'
 import ProductLayout from '../common/productLayout'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -12,27 +11,26 @@ const Product = () => {
   const [widgets, setWidgets] = useState([])
 
   useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const result = await ProductService.getProducts()
+        setProducts(result.data)
+      } catch (ex) {
+        console.log(ex)
+      }
+    }
+    
+    const getWidgets = async () => {
+      try {
+        const result = await ProductService.getWidgets()
+        setWidgets(result.data)
+      } catch(ex) {
+        console.log(ex)
+      }
+    }
     getProducts()
     getWidgets()
   }, [])
-
-  const getProducts = async () => {
-    try {
-      const result = await ProductService.getProducts()
-      setProducts(result.data)
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
-  
-  const getWidgets = async () => {
-    try {
-      const result = await ProductService.getWidgets()
-      setWidgets(result.data)
-    } catch(ex) {
-      console.log(ex)
-    }
-  }
 
   return (
     <React.Fragment>

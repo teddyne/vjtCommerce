@@ -4,7 +4,7 @@ export const getProducts = async (req, res) => {
     try {
         const filter = req.query.category ? { 'category.name': req.query.category } : {}
         const query = Product.find(filter)
-        if (req.query.currentProductId){
+        if (req.query.currentProductId) {
             query.where('_id').ne(req.query.currentProductId)
         }
         if (req.query.top) {

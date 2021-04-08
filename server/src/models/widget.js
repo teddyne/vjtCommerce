@@ -25,6 +25,5 @@ export const widgetSchema = mongoose.Schema({
     timestamps: true
 })
 
-var Widget = mongoose.model('Widget', widgetSchema)
-
+const Widget = mongoose.model('Widget', widgetSchema)
 export default Widget

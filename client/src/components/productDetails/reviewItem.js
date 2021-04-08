@@ -19,8 +19,8 @@ const ReviewItem = () => {
                         </div>
                         <div className='review-bought'>
                             <span className='bougth-verified'>Đã mua hàng</span>
-                            <div className='review-check-circle'>
-                                <FontAwesomeIcon icon={faCheckCircle} color={'green'} />
+                            <div className='review-check-circle'>&#9989;
+                                {/* <FontAwesomeIcon icon={faCheckCircle} color={'green'} /> */}
                             </div>
                         </div>
                     </div>

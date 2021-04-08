@@ -6,6 +6,25 @@
         background-color: $color-white;
         padding: 2%;
     }
+    .deliver-info {
+        background-color: $color-white;
+        padding: 5%;
+        margin-bottom: 10px;
+        .address-box {
+            margin-bottom: 10px;
+            .address-title {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+        }
+        .customer-info {
+            margin-bottom: 5px;
+            span {
+                margin-right: 10px;
+                font-weight: 500;
+            }
+        }
+    }
     .check-out {
         background-color: $color-white;
         padding: 10%;
@@ -26,5 +45,17 @@
         width: 100%;
     }
     .quantity-input {
+        height:  10%;
+    }
+    .cart-control {
+        span {
+            margin-right: 10px;
+        }
+    }
+    .item-price {
+        font-weight: 500;
+    }
+    .product-name {
+        font-weight: 500;
     }
 }

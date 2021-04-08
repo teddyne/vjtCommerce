@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -21,8 +21,8 @@ const Header = () => {
   const [state] = useContext(Context)
 
   const cartNumber = localStorage.getItem('carts') ?? 0
-  const [, updateState] = React.useState();
-  React.useCallback(() => updateState({}), [state.carts])
+  const [, updateState] = useState();
+  React.useCallback(() => updateState({}), [])
 
   console.log('con cac', cartNumber)
   console.log('cai lon', state.carts)

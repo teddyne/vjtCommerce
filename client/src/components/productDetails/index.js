@@ -17,17 +17,16 @@ function ProductDetail() {
   const [product, setProduct] = useState({})
 
   useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const product = await ProductService.getProductById(productId)
+        setProduct(product.data)
+      } catch (ex) {
+        console.log(ex)
+      }
+    }
     getProduct()
   }, [productId])
-
-  const getProduct = async () => {
-    try {
-      const product = await ProductService.getProductById(productId)
-      setProduct(product.data)
-    } catch (ex) {
-      console.log(ex)
-    }
-  }
 
   return (
     <React.Fragment>

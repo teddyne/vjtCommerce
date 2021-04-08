@@ -2,7 +2,11 @@
 @import '../../../../assets/scss/variables';
 
 .quantity-input {
-    .quanity {
-        text-align: center;
+    .input-group
+    {
+        margin-top: 5px;
+        input {
+            text-align: center;
+        }
     }
 }
