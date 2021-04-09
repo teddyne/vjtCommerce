@@ -1,8 +1,8 @@
 import http from '../httpCommon'
 
 const CartService = {
-    getCarts () {
-        return http.get('/carts')
+    getCarts (userId) {
+        return http.get(`/carts?userId=${userId}`)
     },
     getCartByProductId (productId) {
         return http.get(`/carts?productId=${productId}`)

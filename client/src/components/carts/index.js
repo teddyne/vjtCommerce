@@ -6,26 +6,41 @@ import Col from 'react-bootstrap/Col'
 import { formatCurrency } from '../../helpers/stringHelper'
 import SoloButton from '../../components/common/button'
 import CartService from '../../services/cartService'
+import ShippingInfo from '../../components/shipping'
 
 import './scss/_cart.scss'
 
 const Cart = () => {
   const [carts, setCarts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
+  const userId = "606fd4b8d54f8b8dbc05939d"
+  const [showShippingModal, setShowShippingModal] = useState(false)
 
   useEffect (() => {
-    const getCarts = async () => {
+    const getCarts = async (userId) => {
       try {
-        const result = await CartService.getCarts()
+        const result = await CartService.getCarts(userId)
         setCarts(result.data)
-        const price = _.reduce(result.data, (s, { quantity, price }) => s + quantity * price, 0)
-        setTotalPrice(price)
+        // const price = _.reduce(result.data, (s, { quantity, price }) => s + quantity * price, 0)
+        // setTotalPrice(price)
       } catch (err) {
         console.log(err)
       }
     }
-    getCarts()
-  }, [])
+    getCarts(userId)
+  }, [userId])
+
+  const handleOrder = () => {
+    const hasShippingInfo = () => {
+      return false
+    }
+
+    if (!hasShippingInfo()) {
+      setShowShippingModal(true)
+    } else {
+      console.log('order')
+    }
+  }
 
   return (
     <Row className='cart'>
@@ -53,7 +68,10 @@ const Cart = () => {
         <div className='check-out'>
               Tổng tiền: <span className='currency'>{formatCurrency(totalPrice)}</span>
         </div>
-        <SoloButton btnStyle='solo btn-check-out' text={'Đặt hàng'} />
+        <SoloButton btnStyle='solo btn-check-out' onClick={handleOrder} text={'Đặt hàng'} />
+        <ShippingInfo
+          show={showShippingModal}
+          onHide={() => setShowShippingModal(false)} />
       </Col>
     </Row>
   )

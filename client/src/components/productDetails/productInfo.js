@@ -21,6 +21,7 @@ const ProductInfo = ({ product }) => {
     setShowingAddedToast(true)
 
     const payload = {
+      _userId: "606fd4b8d54f8b8dbc05939d",
       _productId: product._id,
       name: product.name,
       price: product.price,

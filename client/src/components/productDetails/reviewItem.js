@@ -2,8 +2,7 @@ import React from 'react'
 import './scss/_reviewItem.scss'
 import avatar from '../../assets/images/avatar.jpg'
 import ProductStar from './productStar'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import Emoji from '../common/emoji'
 
 const ReviewItem = () => {
     return (
@@ -19,8 +18,8 @@ const ReviewItem = () => {
                         </div>
                         <div className='review-bought'>
                             <span className='bougth-verified'>Đã mua hàng</span>
-                            <div className='review-check-circle'>&#9989;
-                                {/* <FontAwesomeIcon icon={faCheckCircle} color={'green'} /> */}
+                            <div className='review-check-circle'>
+                                <Emoji symbol="✅" label="check" />
                             </div>
                         </div>
                     </div>

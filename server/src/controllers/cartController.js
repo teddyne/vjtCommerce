@@ -6,6 +6,9 @@ export const getCarts = async (req, res) => {
         if (req.query.productId) {
             queryResult.where('_productId').equals(req.query.productId)
         }
+        if (req.query.userId) {
+            queryResult.where('_userId').equals(req.query.userId)
+        }
         const carts = await queryResult
         res.status(200).json(carts)
     } catch (ex) {
