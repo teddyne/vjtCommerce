@@ -16,12 +16,15 @@ const ProductInfo = ({ product }) => {
   const [state, dispatch] = useContext(Context)
   const [showingAddedToast, setShowingAddedToast] = useState(false)
 
+  const homeUserId = "60726befdaa6d52624a91435"
+  const companyUserId = "606fd4b8d54f8b8dbc05939d"
+
   const handleClickBuyNow = () => {
     dispatch({ type: ADD_TO_CARTS, payload: product })
     setShowingAddedToast(true)
 
     const payload = {
-      _userId: "606fd4b8d54f8b8dbc05939d",
+      _userId: homeUserId,
       _productId: product._id,
       name: product.name,
       price: product.price,

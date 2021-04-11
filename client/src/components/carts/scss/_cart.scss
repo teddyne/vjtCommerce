@@ -58,4 +58,10 @@
     .product-name {
         font-weight: 500;
     }
+    .discount-price {
+        font-size: 12px;
+        .original-price {
+            text-decoration: line-through;
+        }
+    }
 }

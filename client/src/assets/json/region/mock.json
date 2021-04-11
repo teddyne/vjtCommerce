@@ -1,0 +1,45 @@
+{
+    "widgets": [
+      "6055e3e9dc211528bcb95071",
+	  "6055e500dc211528bcb95072"
+    ],
+    "name": "Mũ bảo hiểm AGV 1",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "price": 5400000,
+    "discount": 24,
+    "_categoryId": "607264d3ffd0d921eca30caf",
+    "images": [
+      {
+        "isActive": true,
+        "_id": "60533fac3b2e2a11b031f59e",
+        "originalUrl": "https://salt.tikicdn.com/cache/w444/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+        "createdAt": "2021-03-18T11:55:24.227Z",
+        "updatedAt": "2021-03-18T11:55:24.227Z"
+      },
+      {
+        "isActive": true,
+        "_id": "6056b50784b9d80c9cd1c4a5",
+        "originalUrl": "https://salt.tikicdn.com/cache/w444/ts/product/ce/cd/57/cba39fff74039f75931a18142b4307a0.jpg",
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/w444/ts/product/ce/cd/57/cba39fff74039f75931a18142b4307a0.jpg",
+        "createdAt": "2021-03-21T02:52:55.628Z",
+        "updatedAt": "2021-03-21T02:52:55.628Z"
+      },
+      {
+        "isActive": true,
+        "_id": "6056b50784b9d80c9cd1c4a6",
+        "originalUrl": "https://salt.tikicdn.com/cache/w444/ts/product/9a/63/a8/1f0de3dfcbf6d53243352f7d97efea18.jpg",
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/w444/ts/product/9a/63/a8/1f0de3dfcbf6d53243352f7d97efea18.jpg",
+        "createdAt": "2021-03-21T02:52:55.628Z",
+        "updatedAt": "2021-03-21T02:52:55.628Z"
+      },
+      {
+        "isActive": true,
+        "_id": "6056b50784b9d80c9cd1c4a7",
+        "originalUrl": "https://salt.tikicdn.com/cache/w444/ts/product/13/df/26/e82024df93ef5e2e3e060ac48f7bc8b7.jpg",
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/w444/ts/product/13/df/26/e82024df93ef5e2e3e060ac48f7bc8b7.jpg",
+        "createdAt": "2021-03-21T02:52:55.628Z",
+        "updatedAt": "2021-03-21T02:52:55.628Z"
+      }
+    ]
+}

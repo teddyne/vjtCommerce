@@ -18,6 +18,7 @@ export const getCarts = async (req, res) => {
 
 export const addCart = async (req, res) => {
     const {
+        _userId,
         _productId,
         name,
         price,
@@ -26,6 +27,7 @@ export const addCart = async (req, res) => {
         thumbnail
     } = req.body
     const newCart = new Cart({
+        _userId,
         _productId,
         name,
         price,

@@ -1,10 +1,14 @@
 import React from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import QuantityInput from '../common/quantityInput'
+import QuantityInput from '../common/quantityInput2'
 import { formatCurrency } from '../../helpers/stringHelper'
 
-const CartItem = ({ cart }) => {
+const CartItem = ({ cart, onMinus, onAdd }) => {
+    const updateCartQuantity = () => {
+
+    }
+
     return (
         <Row className='cart-item'>
             <Col lg={2}>
@@ -18,12 +22,20 @@ const CartItem = ({ cart }) => {
                 </div>
             </Col>
             <Col lg={2}>
-                <div className='item-price'>{formatCurrency(cart.price)}</div>
+                <div className='item-price'>{formatCurrency(cart.price - ((cart.price * cart.discount) / 100))}</div>
+                <div className="discount-price">
+                    <span className="original-price">{formatCurrency(cart.price)}</span> | <span>{`-${cart.discount}%`}</span>
+                </div>
             </Col>
             <Col lg={2}>
-                <QuantityInput isShowText={false} />
+                <QuantityInput
+                    quantity={cart.quantity}
+                    isShowText={false}
+                    onClickMinus={onMinus}
+                    onClickAdd={onAdd}
+                />
             </Col>
-      </Row>
+        </Row>
     )
 }
 export default CartItem
