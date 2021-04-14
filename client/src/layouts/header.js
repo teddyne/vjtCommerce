@@ -14,8 +14,10 @@ import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
 import loginAccount from '../assets/images/login-account.png'
+import Login from '../components/login'
 
 import './scss/_header.scss'
+
 
 const Header = () => {
   const history = useHistory()
@@ -24,6 +26,7 @@ const Header = () => {
   const cartNumber = localStorage.getItem('carts') ?? 0
   const [, updateState] = useState();
   React.useCallback(() => updateState({}), [])
+  const [showSignIn, setShowSignIn] = useState(false)
 
   console.log('con cac', cartNumber)
   console.log('cai lon', state.carts)
@@ -40,6 +43,10 @@ const Header = () => {
     console.log('cartNumber', cartNumber)
   }, [cartNumber])
 
+  const handleClickSignIn = () => {
+    setShowSignIn(true)
+  }
+
   return (
     <header className="header fixed-top">
       <div className="hamberger-menu">
@@ -53,6 +60,10 @@ const Header = () => {
           </div>
           </Col>
           <Col lg={9}>
+            <div className="login-account">
+              <span className="text" onClick={handleClickSignIn}>Đăng Nhập</span>
+              <span className="text">Đăng Ký</span>
+            </div>
             <div className='header-col-2'>
               <div className='search-box'>
               <Form.Group>
@@ -65,9 +76,6 @@ const Header = () => {
                 <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
                   <span className="qty-text">{cartNumber}</span>
                 </span>
-              </div>
-              <div className='login-account'>
-                <img src={loginAccount} alt="Login account" />
               </div>
             </div>
           <div className='header-menu'>
@@ -91,9 +99,11 @@ const Header = () => {
             </ul>
           </div>
           </Col>
-        
         </Row>
       </Container>
+      <Login
+          show={showSignIn}
+          onHide={() => setShowSignIn(false)} />
     </header>
   )
 }
