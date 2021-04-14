@@ -13,6 +13,7 @@ import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
+import loginAccount from '../assets/images/login-account.png'
 
 import './scss/_header.scss'
 
@@ -58,13 +59,16 @@ const Header = () => {
                 <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua" />
                 <Button className="btn-search"><FontAwesomeIcon icon={faSearch} color={'white'} />Tìm Kiếm</Button>
               </Form.Group>
-            </div>
-            <div onClick={handleClickCart} className="shopping-cart">
-              <img src={ShoppingCart} alt="Shopping cart" />
-              <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
-                <span className="qty-text">{cartNumber}</span>
-              </span>
-            </div>
+              </div>
+              <div onClick={handleClickCart} className="shopping-cart">
+                <img src={ShoppingCart} alt="Shopping cart" />
+                <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
+                  <span className="qty-text">{cartNumber}</span>
+                </span>
+              </div>
+              <div className='login-account'>
+                <img src={loginAccount} alt="Login account" />
+              </div>
             </div>
           <div className='header-menu'>
             <ul>

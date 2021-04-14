@@ -2,7 +2,7 @@ import uploadFilesMiddleware from '../middlewares/upload.js'
 import path from 'path'
 const __dirname = path.resolve()
 import _ from 'lodash'
-const host = "http://localhost:5000"
+const host = 'http://localhost:5000'
 
 export const multipleUpload = async (req, res) => {
     try {
@@ -35,7 +35,7 @@ export const multipleUpload = async (req, res) => {
 
 export const download = (req, res) => {
   const fileName = req.params.name
-  const directoryPath = __dirname + "/public/static/assets/uploads/"
+  const directoryPath = __dirname + '/public/assets/uploads/'
 
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {

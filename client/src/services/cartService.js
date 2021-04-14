@@ -12,6 +12,12 @@ const CartService = {
     },
     updateCart (payload) {
         return http.put('/carts', payload)
+    },
+    getRegions () {
+        return http.get('/regions')
+    },
+    getWardsOrDistricts (type, code) {
+        return http.get(`/regions?type=${type}&code=${code}`)
     }
 }
 export default CartService

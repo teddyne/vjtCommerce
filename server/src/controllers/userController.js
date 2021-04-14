@@ -31,3 +31,27 @@ export const addUser = async (req, res) => {
         res.status(409).json({ message: error.message })
     }
 }
+
+export const getUserById = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(404).json({ message: ex.message })
+    }
+}
+
+export const updateShippingInfo = async(req, res) => {
+    try {
+        User.updateOne( { _id: req.params.id }, { shippingInfo: req.body }, (err, docs) => {
+            if (err) {
+                console.log(err)
+            } else {
+                console.log("Updated: ", docs)
+            }
+        })
+        res.status(200).json('updated successfully')
+    } catch (err) {
+        res.status(404).json({ message: ex.message })
+    }
+}

@@ -8,6 +8,7 @@ import widgetRoutes from './routers/widgetRoutes.js'
 import fileRoutes from './routers/fileRoutes.js'
 import cartRoutes from './routers/cartRoutes.js'
 import userRoutes from './routers/userRoutes.js'
+import regionRoutes from './routers/regionRoutes.js'
 
 connectDb()
 
@@ -26,6 +27,7 @@ app.use('/api/widgets', widgetRoutes)
 app.use('/api', fileRoutes)
 app.use('/api/carts', cartRoutes)
 app.use('/api/users', userRoutes)
+app.use('/api/regions', regionRoutes)
 
 const PORT = process.env.PORT || 5000
 

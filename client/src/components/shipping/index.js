@@ -5,8 +5,8 @@ import SoloButton from '../common/button'
 import _ from 'lodash'
 import Select from 'react-select'
 import Emoji from '../common/emoji'
-import RegionData from '../../assets/json/region/region.json'
-import DistrictData from '../../assets/json/region/district.json'
+import CartService from '../../services/cartService'
+import UserService from '../../services/userService'
 
 import './_shipping.scss'
 
@@ -14,65 +14,107 @@ const ShippingInfoModal = (props) => {
     const [regions, setRegions] = useState([])
     const [districts, setDistricts] = useState([])
     const [wards, setWards] = useState([])
+    const homeUserId = "60726befdaa6d52624a91435"
+    const companyUserId = "606fd4b8d54f8b8dbc05939d"
 
+    const initShippingInfo = {
+        phone: null,
+        address: null,
+        ward: null,
+        district: null,
+        region: null
+    }
+
+    const [shippingInfo, setShippingInfo] = useState(initShippingInfo)
 
     useEffect(() => {
-        const getRegions = () => {
-            const originalRegions = Object.values(RegionData)
-            const result = _.map(originalRegions, (item) => {
-                return {
-                    value: item.code,
-                    label: item.name_with_type
-                }
-            })
-            console.log('regions', result)
-            setRegions(result)
+        const getRegions = async () => {
+            try {
+                const result = await CartService.getRegions()
+                setRegions(result.data)
+            } catch (err) {
+                console.log(err)
+            }
         }
         getRegions()
     }, [])
 
-    const mapData = (data) => {
-        return _.map(data, (item) => {
-            return {
-                value: item.code,
-                label: item.name_with_type
+    useEffect(() => {
+        const getUserById = async (userId) => {
+            try {
+                const result = await UserService.getUserById(userId)
+                const data = result.data.shippingInfo
+                if (data) {
+                    setShippingInfo(data)
+                    getWardsOrDistricts('districts', data.region.value)
+                    getWardsOrDistricts('wards', data.district.value)
+                }
+            } catch (err) {
+                console.log(err)
             }
-        })
-    }
-
-    const handleChange = (event) => {
-        console.log(event)
-        getDistricts(event.value)
-    }
-    const getData1 =()=>{
-        fetch('../../assets/json/region/wards/001.json'
-        ,{
-          headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-           }
         }
-        )
-          .then(function(response){
-            console.log(response)
-            return response.json();
-          })
-          .then(function(myJson) {
-            console.log(myJson);
-          });
-      }
+        getUserById(companyUserId)
+    }, [])
 
-    const getDistricts = async (regionCode) => {
-        const districts = mapData(_.filter(Object.values(DistrictData), x => x.parent_code === regionCode))
-        console.log('dfdfdf', districts)
-        getData1()
+    const handleChangeRegions = async (event) => {
+        getWardsOrDistricts('districts', event.value)
+        const region = event
+        setShippingInfo(prevState => ({
+            ...prevState,
+            region: region
+        }))
     }
 
-    const getRegionData = (type, code = '') => {
-        switch(type) {
-            case 'region': return setRegions(mapData(Object.values(RegionData)))
-            case 'district': return setDistricts(_.filter(Object.values(DistrictData), x => x.parent_code === code))
-            case 'ward': return
+    const handleChangeDistricts = (event) => {
+        getWardsOrDistricts('wards', event.value)
+        const district = event
+        setShippingInfo(prevState => ({
+            ...prevState,
+            district: district
+        }))
+    }
+
+    const handleChangeWards = (event) => {
+        const ward = event
+        setShippingInfo(prevState => ({
+            ...prevState,
+            ward: ward
+        }))
+    }
+
+    const handleChangeAddress = (event) => {
+        const address = event.target.value
+        setShippingInfo(prevState => ({
+            ...prevState,
+            address: address
+        }))
+    }
+
+    const handleChangePhone = (event) => {
+        const phone = event.target.value
+        setShippingInfo(prevState => ({
+            ...prevState,
+            phone: phone
+        }))
+    }
+
+    const getWardsOrDistricts = async (type, code) => {
+        try {
+            const result = await CartService.getWardsOrDistricts(type, code)
+            console.log('clm', result.data)
+            if (type === 'districts') setDistricts(result.data)
+            if (type === 'wards') setWards(result.data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    const handleUpdateShippingInfo = () => {
+        try {
+            UserService.updateShippingInfo(companyUserId, shippingInfo)
+            props.onHide()
+        } catch (err) {
+            console.log(err)
         }
     }
 
@@ -92,32 +134,28 @@ const ShippingInfoModal = (props) => {
         <Form className="shipping-info-form">
             <Form.Group controlId="phone">
                 <Form.Label>Số Điện Thoại</Form.Label>
-                <Form.Control type="text" required placeholder="Số Điện Thoại" />
+                <Form.Control type="text" required placeholder="Số Điện Thoại" value={shippingInfo.phone} onChange={handleChangePhone} />
             </Form.Group>
             <Form.Group controlId="district">
                 <Form.Label>Tỉnh/Thành Phố</Form.Label>
-                <Select placeholder="Chọn Tỉnh/Thành Phố" options={regions} onChange={handleChange} />
+                <Select placeholder="Chọn Tỉnh/Thành Phố" options={regions} onChange={handleChangeRegions} defaultValue={shippingInfo.region} />
             </Form.Group>
             <Form.Group controlId="district">
                 <Form.Label>Quận/Huyện</Form.Label>
-                <Form.Control name='district' as="select">
-                  <option>Quận/Huyện</option>
-                </Form.Control>
+                <Select placeholder="Chọn Quận/Huyện" options={districts} onChange={handleChangeDistricts} defaultValue={shippingInfo.district} />
             </Form.Group>
             <Form.Group controlId="ward">
                 <Form.Label>Phường/Xã</Form.Label>
-                <Form.Control name='ward' as="select">
-                  <option>Phường/Xã</option>
-                </Form.Control>
+                <Select placeholder="Chọn Phường/Xã" options={wards} defaultValue={shippingInfo.ward} onChange={handleChangeWards} />
             </Form.Group>
             <Form.Group controlId="name">
                 <Form.Label>Địa Chỉ</Form.Label>
-                <Form.Control type="text" required placeholder="23 Đường Trường Sơn" />
+                <Form.Control type="text" required placeholder="Nhập Địa Chỉ. VD: 23 Cộng Hòa" value={shippingInfo.address} onChange={handleChangeAddress} />
             </Form.Group>
             </Form>
         </Modal.Body>
         <Modal.Footer>
-            <SoloButton btnStyle='solo' text={'OK'} />
+            <SoloButton btnStyle='solo' text={'Lưu'} onClick={handleUpdateShippingInfo} />
         </Modal.Footer>
         </Modal>
     )

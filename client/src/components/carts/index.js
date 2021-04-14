@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col'
 import { formatCurrency } from '../../helpers/stringHelper'
 import SoloButton from '../../components/common/button'
 import CartService from '../../services/cartService'
-import ShippingInfo from '../../components/shipping'
+import ShippingInfoModal from '../../components/shipping'
 
 import './scss/_cart.scss'
 
@@ -87,7 +87,7 @@ const Cart = () => {
           Tổng tiền: <span className='currency'>{formatCurrency(totalPrice)}</span>
         </div>
         <SoloButton btnStyle='solo btn-check-out' onClick={handleOrder} text={'Đặt hàng'} />
-        <ShippingInfo
+        <ShippingInfoModal
           show={showShippingModal}
           onHide={() => setShowShippingModal(false)} />
       </Col>

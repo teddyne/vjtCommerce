@@ -12,15 +12,15 @@ export const shippingInfoSchema = Schema({
         required: true
     },
     ward: {
-        type: String,
+        type: Object,
         required: true
     },
     district: {
-        type: String,
+        type: Object,
         required: true
     },
     region: {
-        type: String,
+        type: Object,
         required: true
     }
 }, {
