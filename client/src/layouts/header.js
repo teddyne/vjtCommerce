@@ -13,10 +13,8 @@ import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
-import Signin from '../components/signin'
 
 import './scss/_header.scss'
-
 
 const Header = () => {
   const history = useHistory()

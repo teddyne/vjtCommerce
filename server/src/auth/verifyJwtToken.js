@@ -11,7 +11,7 @@ export const verifyToken = (req, res, next) => {
         })
     }
 
-    jwt.verify(token[1], secretKey, (err, decoded) => {
+    jwt.verify(token.split(' ')[1], secretKey, (err, decoded) => {
         if (err) {
             return res.status(500).json({
                 auth: false,

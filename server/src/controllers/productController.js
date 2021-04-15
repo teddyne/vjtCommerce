@@ -11,7 +11,7 @@ export const getProducts = async (req, res) => {
             query.limit(parseInt(req.query.top))
         }
         const products = await query
-        res.status(200).json(products)
+        return res.status(200).json(products)
     } catch (ex) {
         res.status(404).json({ message: ex.message })
     }

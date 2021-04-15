@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import './_signin.scss'
 import SoloButton from '../common/button'
 import AuthService from '../../services/auth.service'
-import color from '../../assets/scss/_colors.scss'
-import { DualRing } from 'react-spinners-css'
+import Spinner from '../common/spinner'
+import { useHistory } from 'react-router-dom'
+
+import './_signin.scss'
 
 const SignIn = () => {
+  const history = useHistory()
   const [phone, setPhone] = useState(null)
   const [password, setPassword] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -19,7 +21,7 @@ const SignIn = () => {
       if (!resp.auth) {
         setErrorMessage(resp.reason)
       } else {
-
+        history.push('/')
       }
       setLoading(false)
     } catch (error) {
@@ -35,17 +37,17 @@ const SignIn = () => {
     setPassword(event.target.value)
   }
 
-  return loading ? <DualRing color={color.color_sts} /> :
-  (
-        <div className="sign-in-wrapper">
-            <div class="form-title">
-                <h6>Hi there! Vui lòng đăng nhập bạn nhé!</h6>
-            </div>
-          <div className="sign-in">
+  return loading ? <Spinner /> :
+    (
+      <div className="sign-in-wrapper">
+        <div class="form-title">
+          <h5>Hi there! Vui lòng đăng nhập bạn nhé!</h5>
+        </div>
+        <div className="sign-in">
           <div class="sign-in-form">
             <form>
               <div class="form-group">
-                <input type="text" class="form-control" id="phone"placeholder="Số điện thoại" onChange={handleOnchangePhone} />
+                <input type="text" class="form-control" id="phone" placeholder="Số điện thoại" onChange={handleOnchangePhone} />
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" id="password" placeholder="Mật khẩu" onChange={handleOnchangePassword} />
@@ -54,8 +56,8 @@ const SignIn = () => {
             </form>
           </div>
           <h5>{errorMessage}</h5>
-          </div>
         </div>
-  )
+      </div>
+    )
 }
 export default SignIn
