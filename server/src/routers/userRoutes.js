@@ -1,5 +1,10 @@
 import express from 'express'
-import { getUsers, addUser, getUserById, updateShippingInfo } from '../controllers/userController.js'
+import {
+    getUsers,
+    addUser,
+    getUserById,
+    updateShippingInfo
+} from '../controllers/userController.js'
 
 const router = express.Router()
 

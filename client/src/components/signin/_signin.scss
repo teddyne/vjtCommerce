@@ -1,0 +1,24 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/colors';
+
+.sign-in-wrapper {
+    .form-title {
+        margin-left: 270px;
+        font-weight: normal;
+    }
+    .sign-in {
+        background-color: $color-white;
+        width: 600px;
+        height: 230px;
+        margin: 0 auto;
+        .sign-in-form {
+            width: 70%;
+            margin: 0 auto;
+            padding-top: 30px;
+            @include border-radius(5);
+        }
+    }
+    .btn-sign-in {
+        width: 100%;
+    }
+}

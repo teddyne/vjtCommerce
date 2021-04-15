@@ -13,8 +13,7 @@ import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
-import loginAccount from '../assets/images/login-account.png'
-import Login from '../components/login'
+import Signin from '../components/signin'
 
 import './scss/_header.scss'
 
@@ -26,7 +25,6 @@ const Header = () => {
   const cartNumber = localStorage.getItem('carts') ?? 0
   const [, updateState] = useState();
   React.useCallback(() => updateState({}), [])
-  const [showSignIn, setShowSignIn] = useState(false)
 
   console.log('con cac', cartNumber)
   console.log('cai lon', state.carts)
@@ -44,7 +42,11 @@ const Header = () => {
   }, [cartNumber])
 
   const handleClickSignIn = () => {
-    setShowSignIn(true)
+    history.push('/sign-in')
+  }
+
+  const handleClickSignUp = () => {
+    history.push('/sign-up')
   }
 
   return (
@@ -62,7 +64,7 @@ const Header = () => {
           <Col lg={9}>
             <div className="login-account">
               <span className="text" onClick={handleClickSignIn}>Đăng Nhập</span>
-              <span className="text">Đăng Ký</span>
+              <span className="text" onClick={handleClickSignUp}>Đăng Ký</span>
             </div>
             <div className='header-col-2'>
               <div className='search-box'>
@@ -101,9 +103,6 @@ const Header = () => {
           </Col>
         </Row>
       </Container>
-      <Login
-          show={showSignIn}
-          onHide={() => setShowSignIn(false)} />
     </header>
   )
 }

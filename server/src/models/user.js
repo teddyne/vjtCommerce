@@ -16,6 +16,12 @@ export const userSchema = Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        enum: ['Customer', 'Admin'],
+        required: true,
+        default: 'Customer'
+    },
     shippingInfo: {
         type: shippingInfoSchema
     },

@@ -21,7 +21,8 @@
     "react-image-gallery": "^1.0.8",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-select": "^4.3.0"
+    "react-select": "^4.3.0",
+    "react-spinners-css": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
