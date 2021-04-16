@@ -11,7 +11,10 @@ const ProductItem = ({ product, onProductItemClick }) => {
       </div>
       <div className="product-info">
         <p>{product.name}</p>
-        <div className="product-price">{formatCurrency(product.price)}</div>
+        <div className="product-price">
+          <span>{formatCurrency(product.price)}</span>
+          <span className='discount'>{product.discount}%</span>
+        </div>
       </div>
     </Col>
   )

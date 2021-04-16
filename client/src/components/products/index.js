@@ -4,7 +4,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SideBar from '../../layouts/sideBar'
 import Slider from '../../layouts/slider'
-import ProductService from '../../services/productService'
+import ProductService from '../../services/product.service'
 
 const Product = () => {
   const [products, setProducts] = useState([])

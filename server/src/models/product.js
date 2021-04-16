@@ -19,6 +19,9 @@ const productSchema = Schema({
     discount: {
         type: Number
     },
+    discountPrice: {
+        type: Number
+    },
     _categoryId: {
         type: Schema.Types.ObjectId,
         required: true

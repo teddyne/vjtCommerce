@@ -1,5 +1,8 @@
 import express from 'express'
-import { getWidgets, addWidget } from '../controllers/widgetController.js'
+import {
+    getWidgets,
+    addWidget
+} from '../controllers/widget.controller.js'
 
 const router = express.Router()
 

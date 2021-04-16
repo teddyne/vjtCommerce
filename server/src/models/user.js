@@ -16,6 +16,9 @@ export const userSchema = Schema({
         type: String,
         required: true
     },
+    avatarUrl: {
+        type: String
+    },
     role: {
         type: String,
         enum: ['Customer', 'Admin'],

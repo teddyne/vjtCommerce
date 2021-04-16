@@ -4,7 +4,7 @@ import {
     getProductById,
     addProduct,
     updateProductImages
-} from '../controllers/productController.js'
+} from '../controllers/product.controller.js'
 import { verifyToken } from '../auth/verifyJwtToken.js'
 
 const router = express.Router()

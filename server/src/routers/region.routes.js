@@ -1,5 +1,7 @@
 import express from 'express'
-import { getRegions } from '../controllers/regionController.js'
+import {
+    getRegions
+} from '../controllers/region.controller.js'
 
 const router = express.Router()
 

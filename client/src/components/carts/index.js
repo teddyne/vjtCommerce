@@ -5,7 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { formatCurrency } from '../../helpers/stringHelper'
 import SoloButton from '../../components/common/button'
-import CartService from '../../services/cartService'
+import CartService from '../../services/cart.service.js'
 import ShippingInfoModal from '../../components/shipping'
 
 import './scss/_cart.scss'

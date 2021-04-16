@@ -7,7 +7,7 @@ import { Context } from '../../store/store'
 import { ADD_TO_CARTS } from '../../store/action'
 import CustomToast from '../common/customToast'
 import SoloButton from '../common/button'
-import CartService from '../../services/cartService'
+import CartService from '../../services/cart.service'
 import _ from 'lodash'
 
 import './scss/_productInfo.scss'
@@ -33,11 +33,11 @@ const ProductInfo = ({ product }) => {
       thumbnail: product.images[0]
     }
 
-    addCart(payload)
-
-    console.log('carts', state.carts)
-    const currentCartNumber = localStorage.getItem('carts') ?? 0
-    localStorage.setItem('carts', parseInt(currentCartNumber) + 1)
+    addCart(payload).then(() => {
+      console.log('carts', state.carts)
+      const currentCartNumber = localStorage.getItem('carts') ?? 0
+      localStorage.setItem('carts', parseInt(currentCartNumber) + 1)
+    })
   }
 
   const addCart = async (cart) => {

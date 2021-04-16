@@ -5,8 +5,8 @@ import SoloButton from '../common/button'
 import _ from 'lodash'
 import Select from 'react-select'
 import Emoji from '../common/emoji'
-import CartService from '../../services/cartService'
-import UserService from '../../services/userService'
+import CartService from '../../services/cart.service'
+import UserService from '../../services/user.service'
 
 import './_shipping.scss'
 

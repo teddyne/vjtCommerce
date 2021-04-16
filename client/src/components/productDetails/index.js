@@ -8,7 +8,7 @@ import ProductDetailInfo from './productDetailInfo'
 import ProductDescription from './productDescription'
 import Review from './review'
 import SimilarProduct from '../products/similarProduct'
-import ProductService from '../../services/productService'
+import ProductService from '../../services/product.service'
 
 import './scss/_productDetail.scss'
 

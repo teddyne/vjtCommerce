@@ -1,5 +1,8 @@
 import express from 'express'
-import { multipleUpload, download } from '../controllers/fileController.js'
+import {
+    multipleUpload,
+    download
+} from '../controllers/file.controller.js'
 const router = express.Router()
 
 router.post('/upload', multipleUpload)

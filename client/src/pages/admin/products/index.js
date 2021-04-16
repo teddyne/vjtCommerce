@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import TextEditor from '../../../components/common/textEditor'
 import MultipleUpload from '../../../components/common/multipleUpload'
-import ProductAdminService from '../../../services/productAdminService'
+import ProductAdminService from '../../../services/productAdmin.service'
 import _ from 'lodash'
 
 import './scss/_productAdmin.scss'
