@@ -1,62 +1,65 @@
 import React from 'react'
-import helmet from '../assets/images/menu/helmet.png'
-import wipe from '../assets/images/menu/wipe.png'
-import gloves from '../assets/images/menu/gloves.png'
-import towel from '../assets/images/menu/towel.png'
-import book from '../assets/images/menu/book.png'
+import { useHistory } from 'react-router-dom'
+import climbing from '../assets/images/menu/climbing.png'
+import camping from '../assets/images/menu/camping.png'
+import biker from '../assets/images/menu/biker.png'
+import trekking from '../assets/images/menu/trekking.png'
+import other from '../assets/images/menu/other.png'
 
 import './scss/_sideBar.scss'
-class SideBar extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <div className="side-bar">
-          <ul>
-            <li className="side-bar-item">
-              <a className="side-bar-item-content" href="#home">
-                <span className="side-bar-icon">
-                  <img src={helmet} alt='mu-bao-hiem' />
-                </span>
-                <span>Mũ Bảo Hiểm</span>
-              </a>
-            </li>
-            <li className="side-bar-item">
-              <a className="side-bar-item-content" href="#news">
-                <span className="side-bar-icon">
-                  <img src={gloves} alt='gang-tay-xe-may' />
-                </span>
-                <span>Găng Tay Xe Máy</span>
-              </a>
-            </li>
-            <li className="side-bar-item">
-              <a className="side-bar-item-content" href="#contact">
-                <span className="side-bar-icon">
-                  <img src={towel} alt='gang-tay-chong-nang' />
-                </span>
-                <span>Găng Tay Chống Nắng</span>
-              </a>
-            </li>
-            <li className="side-bar-item">
-              <a className="side-bar-item-content" href="#about">
-                <span className="side-bar-icon">
-                  <img src={wipe} alt='khan-da-nang' />
-                </span>
-                <span>Khăn Đa Năng</span>
-              </a>
-            </li>
-            <li className="side-bar-item">
-              <a className="side-bar-item-content" href="#about">
-                <span className="side-bar-icon">
-                  <img src={book} alt='sach' />
-                </span>
-                <span>Sách Cũ</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </React.Fragment>
-    )
-  }
-}
 
+const SideBar = () => {
+  const history = useHistory()
+
+  const handleClickMenu = (path) => {
+    history.push(`/${path}.html`)
+  }
+
+  return (
+    <div className="side-bar">
+      <ul>
+        <li className="side-bar-item">
+          <a className="side-bar-item-content" onClick={() => handleClickMenu('mu-bao-hiem')}>
+            <span className="side-bar-icon">
+              <img src={climbing} alt='Leo núi' />
+            </span>
+            <span>Leo Núi</span>
+          </a>
+        </li>
+        <li className="side-bar-item">
+          <a className="side-bar-item-content" href="#news">
+            <span className="side-bar-icon">
+              <img src={camping} alt='Cắm trại - dã ngoại' />
+            </span>
+            <span>Cắm Trại - Dã Ngoại</span>
+          </a>
+        </li>
+        <li className="side-bar-item">
+          <a className="side-bar-item-content" href="#contact">
+            <span className="side-bar-icon">
+              <img src={biker} alt='Du lịch bụi' />
+            </span>
+            <span>Du Lịch Bụi</span>
+          </a>
+        </li>
+        <li className="side-bar-item">
+          <a className="side-bar-item-content" href="#about">
+            <span className="side-bar-icon">
+              <img src={trekking} alt='Trekking - Chạy bộ' />
+            </span>
+            <span>Trekking - Chạy Bộ</span>
+          </a>
+        </li>
+        <li className="side-bar-item">
+          <a className="side-bar-item-content" href="#about">
+            <span className="side-bar-icon">
+              <img src={other} alt='Other' />
+            </span>
+            <span>Vài Thứ Khác</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  )
+}
 export default SideBar

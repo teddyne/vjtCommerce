@@ -40,7 +40,7 @@ function ProductDetail() {
       </Row>
       <ProductDetailInfo key='similar-product-ind1ex' />
       <ProductDescription key='similar-product-in323dex' product={product} />
-      <Review key='similar-product-ind323ex' numberReviews={[13, 8, 4, 1, 0]} />
+      <Review key='similar-product-ind323ex' numberReviews={[0, 0, 0, 0, 0]} />
       <SimilarProduct key='similar-product-ind32ex' {...{_id: product._id, categoryName: product.category?.name}} />
     </React.Fragment>
   )

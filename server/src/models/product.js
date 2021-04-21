@@ -1,10 +1,15 @@
 import mongoose from 'mongoose'
 import { imageSchema } from './image.js'
+import { categorySchema } from './category.js'
 
 var Schema = mongoose.Schema
 
 const productSchema = Schema({
     name: {
+        type: String,
+        required: true
+    },
+    slug: {
         type: String,
         required: true
     },
@@ -22,8 +27,8 @@ const productSchema = Schema({
     discountPrice: {
         type: Number
     },
-    _categoryId: {
-        type: Schema.Types.ObjectId,
+    categories: {
+        type: [categorySchema],
         required: true
     },
     images: {

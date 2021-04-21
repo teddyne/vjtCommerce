@@ -34,9 +34,6 @@ const ProductLayout = (props) => {
         currentProducts,
         index * Constant.MAX_ITEM_PER_LINE,
         (index + 1) * Constant.MAX_ITEM_PER_LINE
-        // index < totalLines - 1
-        //   ? (index + 1) * Constant.MAX_ITEM_PER_LINE
-        //   : Constant.MAX_ITEM_PER_LINE + 1
       )
       productLines.push(
         <ProductLine key={`product_line_index_${index}`}>

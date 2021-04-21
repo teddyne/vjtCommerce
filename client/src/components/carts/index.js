@@ -86,7 +86,7 @@ const Cart = () => {
         <div className='check-out'>
           Tổng tiền: <span className='currency'>{formatCurrency(totalPrice)}</span>
         </div>
-        <SoloButton btnStyle='solo btn-check-out' onClick={handleOrder} text={'Đặt hàng'} />
+        <SoloButton btnStyle='sweet-red btn-check-out' onClick={handleOrder} text={'Đặt hàng'} />
         <ShippingInfoModal
           show={showShippingModal}
           onHide={() => setShowShippingModal(false)} />

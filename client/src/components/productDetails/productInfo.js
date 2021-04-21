@@ -65,10 +65,10 @@ const ProductInfo = ({ product }) => {
   return (
     <div className="product-info">
       <div className="product-name">{product.name}</div>
-      <ProductStar psKey={'product-info'} isShowTotalReviews={true} color={color.colorSts} size="sm" numberStar={4.5} />
+      <ProductStar psKey={'product-info'} isShowTotalReviews={false} color={color.colorSts} size="sm" numberStar={0} />
       <ProductPrice price={product.price ?? 0} discount={product.discount ?? 0} />
       <QuantityInput />
-      <SoloButton btnStyle='solo' text={'Mua Ngay'} onClick={handleClickBuyNow} />
+      <SoloButton btnStyle='sweet-red' text={'Mua Ngay'} onClick={handleClickBuyNow} />
       <CustomToast isShow={showingAddedToast} onClose={() => setShowingAddedToast(false)} />
     </div>
   )

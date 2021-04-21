@@ -13,7 +13,7 @@ const ProductItem = ({ product, onProductItemClick }) => {
         <p>{product.name}</p>
         <div className="product-price">
           <span>{formatCurrency(product.price)}</span>
-          <span className='discount'>{product.discount}%</span>
+          <span className='discount'>-{product.discount}%</span>
         </div>
       </div>
     </Col>

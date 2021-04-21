@@ -5,6 +5,10 @@ export const categorySchema = mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     isActive: {
         type: Boolean,
         required: true,

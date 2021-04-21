@@ -1,6 +1,5 @@
 import React from 'react'
 import './scss/_reviewItem.scss'
-import avatar from '../../assets/images/avatar.jpg'
 import ProductStar from './productStar'
 import Emoji from '../common/emoji'
 
@@ -9,7 +8,7 @@ const ReviewItem = () => {
         <div className='review-item'>
             <div className='review-general-info'>
                 <div className='review-avatar'>
-                    <img src={avatar} alt='avatar' />
+                    <img src={''} alt='avatar' />
                 </div>
                 <div className='review-info'>
                     <div className='review-user'>

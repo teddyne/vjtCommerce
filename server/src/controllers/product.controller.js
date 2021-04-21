@@ -2,7 +2,7 @@ import Product from '../models/product.js'
 
 export const getProducts = async (req, res) => {
     try {
-        const filter = req.query.category ? { 'category.name': req.query.category } : {}
+        const filter = req.query.category ? { 'categories.slug': req.query.category } : {}
         const query = Product.find(filter)
         if (req.query.currentProductId) {
             query.where('_id').ne(req.query.currentProductId)
@@ -21,7 +21,7 @@ export const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id)
         res.status(200).json(product)
-    } catch (ex) {
+    } catch (ex) {  
         res.status(404).json({ message: ex.message })
     }
 }
@@ -29,10 +29,11 @@ export const getProductById = async (req, res) => {
 export const addProduct = async (req, res) => {
     const {
         name,
+        slug,
         description,
         price,
         discount,
-        _categoryId,
+        categories,
         images,
         widgets
     } = req.body
@@ -40,11 +41,12 @@ export const addProduct = async (req, res) => {
     const newProduct = new Product(
         { 
             name,
+            slug,
             description,
             price,
             discount,
             discountPrice,
-            _categoryId,
+            categories,
             images,
             widgets
         })

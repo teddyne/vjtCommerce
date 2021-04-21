@@ -12,29 +12,6 @@
         @include border-radius(5);
         margin-top: 2%;
     }
-    .btn-buy-right-now {
-        color: $color-white;
-        background-color: $color-solo-travel-shop;
-        margin: 2% 0 2% 0;
-        border-color: transparent;
-        font-weight: 600;
-        &:hover {
-            opacity: 0.8;
-            color: $color-white;
-            background-color: $color-solo-travel-shop;
-            border-color: transparent;
-        }
-        &:active {
-            color: $color-white;
-            background-color: $color-solo-travel-shop;
-            border-color: transparent;
-        }
-        &:focus {
-            color: $color-white;
-            background-color: $color-solo-travel-shop;
-            border-color: transparent;
-        }
-    }
     .quantity-input {
         width: 20%;
         @include non-desktop {

@@ -11,7 +11,7 @@ const CustomToast = ({ isShow, onClose }) => {
     const history = useHistory()
 
     const openCart = () => {
-        history.push('/carts')
+        history.push('/cart')
     }
 
     return (

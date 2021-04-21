@@ -7,6 +7,7 @@ import Cart from './components/carts'
 import Admin from './pages/admin'
 import SignIn from './components/signin'
 import SignUp from './components/signup'
+import Category from './components/category'
 
 class App extends React.Component {
   buildPages() {
@@ -16,7 +17,8 @@ class App extends React.Component {
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
       { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
-      { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) }
+      { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },
+      { path: '/mu-bao-hiem.html', key: 'category', render: () => withLayout(<Category />) }
     ]
   }
 

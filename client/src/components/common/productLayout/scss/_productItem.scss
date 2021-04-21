@@ -18,14 +18,15 @@
     }
 
     .product-price {
-        color: $color-red;
+        color: $color-sweet-red;
         font-weight: bold;
         .discount {
-            background: $color-solo-travel-shop;
-            color: white;
-            @include border-radius(5);
+            background: $color-red;
+            color: $color-white;
+            @include border-radius(3);
             margin-left: 10px;
-            font-size: 13px;
+            font-size: 12px;
+            padding: 2px;
         }
     }
 }
