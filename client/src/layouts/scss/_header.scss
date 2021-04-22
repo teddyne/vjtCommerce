@@ -126,7 +126,6 @@
       }
       .header-col-2 {
         display: flex;
-        //padding-top: 35px;
       }
     }
 
@@ -143,6 +142,7 @@
           .side-bar-item-content {
               text-decoration: none;
               color: $color-white;
+              cursor: pointer;
               .side-bar-icon {
                   padding-right: 4%;
               }

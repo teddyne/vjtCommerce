@@ -5,6 +5,7 @@ import camping from '../assets/images/menu/camping.png'
 import biker from '../assets/images/menu/biker.png'
 import trekking from '../assets/images/menu/trekking.png'
 import other from '../assets/images/menu/other.png'
+import { CategoryConstant } from '../constants'
 
 import './scss/_sideBar.scss'
 
@@ -19,7 +20,7 @@ const SideBar = () => {
     <div className="side-bar">
       <ul>
         <li className="side-bar-item">
-          <a className="side-bar-item-content" onClick={() => handleClickMenu('mu-bao-hiem')}>
+          <a className="side-bar-item-content" onClick={() => handleClickMenu(CategoryConstant.Climbing)}>
             <span className="side-bar-icon">
               <img src={climbing} alt='Leo núi' />
             </span>
@@ -27,7 +28,7 @@ const SideBar = () => {
           </a>
         </li>
         <li className="side-bar-item">
-          <a className="side-bar-item-content" href="#news">
+          <a className="side-bar-item-content" onClick={() => handleClickMenu(CategoryConstant.Camping)}>
             <span className="side-bar-icon">
               <img src={camping} alt='Cắm trại - dã ngoại' />
             </span>
@@ -35,7 +36,7 @@ const SideBar = () => {
           </a>
         </li>
         <li className="side-bar-item">
-          <a className="side-bar-item-content" href="#contact">
+          <a className="side-bar-item-content" onClick={() => handleClickMenu(CategoryConstant.Traveling)}>
             <span className="side-bar-icon">
               <img src={biker} alt='Du lịch bụi' />
             </span>
@@ -43,7 +44,7 @@ const SideBar = () => {
           </a>
         </li>
         <li className="side-bar-item">
-          <a className="side-bar-item-content" href="#about">
+          <a className="side-bar-item-content" onClick={() => handleClickMenu(CategoryConstant.Trekking)}>
             <span className="side-bar-icon">
               <img src={trekking} alt='Trekking - Chạy bộ' />
             </span>
@@ -51,9 +52,9 @@ const SideBar = () => {
           </a>
         </li>
         <li className="side-bar-item">
-          <a className="side-bar-item-content" href="#about">
+          <a className="side-bar-item-content" onClick={() => handleClickMenu(CategoryConstant.OtherThings)}>
             <span className="side-bar-icon">
-              <img src={other} alt='Other' />
+              <img src={other} alt='Other things' />
             </span>
             <span>Vài Thứ Khác</span>
           </a>

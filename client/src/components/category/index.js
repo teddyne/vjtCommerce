@@ -5,22 +5,26 @@ import ProductLine from '../common/productLayout/productLine'
 import ProductItem from '../common/productLayout/productItem'
 import { Constant } from '../../constants'
 import _ from 'lodash'
+import { CategoryConstant } from '../../constants'
 import ProductService from '../../services/product.service'
-import helmet from '../../assets/images/categories/helmet-cat.png'
+import climbing from '../../assets/images/categories/climbing.png'
+import camping from '../../assets/images/categories/camping.png'
+import biker from '../../assets/images/categories/biker.png'
+import trekking from '../../assets/images/categories/trekking.png'
+import other from '../../assets/images/categories/other.png'
 
 import './_category.scss'
 
 const Category = () => {
     const history = useHistory()
     const location = useLocation()
-    const categorySlug = location.pathname.substring(1, location.pathname.length - 5)
-    console.log(location);
+    const slug = location.pathname.substring(1, location.pathname.length - 5)
     const [products, setProducts] = useState([])
 
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const result = await ProductService.getProductsByCategory(categorySlug)
+                const result = await ProductService.getProductsByCategory(slug)
                 setProducts(result.data)
             } catch (ex) {
                 console.log(ex)
@@ -31,7 +35,50 @@ const Category = () => {
 
     const handleClickProductDetail = (productId) => {
         history.push(`/products/${productId}`)
-      }
+    }
+
+    const renderCategoryHeader = () => {
+        let catThumb = null
+        let catTitle = null
+        switch (slug) {
+            case CategoryConstant.Climbing: {
+                catThumb = climbing
+                catTitle = 'Leo Núi'
+            }
+            break
+            case CategoryConstant.Camping: {
+                catThumb = camping
+                catTitle = 'Cắm trại - dã ngoại'
+            }
+            break
+            case CategoryConstant.Traveling: {
+                catThumb = biker
+                catTitle = 'Du lịch bụi'
+            }
+            break
+            case CategoryConstant.Trekking: {
+                catThumb = trekking
+                catTitle = 'Trekking - chạy bộ'
+            }
+            break
+            case CategoryConstant.OtherThings: {
+                catThumb = other
+                catTitle = 'Vài thứ khác'
+            }
+            break
+            default: {
+
+            }
+        }
+        return (
+            <div className='category-header'>
+                <span>
+                    <img src={catThumb} alt={catTitle} />
+                </span>
+                <span className='category-name'>{catTitle}</span>
+            </div>
+        )
+    }
 
     const renderProducts = () => {
         const totalLines = Math.ceil(products.length / Constant.MAX_ITEM_PER_LINE)
@@ -44,10 +91,10 @@ const Category = () => {
             )
             productLines.push(
                 <ProductLine key={`product_line_index_${index}`}>
-                    {_.map(productItems, (item, index) => {
+                    {_.map(productItems, (item) => {
                         return (
                             <ProductItem
-                                key={`product_item_index_${index}`}
+                                key={item._id}
                                 product={item}
                                 onProductItemClick={() => handleClickProductDetail(item._id)}
                             />
@@ -61,12 +108,7 @@ const Category = () => {
 
     return (
         <div className='category'>
-            <div className='category-header'>
-                <span>
-                    <img src={helmet} alt='Mũ bảo hiểm' />
-                </span>
-                <span className='category-name'>Mũ bảo hiểm</span>
-            </div>
+            {renderCategoryHeader()}
             {renderProducts()}
         </div>
     )

@@ -24,27 +24,12 @@ const Header = () => {
   const [, updateState] = useState();
   React.useCallback(() => updateState({}), [])
 
-  console.log('con cac', cartNumber)
-  console.log('cai lon', state.carts)
-
-  const handleClickLogo = () => {
-    history.push('/')
-  }
-
-  const handleClickCart = () => {
-    history.push('/cart')
-  }
-
   useEffect(() => {
     console.log('cartNumber', cartNumber)
   }, [cartNumber])
 
-  const handleClickSignIn = () => {
-    history.push('/sign-in')
-  }
-
-  const handleClickSignUp = () => {
-    history.push('/sign-up')
+  const handleRedirect = (path) => {
+    history.push(`/${path}`)
   }
 
   return (
@@ -55,14 +40,14 @@ const Header = () => {
       <Container className="site-logo">
         <Row className="wrap-logo">
           <Col lg={3}>
-          <div onClick={handleClickLogo} className="center-logo">
+          <div onClick={() => handleRedirect('')} className="center-logo">
             <img src={logo} alt='logo' />
           </div>
           </Col>
           <Col lg={9}>
             <div className="login-account">
-              <span className="text" onClick={handleClickSignIn}>Đăng Nhập</span>
-              <span className="text" onClick={handleClickSignUp}>Đăng Ký</span>
+              <span className="text" onClick={() => handleRedirect('sign-in')}>Đăng Nhập</span>
+              <span className="text" onClick={() => handleRedirect('sign-up')}>Đăng Ký</span>
             </div>
             <div className='header-col-2'>
               <div className='search-box'>
@@ -71,7 +56,7 @@ const Header = () => {
                 <Button className="btn-search"><FontAwesomeIcon icon={faSearch} color={'white'} />Tìm Kiếm</Button>
               </Form.Group>
               </div>
-              <div onClick={handleClickCart} className="shopping-cart">
+              <div onClick={() => handleRedirect('cart')} className="shopping-cart">
                 <img src={ShoppingCart} alt="Shopping cart" />
                 <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
                   <span className="qty-text">{cartNumber}</span>
@@ -81,7 +66,7 @@ const Header = () => {
           <div className='header-menu'>
             <ul>
               <li className="side-bar-item">
-                <a className="side-bar-item-content" href="#home">
+                <a className="side-bar-item-content" onClick={() => handleRedirect('story')}>
                   <span className="side-bar-icon">
                     <img src={story} alt='story' />
                   </span>
@@ -89,7 +74,7 @@ const Header = () => {
                 </a>
               </li>
               <li className="side-bar-item">
-                <a className="side-bar-item-content" href="#home">
+                <a className="side-bar-item-content" onClick={() => handleRedirect('blog')}>
                   <span className="side-bar-icon">
                     <img src={blog} alt='blog' />
                   </span>

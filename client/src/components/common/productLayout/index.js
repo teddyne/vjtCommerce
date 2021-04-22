@@ -36,11 +36,11 @@ const ProductLayout = (props) => {
         (index + 1) * Constant.MAX_ITEM_PER_LINE
       )
       productLines.push(
-        <ProductLine key={`product_line_index_${index}`}>
-          {_.map(productItems, (item, index) => {
+        <ProductLine key={`${widget._id}_${index}`}>
+          {_.map(productItems, (item) => {
             return (
               <ProductItem
-              key={`product_item_index_${index}`}
+              key={item._id}
                 product={item}
                 onProductItemClick={() => handleClickProductDetail(item._id)}
               />
@@ -49,8 +49,7 @@ const ProductLayout = (props) => {
         </ProductLine>
       )
     }
-
-    return <Box key={`box_${widgetIndex}`} title={widget.name}>{productLines}</Box>
+    return <Box key={widget._id} title={widget.name}>{productLines}</Box>
   }
   return null
   })

@@ -9,3 +9,11 @@ export const ContactBoxConstant = {
     ViaSkype: "Chat với tụi mình qua Zalo",
     CallUs: "Gọi ngay cho tụi mình"
 }
+
+export const CategoryConstant = {
+    Climbing: "leo-nui",
+    Camping: "cam-trai-da-ngoai",
+    Traveling: "du-lich-bui",
+    Trekking: "trekking-chay-bo",
+    OtherThings: "vai-thu-khac"
+}
