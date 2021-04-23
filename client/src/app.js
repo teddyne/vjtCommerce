@@ -10,12 +10,14 @@ import SignUp from './components/signup'
 import Category from './components/category'
 import { CategoryConstant } from './constants'
 import PageNotFound from './layouts/pageNotFound';
+import Payment from './components/payment';
 class App extends React.Component {
   buildPages() {
     return [
       { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />) },
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
+      { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
       { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
       { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },

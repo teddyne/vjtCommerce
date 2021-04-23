@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import SoloButton from '../common/button'
 import AuthService from '../../services/auth.service'
 import Spinner from '../common/spinner'
 import { useHistory } from 'react-router-dom'
+import { Context } from '../../store/store'
+import { SET_USER_INFO } from '../../store/action'
 
 import './_signin.scss'
 
@@ -13,14 +15,16 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
 
+  const [state, dispatch] = useContext(Context)
+
   const handleSignIn = async () => {
     try {
       setLoading(true)
       const resp = await AuthService.signIn(phone, password)
-      console.log('fe -signin', resp)
       if (!resp.auth) {
         setErrorMessage(resp.reason)
       } else {
+        dispatch({ type: SET_USER_INFO, payload: resp.user })
         history.push('/')
       }
       setLoading(false)

@@ -11,7 +11,7 @@ const Box = (props) => {
       </div>) : null
   }
   return (
-    <div className="product-box">
+    <div className="box">
       {renderTitle()}
       {props.children}
     </div>

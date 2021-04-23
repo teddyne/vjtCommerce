@@ -29,8 +29,6 @@ export const signUp = async (req, res) => {
 export const signIn = async (req, res) => {
     try {
         const user = await User.findOne({ phone: req.body.phone})
-        console.log('signIn')
-        console.log('user', user)
         if (!user) {
             res.status(404).json('User not found.')
         }
@@ -41,8 +39,15 @@ export const signIn = async (req, res) => {
         const token = jwt.sign({ id: user._id }, secretKey, {
             expiresIn: 86400 // expires in 24 hours
         })
-        console.log('token', token)
-        res.status(200).json({ auth: true, accessToken: token })
+
+        const userInfo = {
+            name: user.name,
+            phone: user.phone,
+            avatarUrl: user.avatarUrl,
+            shippingInfo: user.shippingInfo
+        }
+
+        res.status(200).json({ auth: true, accessToken: token, user: userInfo })
     } catch (error) {
         res.status(500).json('Error: '+ error)
     }

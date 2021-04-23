@@ -24,6 +24,8 @@ const Header = () => {
   const [, updateState] = useState();
   React.useCallback(() => updateState({}), [])
 
+  console.log('header carts', state.carts)
+
   useEffect(() => {
     console.log('cartNumber', cartNumber)
   }, [cartNumber])

@@ -3,7 +3,8 @@ import Reducer from './reducer'
 
 const initialState = {
     carts: [],
-    itemQuantity: 1
+    itemQuantity: 1,
+    userInfo: null
 }
 
 const Store = ({ children }) => {

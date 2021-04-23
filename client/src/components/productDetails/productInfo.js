@@ -4,10 +4,11 @@ import ProductPrice from './productPrice'
 import color from '../../assets/scss/_colors.scss'
 import QuantityInput from '../common/quantityInput'
 import { Context } from '../../store/store'
-import { ADD_TO_CARTS } from '../../store/action'
 import CustomToast from '../common/customToast'
 import SoloButton from '../common/button'
 import CartService from '../../services/cart.service'
+import { COM } from '../../constants'
+import { ADD_TO_CARTS } from '../../store/action'
 import _ from 'lodash'
 
 import './scss/_productInfo.scss'
@@ -16,15 +17,12 @@ const ProductInfo = ({ product }) => {
   const [state, dispatch] = useContext(Context)
   const [showingAddedToast, setShowingAddedToast] = useState(false)
 
-  const homeUserId = "60726befdaa6d52624a91435"
-  const companyUserId = "606fd4b8d54f8b8dbc05939d"
+  const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
 
   const handleClickBuyNow = () => {
-    dispatch({ type: ADD_TO_CARTS, payload: product })
     setShowingAddedToast(true)
-
     const payload = {
-      _userId: homeUserId,
+      _userId: userId,
       _productId: product._id,
       name: product.name,
       price: product.price,
@@ -32,7 +30,7 @@ const ProductInfo = ({ product }) => {
       quantity: state.itemQuantity,
       thumbnail: product.images[0]
     }
-
+    dispatch({ type: ADD_TO_CARTS, payload: payload })
     addCart(payload).then(() => {
       console.log('carts', state.carts)
       const currentCartNumber = localStorage.getItem('carts') ?? 0

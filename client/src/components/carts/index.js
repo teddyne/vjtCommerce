@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import _ from 'lodash'
 import CartItem from './cartItem'
 import Row from 'react-bootstrap/Row'
@@ -7,20 +7,24 @@ import { formatCurrency } from '../../helpers/stringHelper'
 import SoloButton from '../../components/common/button'
 import CartService from '../../services/cart.service.js'
 import ShippingInfoModal from '../../components/shipping'
+import { Context } from '../../store/store'
+import { useHistory } from 'react-router-dom'
+import { COM } from '../../constants'
 
 import './scss/_cart.scss'
 
 const Cart = () => {
   const [carts, setCarts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
-  const homeUserId = "60726befdaa6d52624a91435"
-  const companyUserId = "606fd4b8d54f8b8dbc05939d"
+  const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
   const [showShippingModal, setShowShippingModal] = useState(false)
+  const [state, dispatch] = useContext(Context)
+  const history = useHistory()
 
   useEffect(() => {
-    const getCarts = async (homeUserId) => {
+    const getCarts = async (userId) => {
       try {
-        const result = await CartService.getCarts(homeUserId)
+        const result = await CartService.getCarts(userId)
         setCarts(result.data)
         const price = _.reduce(result.data, (s, { quantity, price }) => s + quantity * price, 0)
         setTotalPrice(price)
@@ -28,18 +32,19 @@ const Cart = () => {
         console.log(err)
       }
     }
-    getCarts(homeUserId)
-  }, [homeUserId, totalPrice])
+    getCarts(userId)
+  }, [userId, totalPrice])
 
   const handleOrder = () => {
     const hasShippingInfo = () => {
-      return false
+      console.log('cart userinfo', state.userInfo)
+      return state.userInfo?.shippingInfo !== null
     }
 
     if (!hasShippingInfo()) {
       setShowShippingModal(true)
     } else {
-      console.log('order')
+      history.push('/payment')
     }
   }
 

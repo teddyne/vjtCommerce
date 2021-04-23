@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 import SoloButton from '../common/button'
@@ -7,6 +7,9 @@ import Select from 'react-select'
 import Emoji from '../common/emoji'
 import CartService from '../../services/cart.service'
 import UserService from '../../services/user.service'
+import { COM } from '../../constants'
+import { Context } from '../../store/store'
+import { SET_USER_INFO } from '../../store/action'
 
 import './_shipping.scss'
 
@@ -14,9 +17,7 @@ const ShippingInfoModal = (props) => {
     const [regions, setRegions] = useState([])
     const [districts, setDistricts] = useState([])
     const [wards, setWards] = useState([])
-    const homeUserId = "60726befdaa6d52624a91435"
-    const companyUserId = "606fd4b8d54f8b8dbc05939d"
-
+    const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
     const initShippingInfo = {
         phone: null,
         address: null,
@@ -24,6 +25,8 @@ const ShippingInfoModal = (props) => {
         district: null,
         region: null
     }
+
+    const [state, dispatch] = useContext(Context)
 
     const [shippingInfo, setShippingInfo] = useState(initShippingInfo)
 
@@ -53,7 +56,7 @@ const ShippingInfoModal = (props) => {
                 console.log(err)
             }
         }
-        getUserById(companyUserId)
+        getUserById(userId)
     }, [])
 
     const handleChangeRegions = async (event) => {
@@ -101,7 +104,6 @@ const ShippingInfoModal = (props) => {
     const getWardsOrDistricts = async (type, code) => {
         try {
             const result = await CartService.getWardsOrDistricts(type, code)
-            console.log('clm', result.data)
             if (type === 'districts') setDistricts(result.data)
             if (type === 'wards') setWards(result.data)
         } catch (err) {
@@ -109,9 +111,17 @@ const ShippingInfoModal = (props) => {
         }
     }
 
-    const handleUpdateShippingInfo = () => {
+    const handleUpdateShippingInfo = async () => {
         try {
-            UserService.updateShippingInfo(companyUserId, shippingInfo)
+            const user = await UserService.updateShippingInfo(userId, shippingInfo)
+            if (user.data) {
+                const userInfo = {
+                    name: user.data.name,
+                    phone: user.data.phone,
+                    shippingInfo: user.data.shippingInfo
+                }
+                dispatch({ type: SET_USER_INFO, payload: userInfo })
+            }
             props.onHide()
         } catch (err) {
             console.log(err)

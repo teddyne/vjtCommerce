@@ -1,0 +1,41 @@
+@import '../../../assets/scss/colors';
+
+.payment {
+    .product-list{
+        background-color: $color-white;
+        padding: 2%;
+    }
+    .deliver-info {
+        background-color: $color-white;
+        padding: 5%;
+        margin-bottom: 10px;
+        .address-box {
+            margin-bottom: 10px;
+            .address-title {
+                font-weight: bold;
+                margin-right: 10px;
+            }
+        }
+        .customer-info {
+            margin-bottom: 5px;
+            span {
+                margin-right: 10px;
+                font-weight: 500;
+            }
+        }
+    }
+    .check-out {
+        background-color: $color-white;
+        padding: 10%;
+        .currency {
+            color: $color-red;
+            font-weight: bold;
+            margin-left: 10px;
+            font-size: 20px;
+        }
+    }
+    .btn-check-out {
+        width: 100%;
+        margin-top: 5%;
+    }
+}
