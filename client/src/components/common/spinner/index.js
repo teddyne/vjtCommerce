@@ -6,7 +6,7 @@ import './_spinner.scss'
 const Spinner = () => {
     return (
         <div className='spinner'>
-            <DualRing color={color.sweet_red} />
+            <DualRing className='dual-ring' color={color.sweet_red} />
         </div>
     )
 }
