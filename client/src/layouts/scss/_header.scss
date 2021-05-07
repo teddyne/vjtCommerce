@@ -32,21 +32,6 @@
           left: 80%;
         }
       }
-      .login-account {
-        line-height: 30px;
-        cursor: pointer;
-        text-align: right;
-        margin-right: 125px;
-        .text {
-          font-size: 13px;
-          text-transform: capitalize;
-          font-weight: 500;
-          margin-left: 10px;
-        }
-        @include non-desktop {
-          left: 100%;
-        }
-      }
       .search-box {
         width: 85%;
         input.form-control-lg {

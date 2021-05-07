@@ -41,6 +41,7 @@ export const signIn = async (req, res) => {
         })
 
         const userInfo = {
+            _id: user._id,
             name: user.name,
             phone: user.phone,
             avatarUrl: user.avatarUrl,

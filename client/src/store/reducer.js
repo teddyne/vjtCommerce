@@ -2,7 +2,8 @@ import {
     ADD_TO_CARTS,
     INCREASE_ITEM_QUANTITY,
     DECREASE_ITEM_QUANTITY,
-    SET_USER_INFO
+    SET_CURRENT_USER,
+    SET_LOADING
 } from '../store/action'
 
 const Reducer = (state, action) => {
@@ -10,7 +11,7 @@ const Reducer = (state, action) => {
         case ADD_TO_CARTS:
             return {
                 ...state,
-                carts: [...state.carts, action.payload]
+                carts: action.payload
             }
         case INCREASE_ITEM_QUANTITY:
                 return {
@@ -22,10 +23,15 @@ const Reducer = (state, action) => {
                 ...state,
                 itemQuantity: state.itemQuantity - 1
             }
-        case SET_USER_INFO:
+        case SET_CURRENT_USER:
             return {
                 ...state,
-                userInfo: action.payload
+                currentUser: action.payload
+            }
+        case SET_LOADING:
+            return {
+                ...state,
+                loading: action.payload
             }
         default:
             return state

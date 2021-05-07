@@ -4,7 +4,8 @@ import Reducer from './reducer'
 const initialState = {
     carts: [],
     itemQuantity: 1,
-    userInfo: null
+    loading: true,
+    currentUser: null
 }
 
 const Store = ({ children }) => {

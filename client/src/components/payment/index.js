@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SoloButton from '../../components/common/button'
@@ -7,28 +7,42 @@ import Box from '../common/box'
 import CartItem from '../../components/carts/cartItem'
 import { Context } from '../../store/store'
 import _ from 'lodash'
+import Form from 'react-bootstrap/Form'
 
 import './scss/_payment.scss'
 
 const Payment = () => {
-  const [state, dispatch] = useContext(Context)
+  const [, updateState] = useState();
+  React.useCallback(() => updateState({}), [])
+  const [state] = useContext(Context)
 
   console.log('payment carts', state.carts)
+  
     return (
     <Row className="payment">
       <Col lg={9}>
           <div className="product-list">
-          <Box>
-            {
-            _.map(state.carts, (cart) => {
-              return <CartItem key={cart._productId} cart={cart} />
-            })
-          }
-        </Box>
+            <Box>
+              {
+                _.map(state.carts, (cart) => {
+                  return <CartItem key={cart._productId} cart={cart} />
+                })
+              }
+            </Box>
           </div>
-        <Box>
-            Abc Deb
-        </Box>
+          <div className="payment-method">
+            <span>Chọn phương thức thanh toán</span>
+            <Box>
+              <Form>
+                  <div className="mb-3">
+                    <Form.Check label="Thanh toán khi nhận hàng" name="payment-method" type="radio" id={`inline-1`} />
+                    <Form.Check label="Thanh toán bằng thẻ ATM" name="payment-method" type="radio" id={`inline-2`} />
+                    <Form.Check label="Thanh toán bằng thẻ tín dụng" name="payment-method" type="radio" id={`inline-3`} />
+                    <Form.Check label="Momo" name="payment-method" type="radio" id={`inline-4`} />
+                  </div>
+              </Form>
+            </Box>
+          </div>
       </Col>
       <Col lg={3}>
         <div className='deliver-info'>

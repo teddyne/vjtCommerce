@@ -9,7 +9,7 @@ import CartService from '../../services/cart.service'
 import UserService from '../../services/user.service'
 import { COM } from '../../constants'
 import { Context } from '../../store/store'
-import { SET_USER_INFO } from '../../store/action'
+import { SET_CURRENT_USER } from '../../store/action'
 
 import './_shipping.scss'
 
@@ -116,11 +116,12 @@ const ShippingInfoModal = (props) => {
             const user = await UserService.updateShippingInfo(userId, shippingInfo)
             if (user.data) {
                 const userInfo = {
+                    _id: user.data._id,
                     name: user.data.name,
                     phone: user.data.phone,
                     shippingInfo: user.data.shippingInfo
                 }
-                dispatch({ type: SET_USER_INFO, payload: userInfo })
+                await dispatch({ type: SET_CURRENT_USER, payload: userInfo })
             }
             props.onHide()
         } catch (err) {

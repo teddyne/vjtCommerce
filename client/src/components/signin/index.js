@@ -4,7 +4,7 @@ import AuthService from '../../services/auth.service'
 import Spinner from '../common/spinner'
 import { useHistory } from 'react-router-dom'
 import { Context } from '../../store/store'
-import { SET_USER_INFO } from '../../store/action'
+import { SET_CURRENT_USER } from '../../store/action'
 
 import './_signin.scss'
 
@@ -24,7 +24,7 @@ const SignIn = () => {
       if (!resp.auth) {
         setErrorMessage(resp.reason)
       } else {
-        dispatch({ type: SET_USER_INFO, payload: resp.user })
+        await dispatch({ type: SET_CURRENT_USER, payload: resp.user })
         history.push('/')
       }
       setLoading(false)

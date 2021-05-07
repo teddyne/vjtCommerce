@@ -19,7 +19,7 @@ const ProductInfo = ({ product }) => {
 
   const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
 
-  const handleClickBuyNow = () => {
+  const handleClickBuyNow = async () => {
     setShowingAddedToast(true)
     const payload = {
       _userId: userId,

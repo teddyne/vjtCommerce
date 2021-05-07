@@ -13,6 +13,8 @@ import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
+import Profile from './profile'
+import User from './user'
 
 import './scss/_header.scss'
 
@@ -47,10 +49,7 @@ const Header = () => {
           </div>
           </Col>
           <Col lg={9}>
-            <div className="login-account">
-              <span className="text" onClick={() => handleRedirect('sign-in')}>Đăng Nhập</span>
-              <span className="text" onClick={() => handleRedirect('sign-up')}>Đăng Ký</span>
-            </div>
+            <User />
             <div className='header-col-2'>
               <div className='search-box'>
               <Form.Group>
@@ -88,6 +87,7 @@ const Header = () => {
           </Col>
         </Row>
       </Container>
+      <Profile />
     </header>
   )
 }

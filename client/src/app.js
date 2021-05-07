@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import { withContainer, withLayout } from './layouts/container'
 import ProductDetail from './components/productDetails/index'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -9,10 +9,11 @@ import SignIn from './components/signin'
 import SignUp from './components/signup'
 import Category from './components/category'
 import { CategoryConstant } from './constants'
-import PageNotFound from './layouts/pageNotFound';
-import Payment from './components/payment';
-class App extends React.Component {
-  buildPages() {
+import PageNotFound from './layouts/pageNotFound'
+import Payment from './components/payment'
+
+const App = () => {
+  const buildPages = () => {
     return [
       { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />) },
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
@@ -26,22 +27,20 @@ class App extends React.Component {
       { path: `/${CategoryConstant.Traveling}.html`, key: 'traveling', render: () => withLayout(<Category />) },
       { path: `/${CategoryConstant.Trekking}.html`, key: 'trekking', render: () => withLayout(<Category />) },
       { path: `/${CategoryConstant.OtherThings}.html`, key: 'other-things', render: () => withLayout(<Category />) },
-      { path: '/story', key: 'story', render: () => withLayout(<PageNotFound h1='TBD' h2='coming soon...' />) },
-      { path: '/blog', key: 'blog', render: () => withLayout(<PageNotFound h1='TBD' h2='coming soon...' />) },
+      { path: '/story', key: 'story', render: () => withLayout(<PageNotFound h1='TBD' h2='Coming soon...' />) },
+      { path: '/blog', key: 'blog', render: () => withLayout(<PageNotFound h1='TBD' h2='Coming soon...' />) },
       { render: () => withLayout(<PageNotFound h1='OOPS!' h2='404 - Page not found' />) }
     ]
   }
 
-  render () {
-    return (
+  return (
       <React.Fragment>
         <Router>
           <Switch>
-            { this.buildPages().map((route) => <Route {...route} /> ) }
+            { buildPages().map((route) => <Route {...route} /> ) }
           </Switch>
         </Router>
       </React.Fragment>
-     )
-  }
+    )
 }
 export default withContainer(App)
