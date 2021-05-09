@@ -1,13 +1,11 @@
 @import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
 
 .payment {
-    .product-list{
-        background-color: $color-white;
-        padding: 2%;
-    }
     .deliver-info {
         background-color: $color-white;
         padding: 5%;
+        margin-top: 17%;
         margin-bottom: 10px;
         .address-box {
             margin-bottom: 10px;
@@ -33,9 +31,59 @@
             margin-left: 10px;
             font-size: 20px;
         }
+        .order-title {
+            font-weight: bold;
+        }
+        .b-b-1 {
+            border-bottom: 1px solid $color-white-darker;
+        }
+        .row-price {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5%;
+        }
     }
     .btn-check-out {
         width: 100%;
         margin-top: 5%;
+    }
+    .payment-method {
+        input {
+            width: 1.5em;
+            height: 1.5em;
+        }
+        .form-check-label {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+    }
+    .order {
+        text-align: center;
+        .btn-order {
+            width: 30%;
+        }
+    }
+    .payment-step {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .box {
+        margin-top: 2%;
+    }
+    .total-price {
+        font-size: 23px;
+        font-weight: bold;
+        color: $color-red;
+    }
+}
+.payment-item {
+    border: 1px solid $color-white-darker;
+    @include border-radius(5);
+    margin-bottom: 10px;
+    img {
+        width: 100%;
+    }
+    .item-price {
+        font-weight: 500;
     }
 }

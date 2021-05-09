@@ -14,13 +14,14 @@ import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
 import Profile from './profile'
-import User from './user'
+import UserSection from './userSection'
 
 import './scss/_header.scss'
 
 const Header = () => {
   const history = useHistory()
   const [state] = useContext(Context)
+  const user = localStorage.user
 
   const cartNumber = localStorage.getItem('carts') ?? 0
   const [, updateState] = useState();
@@ -49,12 +50,12 @@ const Header = () => {
           </div>
           </Col>
           <Col lg={9}>
-            <User />
+            <UserSection currentUser={user} />
             <div className='header-col-2'>
               <div className='search-box'>
               <Form.Group>
                 <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua" />
-                <Button className="btn-search"><FontAwesomeIcon icon={faSearch} color={'white'} />Tìm Kiếm</Button>
+                <Button className="btn-search"><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
               </Form.Group>
               </div>
               <div onClick={() => handleRedirect('cart')} className="shopping-cart">
@@ -87,7 +88,7 @@ const Header = () => {
           </Col>
         </Row>
       </Container>
-      <Profile />
+      <Profile currentUser={user} />
     </header>
   )
 }

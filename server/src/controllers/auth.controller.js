@@ -5,8 +5,6 @@ import jwt from 'jsonwebtoken'
 
 export const signUp = async (req, res) => {
     try {
-        console.log('signup')
-        console.log('body', req.body)
         const {
             name,
             phone,
@@ -18,7 +16,6 @@ export const signUp = async (req, res) => {
             phone,
             password: hashPassword
         })
-        console.log('user', user)
         await user.save()
         res.status(201).json('Signed up successfully!')
     } catch (error) {

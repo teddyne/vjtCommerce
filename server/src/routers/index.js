@@ -48,8 +48,8 @@ const Routes = (app) => {
 
     /* Product API */
     const productApi = '/api/products'
-    router.get(productApi, [verifyToken], getProducts)
-    //router.get(productApi, getProducts)
+    //router.get(productApi, [verifyToken], getProducts)
+    router.get(productApi, getProducts)
     router.get(`${productApi}/:id`, getProductById)
     router.post(productApi, addProduct)
     router.put(`${productApi}/:id/images`, updateProductImages)

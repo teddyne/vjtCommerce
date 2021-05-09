@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { withContainer, withLayout } from './layouts/container'
 import ProductDetail from './components/productDetails/index'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'
 import Product from './components/products'
 import Cart from './components/carts'
 import Admin from './pages/admin'
@@ -11,11 +11,27 @@ import Category from './components/category'
 import { CategoryConstant } from './constants'
 import PageNotFound from './layouts/pageNotFound'
 import Payment from './components/payment'
+import { Context } from './store/store'
 
 const App = () => {
+  //const [state, dispatch] = useContext(Context)
+
+  // useEffect(() => {
+  //   setCurrentUser()
+  // })
+
+  // const setCurrentUser = ()  => {
+  //   const userLocal = localStorage.user
+  //   if (userLocal) {
+  //     const user = JSON.parse(userLocal)
+  //     console.log('app-user', user)
+  //     //dispatch({ type: SET_CURRENT_USER, payload: userInfo })
+  //   }
+  // }
+
   const buildPages = () => {
     return [
-      { exact : true, path: '/', key: 'product', render: () => withLayout(<Product />) },
+      { exact: true, path: '/', key: 'product', render: () => withLayout(<Product />) },
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
       { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
@@ -34,13 +50,13 @@ const App = () => {
   }
 
   return (
-      <React.Fragment>
-        <Router>
-          <Switch>
-            { buildPages().map((route) => <Route {...route} /> ) }
-          </Switch>
-        </Router>
-      </React.Fragment>
-    )
+    <React.Fragment>
+      <Router>
+        <Switch>
+          {buildPages().map((route) => <Route {...route} />)}
+        </Switch>
+      </Router>
+    </React.Fragment>
+  )
 }
 export default withContainer(App)

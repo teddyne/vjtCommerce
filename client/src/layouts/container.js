@@ -7,7 +7,7 @@ const withContainer = (Component) => {
 class ContainerWrapper extends React.PureComponent {
         render() {
             return (
-                    <Component />
+                <Component />
             )
         }
     }
