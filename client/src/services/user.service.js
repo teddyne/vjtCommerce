@@ -5,7 +5,10 @@ const UserService = {
         return http.get(`/users/${userId}`)
     },
     updateShippingInfo (userId, shippingInfo) {
-        return http.put(`/users/${userId}`, shippingInfo)
+        return http.put(`/users/${userId}/shipping-info`, shippingInfo)
+    },
+    updateCarts (userId, cart) {
+        return http.put(`/users/${userId}/carts`, cart)
     }
 }
 export default UserService

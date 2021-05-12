@@ -7,5 +7,9 @@
         text-align: center;
         margin: auto;
         padding: 2%;
+        span {
+            color: $color-solo-travel-shop;
+            font-weight: 500;
+        }
     }
 }

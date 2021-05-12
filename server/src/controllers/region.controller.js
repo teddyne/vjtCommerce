@@ -21,7 +21,6 @@ export const getRegions = (req, res) => {
                     label: item.name_with_type
                 }
             })
-            console.log("Region data: ", result)
             res.status(200).json(result)
         } catch(err) {
             console.log('Error parsing JSON string:', err)

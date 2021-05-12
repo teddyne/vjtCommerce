@@ -2,7 +2,10 @@ import React, { useContext, useState } from 'react'
 import SoloButton from '../common/button'
 import AuthService from '../../services/auth.service'
 import Spinner from '../common/spinner'
-import { useHistory } from 'react-router-dom'
+import {
+  useHistory,
+  useLocation
+} from 'react-router-dom'
 import { Context } from '../../store/store'
 import { SET_CURRENT_USER } from '../../store/action'
 
@@ -14,8 +17,13 @@ const SignIn = () => {
   const [password, setPassword] = useState(null)
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
+  const location  = useLocation()
 
   const [state, dispatch] = useContext(Context)
+
+  const getFromUri = (query) => {
+    return query.replace('?from=', '')
+  }
 
   const handleSignIn = async () => {
     try {
@@ -25,7 +33,7 @@ const SignIn = () => {
         setErrorMessage(resp.reason)
       } else {
         await dispatch({ type: SET_CURRENT_USER, payload: resp.user })
-        history.push('/')
+        history.push(`/${getFromUri(location.search)}`)
       }
       setLoading(false)
     } catch (error) {
@@ -41,22 +49,29 @@ const SignIn = () => {
     setPassword(event.target.value)
   }
 
+  const handleSignUpClick = () => {
+    history.push('/sign-up')
+  }
+
   return loading ? <Spinner /> :
     (
       <div className="sign-in-wrapper">
-        <div class="form-title">
-          <h5>Hi there! Vui lòng đăng nhập bạn nhé!</h5>
+        <div className="form-title">
+          <span>đăng nhập</span>
         </div>
         <div className="sign-in">
-          <div class="sign-in-form">
+          <div className="sign-in-form">
             <form>
-              <div class="form-group">
-                <input type="text" class="form-control" id="phone" placeholder="Số điện thoại" onChange={handleOnchangePhone} />
+              <div className="form-group">
+                <input type="text" className="form-control" id="phone" placeholder="Số điện thoại" onChange={handleOnchangePhone} />
               </div>
-              <div class="form-group">
-                <input type="password" class="form-control" id="password" placeholder="Mật khẩu" onChange={handleOnchangePassword} />
+              <div className="form-group">
+                <input type="password" className="form-control" id="password" placeholder="Mật khẩu" onChange={handleOnchangePassword} />
               </div>
               <SoloButton btnStyle='sweet-red btn-sign-in' text={'Đăng nhập'} onClick={handleSignIn} />
+              <div className='sign-up-redirection'>
+                Bạn mới biết <span>Solo Travel Shop</span>? <span className='text' onClick={handleSignUpClick}>Đăng ký</span>
+              </div>
             </form>
           </div>
           <h5>{errorMessage}</h5>

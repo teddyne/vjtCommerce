@@ -9,17 +9,16 @@ import CartService from '../../services/cart.service.js'
 import ShippingInfoModal from '../shipping'
 import { Context } from '../../store/store'
 import { useHistory } from 'react-router-dom'
-import { COM } from '../../constants'
 
 import './scss/_cart.scss'
 
 const Cart = () => {
   const [carts, setCarts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
-  const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
   const [showShippingModal, setShowShippingModal] = useState(false)
   const [state, dispatch] = useContext(Context)
   const history = useHistory()
+  const userId = state.currentUser?._id
 
   useEffect(() => {
     const getCarts = async (userId) => {
@@ -36,15 +35,17 @@ const Cart = () => {
   }, [userId, totalPrice])
 
   const handleOrder = () => {
-    const hasShippingInfo = () => {
-      console.log('cart userinfo', state.userInfo)
-      return state.userInfo?.shippingInfo !== null
-    }
-
-    if (!hasShippingInfo()) {
-      setShowShippingModal(true)
+    if (state.currentUser) {
+      const hasShippingInfo = () => {
+        return state.currentUser?.shippingInfo !== null
+      }
+      if (!hasShippingInfo()) {
+        setShowShippingModal(true)
+      } else {
+        history.push('/payment')
+      }
     } else {
-      history.push('/payment')
+      history.push('/sign-in?current-url=carts')
     }
   }
 

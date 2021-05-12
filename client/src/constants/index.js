@@ -17,5 +17,3 @@ export const CategoryConstant = {
     Trekking: "trekking-chay-bo",
     OtherThings: "vai-thu-khac"
 }
-
-export const COM = true

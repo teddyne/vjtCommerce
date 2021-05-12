@@ -16,5 +16,5 @@ const Store = ({ children }) => {
         </Context.Provider>
     )
 }
-export const Context = createContext(initialState)
+export const Context = createContext()
 export default Store

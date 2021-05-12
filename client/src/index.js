@@ -4,10 +4,13 @@ import App from './app';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/scss/_app.scss'
+import Store from './store/store'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Store>
+      <App key='app' />
+    </Store>
   </React.StrictMode>,
   document.getElementById('root')
 );

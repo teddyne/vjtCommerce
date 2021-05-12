@@ -2,7 +2,6 @@ import jwt from 'jsonwebtoken'
 import { secretKey } from '../config/config.js'
 
 export const verifyToken = (req, res, next) => {
-    console.log('verify', req)
     const token = req.headers['authorization']
     if (!token) {
         return res.status(403).json({

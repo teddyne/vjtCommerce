@@ -9,9 +9,6 @@ import { Context } from '../../store/store'
 
 const Product = () => {
   const [state, dispatch] = useContext(Context)
-
-  console.log('produict-datet', state.carts)
-
   const [products, setProducts] = useState([])
   const [widgets, setWidgets] = useState([])
 

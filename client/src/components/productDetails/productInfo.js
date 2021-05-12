@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import ProductStar from './productStar'
 import ProductPrice from './productPrice'
 import color from '../../assets/scss/_colors.scss'
@@ -6,9 +7,8 @@ import QuantityInput from '../common/quantityInput'
 import { Context } from '../../store/store'
 import CustomToast from '../common/customToast'
 import SoloButton from '../common/button'
-import CartService from '../../services/cart.service'
-import { COM } from '../../constants'
-import { ADD_TO_CARTS } from '../../store/action'
+import UserService from '../../services/user.service'
+import { SET_CURRENT_USER } from '../../store/action'
 import _ from 'lodash'
 
 import './scss/_productInfo.scss'
@@ -16,47 +16,24 @@ import './scss/_productInfo.scss'
 const ProductInfo = ({ product }) => {
   const [state, dispatch] = useContext(Context)
   const [showingAddedToast, setShowingAddedToast] = useState(false)
-
-  const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
+  const history = useHistory()
 
   const handleClickBuyNow = async () => {
-    setShowingAddedToast(true)
-    const payload = {
-      _userId: userId,
-      _productId: product._id,
-      name: product.name,
-      price: product.price,
-      discount: product.discount,
-      quantity: state.itemQuantity,
-      thumbnail: product.images[0]
-    }
-    dispatch({ type: ADD_TO_CARTS, payload: payload })
-    addCart(payload).then(() => {
-      console.log('carts', state.carts)
-      const currentCartNumber = localStorage.getItem('carts') ?? 0
-      localStorage.setItem('carts', parseInt(currentCartNumber) + 1)
-    })
-  }
-
-  const addCart = async (cart) => {
-    try {
-      const cartResult = await CartService.getCartByProductId(cart._productId)
-
-      if (cartResult.data.length > 0) {
-        const existedCart = _.first(cartResult.data)
-
-        const payload = {
-          _productId: existedCart._productId,
-          quantity: existedCart.quantity + state.itemQuantity
-        }
-        await CartService.updateCart(payload)
-        console.log('se', cartResult.data)
-      } else {
-        const result = await CartService.addCart(cart)
-        console.log('cart-added', result)
+    if (state.currentUser) {
+      setShowingAddedToast(true)
+      const payload = {
+        _productId: product._id,
+        name: product.name,
+        price: product.price,
+        discount: product.discount,
+        quantity: state.itemQuantity,
+        thumbnail: product.images[0]
       }
-    } catch (error) {
-      console.log(error)
+      console.log('handleClickBuyNow-payload', payload)
+      const result = await UserService.updateCarts(state.currentUser._id, payload)
+      dispatch({ type: SET_CURRENT_USER, payload: result.data })
+    } else {
+      history.push(`/sign-in?from=products/${product._id}`)
     }
   }
 

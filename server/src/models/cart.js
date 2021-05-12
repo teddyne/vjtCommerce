@@ -4,10 +4,6 @@ import { imageSchema } from './image.js'
 const Schema = mongoose.Schema
 
 export const cartSchema = Schema({
-    _userId : {
-        type: Schema.Types.ObjectId,
-        required: true
-    },
     _productId: {
         type: Schema.Types.ObjectId,
         required: true

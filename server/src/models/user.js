@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
 import { shippingInfoSchema } from './shippingInfo.js'
+import { cartSchema } from './cart.js'
 
 const Schema = mongoose.Schema
 
@@ -24,6 +25,9 @@ export const userSchema = Schema({
         enum: ['Customer', 'Admin'],
         required: true,
         default: 'Customer'
+    },
+    carts: {
+        type: [cartSchema]
     },
     shippingInfo: {
         type: shippingInfoSchema

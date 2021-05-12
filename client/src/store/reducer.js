@@ -3,16 +3,17 @@ import {
     INCREASE_ITEM_QUANTITY,
     DECREASE_ITEM_QUANTITY,
     SET_CURRENT_USER,
-    SET_LOADING
+    SET_LOADING,
+    LOG_OUT
 } from '../store/action'
 
 const Reducer = (state, action) => {
     switch (action.type) {
         case ADD_TO_CARTS:
-            return {
-                ...state,
-                carts: action.payload
-            }
+             return {
+                 ...state,
+                 carts: [...state.carts, action.payload]
+             }
         case INCREASE_ITEM_QUANTITY:
                 return {
                     ...state,
@@ -32,6 +33,11 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 loading: action.payload
+            }
+        case LOG_OUT:
+            return {
+                ...state,
+                currentUser: null
             }
         default:
             return state

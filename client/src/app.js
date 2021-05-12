@@ -12,22 +12,22 @@ import { CategoryConstant } from './constants'
 import PageNotFound from './layouts/pageNotFound'
 import Payment from './components/payment'
 import { Context } from './store/store'
+import { SET_CURRENT_USER } from './store/action'
+import ThankYou from './components/thankYou'
 
 const App = () => {
-  //const [state, dispatch] = useContext(Context)
+  const [state, dispatch] = useContext(Context)
 
-  // useEffect(() => {
-  //   setCurrentUser()
-  // })
-
-  // const setCurrentUser = ()  => {
-  //   const userLocal = localStorage.user
-  //   if (userLocal) {
-  //     const user = JSON.parse(userLocal)
-  //     console.log('app-user', user)
-  //     //dispatch({ type: SET_CURRENT_USER, payload: userInfo })
-  //   }
-  // }
+  useEffect(() => {
+    const setCurrentUser = ()  => {
+      const userLocal = localStorage.user
+      if (userLocal) {
+        const data = JSON.parse(userLocal)
+        dispatch({ type: SET_CURRENT_USER, payload: data.user })
+      }
+    }
+    setCurrentUser()
+  }, [])
 
   const buildPages = () => {
     return [
@@ -35,6 +35,7 @@ const App = () => {
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
       { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
+      { path: '/thank-you', key: 'thank-you', render: () => withLayout(<ThankYou />) },
       { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
       { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },

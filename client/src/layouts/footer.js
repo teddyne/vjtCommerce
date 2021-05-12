@@ -6,7 +6,7 @@ class Footer extends React.Component {
         return (
            <footer className="footer mt-auto">
                <div className="copyright">
-                   <p>© 2021 - Bản quyền của Solo Travel Shop</p>
+                   <p>Since 2021 - <span>Solo Travel Shop</span></p>
                </div>
            </footer>
         )

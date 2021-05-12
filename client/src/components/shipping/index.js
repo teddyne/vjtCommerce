@@ -7,7 +7,6 @@ import Select from 'react-select'
 import Emoji from '../common/emoji'
 import CartService from '../../services/cart.service'
 import UserService from '../../services/user.service'
-import { COM } from '../../constants'
 import { Context } from '../../store/store'
 import { SET_CURRENT_USER } from '../../store/action'
 
@@ -17,7 +16,6 @@ const ShippingInfoModal = (props) => {
     const [regions, setRegions] = useState([])
     const [districts, setDistricts] = useState([])
     const [wards, setWards] = useState([])
-    const userId = COM ? "6077e89d4c14a3a650fe0530" : "606fd4b8d54f8b8dbc05939d"
     const initShippingInfo = {
         phone: null,
         address: null,
@@ -29,6 +27,7 @@ const ShippingInfoModal = (props) => {
     const [state, dispatch] = useContext(Context)
 
     const [shippingInfo, setShippingInfo] = useState(initShippingInfo)
+    const userId = state.currentUser?._id
 
     useEffect(() => {
         const getRegions = async () => {
@@ -121,7 +120,7 @@ const ShippingInfoModal = (props) => {
                     phone: user.data.phone,
                     shippingInfo: user.data.shippingInfo
                 }
-                await dispatch({ type: SET_CURRENT_USER, payload: userInfo })
+                dispatch({ type: SET_CURRENT_USER, payload: userInfo })
             }
             props.onHide()
         } catch (err) {

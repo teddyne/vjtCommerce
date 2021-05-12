@@ -5,8 +5,9 @@
     .deliver-info {
         background-color: $color-white;
         padding: 5%;
-        margin-top: 17%;
+        margin-top: 14%;
         margin-bottom: 10px;
+        @include border-radius(5);
         .address-box {
             margin-bottom: 10px;
             .address-title {
@@ -24,7 +25,8 @@
     }
     .check-out {
         background-color: $color-white;
-        padding: 10%;
+        padding: 5%;
+        @include border-radius(5);
         .currency {
             color: $color-red;
             font-weight: bold;
@@ -68,7 +70,7 @@
         font-weight: bold;
     }
     .box {
-        margin-top: 2%;
+        margin-top: 1%;
     }
     .total-price {
         font-size: 23px;

@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import SoloButton from '../../components/common/button'
@@ -14,6 +15,7 @@ import './scss/_payment.scss'
 const Payment = () => {
   // const [, updateState] = useState();
   // React.useCallback(() => updateState({}), [])
+  const history = useHistory()
   const [state] = useContext(Context)
 
   console.log('payment carts', state)
@@ -44,15 +46,55 @@ const Payment = () => {
       },
       "quantity": 3,
       "price": "798000"
+    },
+    {
+      "_productId": 3,
+      "name": "Mũ bão hiểm AGV m1",
+      "thumbnail": {
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+      },
+      "quantity": 3,
+      "price": "798000"
+    },
+    {
+      "_productId": 3,
+      "name": "Mũ bão hiểm AGV m1",
+      "thumbnail": {
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+      },
+      "quantity": 3,
+      "price": "798000"
+    },
+    {
+      "_productId": 3,
+      "name": "Mũ bão hiểm AGV m1",
+      "thumbnail": {
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+      },
+      "quantity": 3,
+      "price": "798000"
+    },
+    {
+      "_productId": 3,
+      "name": "Mũ bão hiểm AGV m1",
+      "thumbnail": {
+        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
+      },
+      "quantity": 3,
+      "price": "798000"
     }
   ]
+
+  const handleOrder = () => {
+    history.push('/thank-you')
+  }
 
   return (
     <Row className="payment">
       <Col lg={9}>
         <div className="product-list">
           <span className="payment-step">1. Kiểm tra lại đơn hàng</span>
-          <Box className="payment-box">
+          <Box key='payment-box-1' className="payment-box">
             {
               _.map(carts, (cart) => {
                 return <PaymentItem key={cart._productId} cart={cart} />
@@ -62,7 +104,7 @@ const Payment = () => {
         </div>
         <div className="payment-method">
           <span className="payment-step">2. Chọn phương thức thanh toán</span>
-          <Box className="payment-box">
+          <Box key='payment-box-2' className="payment-box">
             <Form>
               <div className="mb-3">
                 <Form.Check label="Thanh toán khi nhận hàng" name="payment-method" type="radio" defaultChecked id={`inline-1`} />
@@ -74,7 +116,7 @@ const Payment = () => {
           </Box>
         </div>
         <div className="order">
-          <SoloButton btnStyle='sweet-red btn-order' text={'Đặt hàng'} />
+          <SoloButton btnStyle='sweet-red btn-order' text={'Đặt hàng'} onClick={handleOrder} />
         </div>
       </Col>
       <Col lg={3}>

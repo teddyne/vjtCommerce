@@ -42,7 +42,8 @@ export const signIn = async (req, res) => {
             name: user.name,
             phone: user.phone,
             avatarUrl: user.avatarUrl,
-            shippingInfo: user.shippingInfo
+            shippingInfo: user.shippingInfo,
+            carts: user.carts
         }
 
         res.status(200).json({ auth: true, accessToken: token, user: userInfo })

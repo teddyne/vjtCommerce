@@ -79,9 +79,7 @@ const ProductAdmin = () => {
     }
 
     const handleSave = async () => {
-        console.log('data', product)
-        const result = await ProductAdminService.addProduct(product)
-        console.log('add product', result.data)
+        await ProductAdminService.addProduct(product)
     }
 
     const handleImages = async (images) => {
@@ -117,8 +115,6 @@ const ProductAdmin = () => {
             ...prevState,
             discount: value
         }))
-
-        console.log(product)
     }
 
     const handleChangePrice = (e) => {

@@ -10,7 +10,6 @@ const MultipleUpload = (props) => {
             return URL.createObjectURL(file)
         })
         setImages(urls)
-        console.log('lmgt', e.target.files)
         props.onUpload(e.target.files)
     }
     const imgStyle = {

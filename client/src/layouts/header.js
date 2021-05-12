@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -21,17 +21,7 @@ import './scss/_header.scss'
 const Header = () => {
   const history = useHistory()
   const [state] = useContext(Context)
-  const user = localStorage.user
-
-  const cartNumber = localStorage.getItem('carts') ?? 0
-  const [, updateState] = useState();
-  React.useCallback(() => updateState({}), [])
-
-  console.log('header carts', state.carts)
-
-  useEffect(() => {
-    console.log('cartNumber', cartNumber)
-  }, [cartNumber])
+  const cartNumber = state.currentUser?.carts.length ?? 0
 
   const handleRedirect = (path) => {
     history.push(`/${path}`)
@@ -50,7 +40,7 @@ const Header = () => {
           </div>
           </Col>
           <Col lg={9}>
-            <UserSection currentUser={user} />
+            <UserSection currentUser={state.currentUser} />
             <div className='header-col-2'>
               <div className='search-box'>
               <Form.Group>
@@ -88,7 +78,7 @@ const Header = () => {
           </Col>
         </Row>
       </Container>
-      <Profile currentUser={user} />
+      <Profile currentUser={state.currentUser} />
     </header>
   )
 }

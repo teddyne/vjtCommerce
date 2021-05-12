@@ -17,17 +17,17 @@ class ContainerWrapper extends React.PureComponent {
 const withLayout = (component, isAdmin = false) => {
     return isAdmin ?
     (
-        <AdminLayout>
+        <AdminLayout>   
             {component}
         </AdminLayout>
     )
     :
     (
-        <Store>
+        //<Store>
             <DefaultLayout>
                 {component}
             </DefaultLayout>
-        </Store>
+        //</Store>
     )
 }
 
