@@ -5,10 +5,6 @@ import QuantityInput from '../common/quantityInput2'
 import { formatCurrency } from '../../helpers/stringHelper'
 
 const CartItem = ({ cart, onMinus, onAdd }) => {
-    const updateCartQuantity = () => {
-
-    }
-
     return (
         <Row className='cart-item'>
             <Col lg={2}>

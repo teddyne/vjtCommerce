@@ -28,7 +28,7 @@ export const addUser = async (req, res) => {
     try {
         await newUser.save()
         res.status(201).json(newUser)
-    } catch (ex) {
+    } catch (error) {
         res.status(409).json({ message: error.message })
     }
 }
@@ -38,7 +38,7 @@ export const getUserById = async (req, res) => {
         const user = await User.findById(req.params.id)
         res.status(200).json(user)
     } catch (err) {
-        res.status(404).json({ message: ex.message })
+        res.status(404).json({ message: err.message })
     }
 }
 
@@ -52,7 +52,7 @@ export const updateShippingInfo = async (req, res) => {
         const user = await User.findById(req.params.id)
         res.status(200).json(user)
     } catch (err) {
-        res.status(404).json({ message: ex.message })
+        res.status(404).json({ message: err.message })
     }
 }
 
@@ -70,10 +70,9 @@ export const updateCarts = async (req, res) => {
         } else {
             user.carts = req.body
         }
-        user.carts = user.carts !== null ? user.carts.concat(req.body) : req.body
         await user.save()
         res.status(200).json(user)
     } catch (err) {
-        res.status(404).json({ message: ex.message })
+        res.status(404).json({ message: err.message })
     }
 }

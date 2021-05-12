@@ -39,7 +39,7 @@ export const addCart = async (req, res) => {
         await newCart.save()
         res.status(201).json(newCart)
     } catch (ex) {
-        res.status(409).json({ message: error.message })
+        res.status(409).json({ message: ex.message })
     }
 }
 
@@ -59,7 +59,7 @@ export const updateCart = async (req, res) => {
         })
         res.status(200).json('updated successfully')
     } catch (ex) {
-        res.status(409).json({ message: error.message })
+        res.status(409).json({ message: ex.message })
     }
 }
 

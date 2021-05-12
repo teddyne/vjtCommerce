@@ -16,6 +16,6 @@ export const addCategory = async (req, res) => {
         await newCategory.save()
         res.status(201).json(newCategory)
     } catch (ex) {
-        res.status(409).json({ message: error.message })
+        res.status(409).json({ message: ex.message })
     }
 }

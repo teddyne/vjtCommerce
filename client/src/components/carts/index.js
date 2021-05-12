@@ -18,26 +18,26 @@ const Cart = () => {
   const [showShippingModal, setShowShippingModal] = useState(false)
   const [state, dispatch] = useContext(Context)
   const history = useHistory()
-  const userId = state.currentUser?._id
+  const currentUser = state.currentUser ?? {}
 
   useEffect(() => {
-    const getCarts = async (userId) => {
+    const getCarts = () => {
       try {
-        const result = await CartService.getCarts(userId)
-        setCarts(result.data)
-        const price = _.reduce(result.data, (s, { quantity, price }) => s + quantity * price, 0)
+        const data = currentUser.carts
+        setCarts(data)
+        const price = _.reduce(data, (s, { quantity, price }) => s + quantity * price, 0)
         setTotalPrice(price)
       } catch (err) {
         console.log(err)
       }
     }
-    getCarts(userId)
-  }, [userId, totalPrice])
+    getCarts()
+  }, [totalPrice])
 
   const handleOrder = () => {
     if (state.currentUser) {
       const hasShippingInfo = () => {
-        return state.currentUser?.shippingInfo !== null
+        return currentUser.shippingInfo !== null
       }
       if (!hasShippingInfo()) {
         setShowShippingModal(true)

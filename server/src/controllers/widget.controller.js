@@ -21,7 +21,7 @@ export const addWidget = async (req, res) => {
     try {
         await newWidget.save()
         res.status(201).json(newWidget)
-    } catch (ex) {
+    } catch (error) {
         res.status(409).json({ message: error.message })
     }
 }

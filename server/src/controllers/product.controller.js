@@ -54,7 +54,7 @@ export const addProduct = async (req, res) => {
         await newProduct.save()
         res.status(201).json(newProduct)
     } catch (ex) {
-        res.status(409).json({ message: error.message })
+        res.status(409).json({ message: ex.message })
     }
 }
 
@@ -68,6 +68,6 @@ export const updateProductImages = async (req, res) => {
         await product.save()
         res.status(201).json(product)
     } catch (ex) {
-        res.status(409).json({ message: error.message })
+        res.status(409).json({ message: ex.message })
     }
 }

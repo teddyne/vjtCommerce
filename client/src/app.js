@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { withContainer, withLayout } from './layouts/container'
 import ProductDetail from './components/productDetails/index'
-import { BrowserRouter as Router, Switch, Route, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom'
 import Product from './components/products'
 import Cart from './components/carts'
 import Admin from './pages/admin'
@@ -17,16 +17,18 @@ import ThankYou from './components/thankYou'
 
 const App = () => {
   const [state, dispatch] = useContext(Context)
+  const history = useHistory()
+
+  console.log('App state', state)
 
   useEffect(() => {
-    const setCurrentUser = ()  => {
+    const checkSignIn = ()  => {
       const userLocal = localStorage.user
-      if (userLocal) {
-        const data = JSON.parse(userLocal)
-        dispatch({ type: SET_CURRENT_USER, payload: data.user })
+      if (!userLocal) {
+        return <Redirect to="/sign-in" />
       }
     }
-    setCurrentUser()
+    checkSignIn()
   }, [])
 
   const buildPages = () => {

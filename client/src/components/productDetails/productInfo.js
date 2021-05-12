@@ -29,7 +29,6 @@ const ProductInfo = ({ product }) => {
         quantity: state.itemQuantity,
         thumbnail: product.images[0]
       }
-      console.log('handleClickBuyNow-payload', payload)
       const result = await UserService.updateCarts(state.currentUser._id, payload)
       dispatch({ type: SET_CURRENT_USER, payload: result.data })
     } else {
