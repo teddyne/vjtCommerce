@@ -8,6 +8,7 @@ import './scss/_thankYou.scss'
 
 const ThankYou = () => {
     const history = useHistory()
+
     const handleBackHome = () => {
         history.push('/')
     }

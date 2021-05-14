@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { useParams } from 'react-router-dom'
@@ -9,21 +9,26 @@ import ProductDescription from './productDescription'
 import Review from './review'
 import SimilarProduct from '../products/similarProduct'
 import ProductService from '../../services/product.service'
+import { Context } from '../../store/store'
+import { SET_LOADING } from '../../store/action'
 
 import './scss/_productDetail.scss'
 
 function ProductDetail() {
   let { productId } = useParams()
   const [product, setProduct] = useState({})
+  const [, dispatch] = useContext(Context)
 
   useEffect(() => {
     const getProduct = async () => {
+      dispatch({ type: SET_LOADING, payload: true })
       try {
         const product = await ProductService.getProductById(productId)
         setProduct(product.data)
       } catch (ex) {
         console.log(ex)
       }
+      dispatch({ type: SET_LOADING, payload: false })
     }
     getProduct()
   }, [productId])

@@ -1,43 +1,49 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { withContainer } from '../../layouts/container'
 import _ from 'lodash'
 import CartItem from './cartItem'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { formatCurrency } from '../../helpers/stringHelper'
 import SoloButton from '../common/button'
-import CartService from '../../services/cart.service.js'
+import UserService from '../../services/user.service.js'
 import ShippingInfoModal from '../shipping'
 import { Context } from '../../store/store'
 import { useHistory } from 'react-router-dom'
+import noCarts from '../../assets/images/no-carts.png'
+import Box from '../common/box'
+import { SET_LOADING } from '../../store/action'
 
 import './scss/_cart.scss'
 
-const Cart = () => {
+const Cart = (props) => {
   const [carts, setCarts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [showShippingModal, setShowShippingModal] = useState(false)
   const [state, dispatch] = useContext(Context)
   const history = useHistory()
-  const currentUser = state.currentUser ?? {}
+  const totalItem = props.currentUser.carts.length
 
   useEffect(() => {
-    const getCarts = () => {
+    const getCarts = async () => {
+      dispatch({ type: SET_LOADING, payload: true })
       try {
-        const data = currentUser.carts
-        setCarts(data)
-        const price = _.reduce(data, (s, { quantity, price }) => s + quantity * price, 0)
+        const result = await UserService.getCarts(props.currentUser._id)
+        setCarts(result.data)
+        const price = _.reduce(result.data, (s, { quantity, price }) => s + quantity * price, 0)
         setTotalPrice(price)
       } catch (err) {
         console.log(err)
       }
+      dispatch({ type: SET_LOADING, payload: false })
     }
     getCarts()
-  }, [totalPrice])
+  }, [totalItem])
 
   const handleOrder = () => {
-    if (state.currentUser) {
+    if (props.currentUser) {
       const hasShippingInfo = () => {
-        return currentUser.shippingInfo !== null
+        return props.currentUser.shippingInfo !== null
       }
       if (!hasShippingInfo()) {
         setShowShippingModal(true)
@@ -45,36 +51,45 @@ const Cart = () => {
         history.push('/payment')
       }
     } else {
-      history.push('/sign-in?current-url=carts')
+      history.push('/sign-in?from=carts')
     }
   }
 
-  const handleChangeQuantity = (cart, type) => {
-    updateQuantity(cart, type)
+  const handleChangeQuantity = async (cart, type) => {
+    await updateQuantity(cart, type)
     setTotalPrice(totalPrice + (type === 'minus' ? -cart.price : cart.price))
   }
 
   const updateQuantity = async (cart, type) => {
     try {
       const payload = {
-        _productId: cart._productId,
         quantity: cart.quantity + (type === 'minus' ? -1 : 1)
       }
-      await CartService.updateCart(payload)
+      await UserService.updateCartQuantity(props.currentUser._id, cart._id, payload)
     } catch(err) {
       console.log(err)
     }
   }
 
-  return (
+  const handleBackHome = () => {
+    history.push('/')
+  }
+
+  return _.isEmpty(carts) ?
+  <Box>
+    <div className='no-carts'>
+      <img src={noCarts} alt={'No carts'} />
+      <div className="no-carts-text">Không có sản phẩm nào trong giỏ hàng!</div>
+       <SoloButton btnStyle='sweet-red' text={'Tiếp tục mua hàng'} onClick={handleBackHome} />
+    </div>
+  </Box> 
+  :
     <Row className='cart'>
       <Col lg={9}>
         <div className='cart-list'>
-          {
-            _.map(carts, (cart) => {
-              return <CartItem key={cart._productId} cart={cart} onMinus={() => handleChangeQuantity(cart, 'minus')} onAdd={() => handleChangeQuantity(cart, 'add')} />
-            })
-          }
+          {_.map(carts, (cart) => {
+            return <CartItem key={cart._productId} cart={cart} onMinus={() => handleChangeQuantity(cart, 'minus')} onAdd={() => handleChangeQuantity(cart, 'add')} />
+          })}
         </div>
       </Col>
       <Col lg={3}>
@@ -98,6 +113,5 @@ const Cart = () => {
           onHide={() => setShowShippingModal(false)} />
       </Col>
     </Row>
-  )
 }
-export default Cart
+export default withContainer(Cart)

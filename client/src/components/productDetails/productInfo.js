@@ -31,8 +31,17 @@ const ProductInfo = ({ product }) => {
       }
       const result = await UserService.updateCarts(state.currentUser._id, payload)
       dispatch({ type: SET_CURRENT_USER, payload: result.data })
+      updateUserLocalStorage(result.data.carts)
     } else {
       history.push(`/sign-in?from=products/${product._id}`)
+    }
+  }
+
+  const updateUserLocalStorage = (carts) => {
+    const data = JSON.parse(localStorage.getItem('user'))
+    if (data && data.user) {
+      data.user.carts = carts
+      localStorage.setItem('user', JSON.stringify(data))
     }
   }
 

@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react'
 import SoloButton from '../common/button'
 import AuthService from '../../services/auth.service'
-import Spinner from '../common/spinner'
 import {
   useHistory,
   useLocation
 } from 'react-router-dom'
 import { Context } from '../../store/store'
-import { SET_CURRENT_USER } from '../../store/action'
+import {
+  SET_CURRENT_USER,
+  SET_LOADING
+} from '../../store/action'
 
 import './_signin.scss'
 
@@ -15,19 +17,18 @@ const SignIn = () => {
   const history = useHistory()
   const [phone, setPhone] = useState(null)
   const [password, setPassword] = useState(null)
-  const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState(null)
   const location  = useLocation()
 
-  const [state, dispatch] = useContext(Context)
+  const [, dispatch] = useContext(Context)
 
   const getFromUri = (query) => {
     return query.replace('?from=', '')
   }
 
   const handleSignIn = async () => {
+    dispatch({ type: SET_LOADING, payload: true })
     try {
-      setLoading(true)
       const resp = await AuthService.signIn(phone, password)
       if (!resp.auth) {
         setErrorMessage(resp.reason)
@@ -35,10 +36,10 @@ const SignIn = () => {
         await dispatch({ type: SET_CURRENT_USER, payload: resp.user })
         history.push(`/${getFromUri(location.search)}`)
       }
-      setLoading(false)
     } catch (error) {
       console.log(error)
     }
+    dispatch({ type: SET_LOADING, payload: false })
   }
 
   const handleOnchangePhone = (event) => {
@@ -53,8 +54,7 @@ const SignIn = () => {
     history.push('/sign-up')
   }
 
-  return loading ? <Spinner /> :
-    (
+  return (
       <div className="sign-in-wrapper">
         <div className="form-title">
           <span>đăng nhập</span>

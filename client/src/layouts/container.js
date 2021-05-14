@@ -4,12 +4,10 @@ import Store from '../store/store'
 import AdminLayout from './adminLayout'
 
 const withContainer = (Component) => {
-class ContainerWrapper extends React.PureComponent {
-        render() {
-            return (
-                <Component />
-            )
-        }
+    const ContainerWrapper = (props) => {
+        const userLs = localStorage.user
+        const currentUser = userLs ? JSON.parse(userLs).user : null
+        return <Component {...props} currentUser={currentUser} />
     }
     return ContainerWrapper
 }
@@ -17,7 +15,7 @@ class ContainerWrapper extends React.PureComponent {
 const withLayout = (component, isAdmin = false) => {
     return isAdmin ?
     (
-        <AdminLayout>   
+        <AdminLayout>
             {component}
         </AdminLayout>
     )

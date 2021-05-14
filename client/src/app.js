@@ -16,16 +16,16 @@ import { SET_CURRENT_USER } from './store/action'
 import ThankYou from './components/thankYou'
 
 const App = () => {
-  const [state, dispatch] = useContext(Context)
-  const history = useHistory()
-
-  console.log('App state', state)
+  const [,dispatch] = useContext(Context)
 
   useEffect(() => {
     const checkSignIn = ()  => {
-      const userLocal = localStorage.user
-      if (!userLocal) {
-        return <Redirect to="/sign-in" />
+      const localUser = localStorage.user
+      if (localUser) {
+        const data = JSON.parse(localUser)
+        if (data && data.user) {
+          dispatch({ type: SET_CURRENT_USER, payload: data.user })
+        }
       }
     }
     checkSignIn()

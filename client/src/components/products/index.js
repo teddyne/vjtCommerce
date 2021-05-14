@@ -6,6 +6,7 @@ import SideBar from '../../layouts/sideBar'
 import Slider from '../../layouts/slider'
 import ProductService from '../../services/product.service'
 import { Context } from '../../store/store'
+import { SET_LOADING } from '../../store/action'
 
 const Product = () => {
   const [state, dispatch] = useContext(Context)
@@ -14,19 +15,21 @@ const Product = () => {
 
   useEffect(() => {
     const getProducts = async () => {
+      dispatch({ type: SET_LOADING, payload: true })
       try {
         const result = await ProductService.getProducts()
         setProducts(result.data)
       } catch (ex) {
         console.log(ex)
       }
+      dispatch({ type: SET_LOADING, payload: false })
     }
     
     const getWidgets = async () => {
       try {
         const result = await ProductService.getWidgets()
         setWidgets(result.data)
-      } catch(ex) {
+      } catch (ex) {
         console.log(ex)
       }
     }

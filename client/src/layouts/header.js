@@ -1,4 +1,6 @@
 import React, { useContext } from 'react'
+import { withContainer } from './container'
+import _ from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -21,7 +23,10 @@ import './scss/_header.scss'
 const Header = () => {
   const history = useHistory()
   const [state] = useContext(Context)
-  const cartNumber = state.currentUser?.carts.length ?? 0
+
+  const getQuantity = () => {
+    return _.reduce(state.currentUser?.carts, (s, { quantity }) => s + quantity, 0)
+  }
 
   const handleRedirect = (path) => {
     history.push(`/${path}`)
@@ -50,8 +55,8 @@ const Header = () => {
               </div>
               <div onClick={() => handleRedirect('cart')} className="shopping-cart">
                 <img src={ShoppingCart} alt="Shopping cart" />
-                <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
-                  <span className="qty-text">{cartNumber}</span>
+                <span className={getQuantity() >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
+                  <span className="qty-text">{getQuantity()}</span>
                 </span>
               </div>
             </div>
