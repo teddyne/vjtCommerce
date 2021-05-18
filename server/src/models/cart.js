@@ -19,6 +19,9 @@ export const cartSchema = Schema({
     discount: {
         type: Number
     },
+    discountedPrice: {
+        type: Number
+    },
     quantity: {
         type: Number,
         required: true

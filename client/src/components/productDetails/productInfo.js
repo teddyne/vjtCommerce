@@ -26,6 +26,7 @@ const ProductInfo = ({ product }) => {
         name: product.name,
         price: product.price,
         discount: product.discount,
+        discountedPrice: product.price - ((product.price * product.discount) / 100),
         quantity: state.itemQuantity,
         thumbnail: product.images[0]
       }

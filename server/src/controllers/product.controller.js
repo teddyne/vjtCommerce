@@ -37,7 +37,7 @@ export const addProduct = async (req, res) => {
         images,
         widgets
     } = req.body
-    const discountPrice = price - ((price * discount) / 100)
+    const discountedPrice = price - ((price * discount) / 100)
     const newProduct = new Product(
         { 
             name,
@@ -45,7 +45,7 @@ export const addProduct = async (req, res) => {
             description,
             price,
             discount,
-            discountPrice,
+            discountedPrice,
             categories,
             images,
             widgets

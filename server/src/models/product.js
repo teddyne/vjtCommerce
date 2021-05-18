@@ -24,7 +24,7 @@ const productSchema = Schema({
     discount: {
         type: Number
     },
-    discountPrice: {
+    discountedPrice: {
         type: Number
     },
     categories: {

@@ -12,7 +12,7 @@ const ProductItem = ({ product, onProductItemClick }) => {
       <div className="product-info">
         <p>{product.name}</p>
         <div className="product-price">
-          <span>{formatCurrency(product.price)}</span>
+          <span>{formatCurrency(product.discountedPrice ?? 9000000)}</span>
           <span className='discount'>-{product.discount}%</span>
         </div>
       </div>

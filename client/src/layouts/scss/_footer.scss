@@ -3,13 +3,14 @@
 
 .footer {
     background: $color-white;
+    font-weight: 500;
     .copyright {
         text-align: center;
         margin: auto;
         padding: 2%;
         span {
             color: $color-solo-travel-shop;
-            font-weight: 500;
+            cursor: pointer;
         }
     }
 }

@@ -12,7 +12,7 @@ import { Context } from '../../store/store'
 import { useHistory } from 'react-router-dom'
 import noCarts from '../../assets/images/no-carts.png'
 import Box from '../common/box'
-import { SET_LOADING } from '../../store/action'
+import { SET_LOADING, SET_CURRENT_USER } from '../../store/action'
 
 import './scss/_cart.scss'
 
@@ -20,7 +20,7 @@ const Cart = (props) => {
   const [carts, setCarts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [showShippingModal, setShowShippingModal] = useState(false)
-  const [state, dispatch] = useContext(Context)
+  const [, dispatch] = useContext(Context)
   const history = useHistory()
   const totalItem = props.currentUser.carts.length
 
@@ -30,7 +30,7 @@ const Cart = (props) => {
       try {
         const result = await UserService.getCarts(props.currentUser._id)
         setCarts(result.data)
-        const price = _.reduce(result.data, (s, { quantity, price }) => s + quantity * price, 0)
+        const price = _.reduce(result.data, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
         setTotalPrice(price)
       } catch (err) {
         console.log(err)
@@ -56,8 +56,11 @@ const Cart = (props) => {
   }
 
   const handleChangeQuantity = async (cart, type) => {
-    await updateQuantity(cart, type)
+    const user = await updateQuantity(cart, type)
+    dispatch({ type: SET_CURRENT_USER, payload: user })
+    setCarts(user.carts)
     setTotalPrice(totalPrice + (type === 'minus' ? -cart.price : cart.price))
+    updateUserLocalStorage(user.carts)
   }
 
   const updateQuantity = async (cart, type) => {
@@ -65,7 +68,8 @@ const Cart = (props) => {
       const payload = {
         quantity: cart.quantity + (type === 'minus' ? -1 : 1)
       }
-      await UserService.updateCartQuantity(props.currentUser._id, cart._id, payload)
+      const result = await UserService.updateCartQuantity(props.currentUser._id, cart._id, payload)
+      return result.data
     } catch(err) {
       console.log(err)
     }
@@ -73,6 +77,14 @@ const Cart = (props) => {
 
   const handleBackHome = () => {
     history.push('/')
+  }
+
+  const updateUserLocalStorage = (carts) => {
+    const data = JSON.parse(localStorage.getItem('user'))
+    if (data && data.user) {
+      data.user.carts = carts
+      localStorage.setItem('user', JSON.stringify(data))
+    }
   }
 
   return _.isEmpty(carts) ?
