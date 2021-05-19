@@ -3,15 +3,16 @@
     "6055e3e9dc211528bcb95071",
     "6055e500dc211528bcb95072"
   ],
-  "name": "Mũ bảo hiểm Royal Never Give Up",
-  "slug": "mu-bao-hiem-royal-never-give-up",
+  "name": "Mũ bảo hiểm Royal Never Give Up 1",
+  "slug": "mu-bao-hiem-royal-never-give-up-1",
   "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   "price": 5400000,
   "discount": 24,
+  "discountedPrice": 4104000,
   "categories": [
     {
-      "name": "Mũ bảo hiểm",
-      "slug": "mu-bao-hiem"
+      "name": "Leo núi",
+      "slug": "leo-nui"
     }
   ],
   "images": [

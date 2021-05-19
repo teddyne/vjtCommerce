@@ -43,6 +43,9 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 5%;
+            .price {
+                font-weight: 500;
+            }
         }
     }
     .btn-check-out {
@@ -87,5 +90,13 @@
     }
     .item-price {
         font-weight: 500;
+    }
+    .product-name {
+        font-weight: 400;
+    }
+    .item-quantity {
+        span {
+            font-weight: 500;
+        }
     }
 }

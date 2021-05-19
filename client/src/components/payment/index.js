@@ -9,81 +9,16 @@ import PaymentItem from './paymentItem'
 import { Context } from '../../store/store'
 import _ from 'lodash'
 import Form from 'react-bootstrap/Form'
+import ShippingInfoModal from '../shipping'
 
 import './scss/_payment.scss'
 
 const Payment = () => {
-  // const [, updateState] = useState();
-  // React.useCallback(() => updateState({}), [])
   const history = useHistory()
   const [state] = useContext(Context)
-
-  console.log('payment carts', state)
-  const carts = [
-    {
-      "_productId": 1,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 2,
-      "price": "798000"
-    },
-    {
-      "_productId": 2,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 1,
-      "price": "798000"
-    },
-    {
-      "_productId": 3,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 3,
-      "price": "798000"
-    },
-    {
-      "_productId": 3,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 3,
-      "price": "798000"
-    },
-    {
-      "_productId": 3,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 3,
-      "price": "798000"
-    },
-    {
-      "_productId": 3,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 3,
-      "price": "798000"
-    },
-    {
-      "_productId": 3,
-      "name": "Mũ bão hiểm AGV m1",
-      "thumbnail": {
-        "thumbnailUrl": "https://salt.tikicdn.com/cache/280x280/ts/product/e8/b9/3d/12b0ba8a1d6129e1a8497a2653e1e8fb.jpg",
-      },
-      "quantity": 3,
-      "price": "798000"
-    }
-  ]
+  const carts = state.currentUser?.carts
+  const tempPrice = _.reduce(carts, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
+  const [showShippingModal, setShowShippingModal] = useState(false)
 
   const handleOrder = () => {
     history.push('/thank-you')
@@ -96,7 +31,7 @@ const Payment = () => {
           <span className="payment-step">1. Kiểm tra lại đơn hàng</span>
           <Box key='payment-box-1' className="payment-box">
             {
-              _.map(carts, (cart) => {
+              _.map(state.currentUser?.carts, (cart) => {
                 return <PaymentItem key={cart._productId} cart={cart} />
               })
             }
@@ -123,7 +58,7 @@ const Payment = () => {
         <div className='deliver-info'>
           <div className='address-box'>
             <span className='address-title'>Địa chỉ nhận hàng</span>
-            <span><a href='#'>Thay đổi</a></span>
+            <span><a onClick={() => setShowShippingModal(true)}>Thay đổi</a></span>
           </div>
           <div className='customer-info'>
             <span>Nguyễn Hoàng Vũ</span>
@@ -135,18 +70,21 @@ const Payment = () => {
           <div className="order-title b-b-1">Đơn hàng</div>
           <div className="row-price">
             <div className="title">Tạm tính:</div>
-            <div className="price">{formatCurrency(123)}</div>
+            <div className="price">{formatCurrency(tempPrice)}</div>
           </div>
           <div className="row-price b-b-1">
             <div className="title">Phí vận chuyển:</div>
-            <div className="price">{formatCurrency(123)}</div>
+            <div className="price">{formatCurrency(15000)}</div>
           </div>
           <div className="row-price">
             <div className="title">Thành tiền:</div>
-            <div className="price total-price">{formatCurrency(10000000)}</div>
+            <div className="price total-price">{formatCurrency(tempPrice + 15000)}</div>
           </div>
         </div>
       </Col>
+      <ShippingInfoModal
+          show={showShippingModal}
+          onHide={() => setShowShippingModal(false)} />
     </Row>
   )
 }

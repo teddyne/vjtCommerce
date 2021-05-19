@@ -18,7 +18,7 @@ const PaymentItem = ({ cart }) => {
                 </div>
             </Col>
             <Col lg={2}>
-                <div className='item-price'>{formatCurrency(cart.price)}</div>
+                <div className='item-price'>{formatCurrency(cart.discountedPrice * cart.quantity)}</div>
             </Col>
         </Row>
     )
