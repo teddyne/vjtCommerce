@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -9,7 +9,8 @@ import PaymentItem from './paymentItem'
 import { Context } from '../../store/store'
 import _ from 'lodash'
 import Form from 'react-bootstrap/Form'
-import ShippingInfoModal from '../shipping'
+import NoItem from '../common/noItem'
+import ShippingInfo from '../common/shipping/info'
 
 import './scss/_payment.scss'
 
@@ -18,13 +19,12 @@ const Payment = () => {
   const [state] = useContext(Context)
   const carts = state.currentUser?.carts
   const tempPrice = _.reduce(carts, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
-  const [showShippingModal, setShowShippingModal] = useState(false)
 
   const handleOrder = () => {
     history.push('/thank-you')
   }
 
-  return (
+  return _.isEmpty(state.currentUser?.carts) ? <NoItem /> : (
     <Row className="payment">
       <Col lg={9}>
         <div className="product-list">
@@ -39,13 +39,18 @@ const Payment = () => {
         </div>
         <div className="payment-method">
           <span className="payment-step">2. Chọn phương thức thanh toán</span>
-          <Box key='payment-box-2' className="payment-box">
+          <Box key='payment-box-2'>
             <Form>
               <div className="mb-3">
                 <Form.Check label="Thanh toán khi nhận hàng" name="payment-method" type="radio" defaultChecked id={`inline-1`} />
-                <Form.Check label="Thanh toán bằng thẻ ATM" name="payment-method" type="radio" id={`inline-2`} />
-                <Form.Check label="Thanh toán bằng thẻ tín dụng" name="payment-method" type="radio" id={`inline-3`} />
-                <Form.Check label="Momo" name="payment-method" type="radio" id={`inline-4`} />
+                <div className='pay-by'>
+                  <Form.Check label="Thanh toán bằng thẻ ATM" name="payment-method" type="radio" id={`inline-2`} />
+                  <span className="discount">Freeship</span>
+                </div>
+                <div className='pay-by'>
+                  <Form.Check label="Momo" name="payment-method" type="radio" id={`inline-3`} />
+                  <span className="discount">-{formatCurrency(10000)}</span>
+                </div>
               </div>
             </Form>
           </Box>
@@ -55,17 +60,7 @@ const Payment = () => {
         </div>
       </Col>
       <Col lg={3}>
-        <div className='deliver-info'>
-          <div className='address-box'>
-            <span className='address-title'>Địa chỉ nhận hàng</span>
-            <span><a onClick={() => setShowShippingModal(true)}>Thay đổi</a></span>
-          </div>
-          <div className='customer-info'>
-            <span>Nguyễn Hoàng Vũ</span>
-            <span>0367242358</span>
-          </div>
-          <div className='address-info'>40A đường Lam Sơn, Phường 02, Quận Tân Bình, Hồ Chí Minh</div>
-        </div>
+        <ShippingInfo shippingInfo={state.currentUser?.shippingInfo} />
         <div className="check-out">
           <div className="order-title b-b-1">Đơn hàng</div>
           <div className="row-price">
@@ -82,9 +77,6 @@ const Payment = () => {
           </div>
         </div>
       </Col>
-      <ShippingInfoModal
-          show={showShippingModal}
-          onHide={() => setShowShippingModal(false)} />
     </Row>
   )
 }

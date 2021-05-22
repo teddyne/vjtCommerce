@@ -6,25 +6,6 @@
         background-color: $color-white;
         padding: 2%;
     }
-    .deliver-info {
-        background-color: $color-white;
-        padding: 5%;
-        margin-bottom: 10px;
-        .address-box {
-            margin-bottom: 10px;
-            .address-title {
-                font-weight: bold;
-                margin-right: 10px;
-            }
-        }
-        .customer-info {
-            margin-bottom: 5px;
-            span {
-                margin-right: 10px;
-                font-weight: 500;
-            }
-        }
-    }
     .check-out {
         background-color: $color-white;
         padding: 10%;
@@ -62,12 +43,5 @@
         .original-price {
             text-decoration: line-through;
         }
-    }
-}
-.no-carts {
-    text-align: center;
-    .no-carts-text {
-        font-weight: 400;
-        font-size: 20px;
     }
 }

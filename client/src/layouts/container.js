@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import DefaultLayout from './defaultLayout'
-import Store from '../store/store'
+import { Context } from '../store/store'
 import AdminLayout from './adminLayout'
 
 const withContainer = (Component) => {
     const ContainerWrapper = (props) => {
-        const userLs = localStorage.user
+        const [state, dispatch] = useContext(Context)
+        const userLs = localStorage.getItem('user')
         const currentUser = userLs ? JSON.parse(userLs).user : null
+        //console.log('withContainer - user', state.currentUser)
+        //console.log('withContainer - userLs', userLs)
+        console.log('render')
         return <Component {...props} currentUser={currentUser} />
     }
     return ContainerWrapper

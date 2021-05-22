@@ -9,6 +9,7 @@ import CustomToast from '../common/customToast'
 import SoloButton from '../common/button'
 import UserService from '../../services/user.service'
 import { SET_CURRENT_USER } from '../../store/action'
+import { updateLocalStorage } from '../../helpers/commonHelper'
 import _ from 'lodash'
 
 import './scss/_productInfo.scss'
@@ -31,18 +32,10 @@ const ProductInfo = ({ product }) => {
         thumbnail: product.images[0]
       }
       const result = await UserService.updateCarts(state.currentUser._id, payload)
+      updateLocalStorage(result.data.carts, 'cart')
       dispatch({ type: SET_CURRENT_USER, payload: result.data })
-      updateUserLocalStorage(result.data.carts)
     } else {
       history.push(`/sign-in?from=products/${product._id}`)
-    }
-  }
-
-  const updateUserLocalStorage = (carts) => {
-    const data = JSON.parse(localStorage.getItem('user'))
-    if (data && data.user) {
-      data.user.carts = carts
-      localStorage.setItem('user', JSON.stringify(data))
     }
   }
 

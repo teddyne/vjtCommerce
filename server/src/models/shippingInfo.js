@@ -3,6 +3,10 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 export const shippingInfoSchema = Schema({
+    name: {
+        type: String,
+        required: true
+    },
     phone: {
         type: String,
         required: true

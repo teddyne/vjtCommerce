@@ -2,26 +2,8 @@
 @import '../../../assets/scss/variables';
 
 .payment {
-    .deliver-info {
-        background-color: $color-white;
-        padding: 5%;
+    .shipping-info {
         margin-top: 14%;
-        margin-bottom: 10px;
-        @include border-radius(5);
-        .address-box {
-            margin-bottom: 10px;
-            .address-title {
-                font-weight: bold;
-                margin-right: 10px;
-            }
-        }
-        .customer-info {
-            margin-bottom: 5px;
-            span {
-                margin-right: 10px;
-                font-weight: 500;
-            }
-        }
     }
     .check-out {
         background-color: $color-white;
@@ -60,6 +42,21 @@
         .form-check-label {
             margin-left: 20px;
             margin-bottom: 20px;
+        }
+        .box {
+            .pay-by {
+                display: flex;
+            }
+            .discount {
+                height: 22px;
+                background: $color-red;
+                color: $color-white;
+                @include border-radius(3);
+                margin-left: 10px;
+                font-size: 12px;
+                padding: 2px;
+                font-weight: 500;
+            }
         }
     }
     .order {

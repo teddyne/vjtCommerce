@@ -62,4 +62,4 @@ const App = () => {
     </React.Fragment>
   )
 }
-export default withContainer(App)
+export default App
