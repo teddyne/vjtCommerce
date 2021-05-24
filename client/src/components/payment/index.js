@@ -7,17 +7,20 @@ import { formatCurrency } from '../../helpers/stringHelper'
 import Box from '../common/box'
 import PaymentItem from './paymentItem'
 import { Context } from '../../store/store'
+import { SET_LOADING, SET_CURRENT_USER } from '../../store/action'
 import _ from 'lodash'
 import Form from 'react-bootstrap/Form'
 import NoItem from '../common/noItem'
 import ShippingInfo from '../common/shipping/info'
 import OrderService from '../../services/order.service'
+import UserService from '../../services/user.service'
+import { updateLocalStorage } from '../../helpers/commonHelper'
 
 import './scss/_payment.scss'
 
 const Payment = () => {
   const history = useHistory()
-  const [state] = useContext(Context)
+  const [state, dispatch] = useContext(Context)
   const currentUser = state.currentUser
   const carts = state.currentUser?.carts
   const tempPrice = _.reduce(carts, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
@@ -25,10 +28,19 @@ const Payment = () => {
   const [paymentMethod, setPaymentMethod] = useState('COD')
   const [shippingFee, setShippingFee] = useState(19000)
 
-  const handleOrder = () => {
-    const order = createOrder()
-    console.log('order', order)
-    history.push('/thank-you')
+  const handleOrder = async () => {
+    dispatch({ type: SET_LOADING, payload: true })
+    try {
+      const order = await createOrder()
+      console.log('order', order)
+      const result = await UserService.deleteAllCarts(state.currentUser._id)
+      updateLocalStorage(null, 'cart')
+      dispatch({ type: SET_CURRENT_USER, payload: result.data })
+      history.push('/confirm-order')
+    } catch (error) {
+      console.log(error)
+    }
+    dispatch({ type: SET_LOADING, payload: false })
   }
 
   const createOrder = async () => {

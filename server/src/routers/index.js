@@ -34,7 +34,8 @@ import {
     getCartsByUserId,
     updateCarts,
     updateCartQuantity,
-    deleteCart
+    deleteCart,
+    deleteAllCarts
 } from '../controllers/user.controller.js'
 import {
     getRegions
@@ -92,6 +93,7 @@ const Routes = (app) => {
     router.put(`${userApi}/:id/carts`, updateCarts)
     router.put(`${userApi}/:id/carts/:cartId`, updateCartQuantity)
     router.delete(`${userApi}/:id/carts/:cartId`, deleteCart)
+    router.delete(`${userApi}/:id/carts`, deleteAllCarts)
 
     /* Region API */
     router.get('/api/regions', getRegions)

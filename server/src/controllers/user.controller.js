@@ -119,3 +119,16 @@ export const deleteCart = async (req, res) => {
         res.status(404).json({ message: err.message })
     }
 }
+
+export const deleteAllCarts = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (user.carts) {
+            user.carts = null
+        }
+        await user.save()
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(404).json({ message: err.message })
+    }
+}

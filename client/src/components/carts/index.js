@@ -23,7 +23,7 @@ const Cart = ({ currentUser }) => {
   const [showShippingModal, setShowShippingModal] = useState(false)
   const [state, dispatch] = useContext(Context)
   const history = useHistory()
-  const totalItem = currentUser?.carts.length
+  const totalItem = currentUser?.carts?.length
 
   useEffect(() => {
     const getCarts = async () => {

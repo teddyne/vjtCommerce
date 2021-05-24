@@ -18,6 +18,9 @@ const UserService = {
     },
     deleteCart (userId, cartId) {
         return http.delete(`/users/${userId}/carts/${cartId}`)
+    },
+    deleteAllCarts (userId) {
+        return http.delete(`/users/${userId}/carts`)
     }
 }
 export default UserService
