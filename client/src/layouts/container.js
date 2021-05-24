@@ -5,13 +5,13 @@ import AdminLayout from './adminLayout'
 
 const withContainer = (Component) => {
     const ContainerWrapper = (props) => {
-        const [state, dispatch] = useContext(Context)
-        const userLs = localStorage.getItem('user')
-        const currentUser = userLs ? JSON.parse(userLs).user : null
+        const [state,] = useContext(Context)
+        //const userLs = localStorage.getItem('user')
+        //const currentUser = userLs ? JSON.parse(userLs).user : null
         //console.log('withContainer - user', state.currentUser)
         //console.log('withContainer - userLs', userLs)
-        console.log('render')
-        return <Component {...props} currentUser={currentUser} />
+        //console.log('render')
+        return <Component {...props} currentUser={state.currentUser} />
     }
     return ContainerWrapper
 }

@@ -13,7 +13,7 @@ import PageNotFound from './layouts/pageNotFound'
 import Payment from './components/payment'
 import { Context } from './store/store'
 import { SET_CURRENT_USER } from './store/action'
-import ThankYou from './components/thankYou'
+import ConfirmOrder from './components/confirmOrder'
 
 const App = () => {
   const [,dispatch] = useContext(Context)
@@ -37,7 +37,7 @@ const App = () => {
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
       { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
-      { path: '/thank-you', key: 'thank-you', render: () => withLayout(<ThankYou />) },
+      { path: '/confirm-order', key: 'confirm-order', render: () => withLayout(<ConfirmOrder />) },
       { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
       { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },

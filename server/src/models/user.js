@@ -11,6 +11,7 @@ export const userSchema = Schema({
     },
     phone: {
         type: String,
+        unique: true,
         required: true
     },
     password: {
@@ -23,7 +24,6 @@ export const userSchema = Schema({
     role: {
         type: String,
         enum: ['Customer', 'Admin'],
-        required: true,
         default: 'Customer'
     },
     carts: {

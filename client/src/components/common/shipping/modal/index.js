@@ -60,7 +60,7 @@ const ShippingInfoModal = (props) => {
             }
         }
         getUserById(userId)
-    }, [])
+    }, [userId])
 
     const handleChangeRegions = async (event) => {
         getWardsOrDistricts('districts', event.value)

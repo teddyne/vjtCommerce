@@ -5,7 +5,7 @@ import ShippingInfoModal from '../modal'
 
 import './_shippingEdit.scss'
 
-const ShippingEdit = ({ show }) => {
+const ShippingEdit = () => {
     const [showShippingModal, setShowShippingModal] = useState(false)
 
     const handleClickChange = () => {
@@ -18,7 +18,7 @@ const ShippingEdit = ({ show }) => {
                 <FontAwesomeIcon icon={faEdit} size='1x' color='black' title='Thay đổi địa chỉ' />
             </span>
             <ShippingInfoModal
-                show={ showShippingModal || show }
+                show={ showShippingModal}
                 onHide={() => setShowShippingModal(false)} />
         </>
     )

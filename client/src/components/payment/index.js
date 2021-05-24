@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -11,17 +11,47 @@ import _ from 'lodash'
 import Form from 'react-bootstrap/Form'
 import NoItem from '../common/noItem'
 import ShippingInfo from '../common/shipping/info'
+import OrderService from '../../services/order.service'
 
 import './scss/_payment.scss'
 
 const Payment = () => {
   const history = useHistory()
   const [state] = useContext(Context)
+  const currentUser = state.currentUser
   const carts = state.currentUser?.carts
   const tempPrice = _.reduce(carts, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
 
+  const [paymentMethod, setPaymentMethod] = useState('COD')
+  const [shippingFee, setShippingFee] = useState(19000)
+
   const handleOrder = () => {
+    const order = createOrder()
+    console.log('order', order)
     history.push('/thank-you')
+  }
+
+  const createOrder = async () => {
+    const payload = {
+      user: {
+        _id: currentUser._id,
+        name: currentUser.name,
+        phone: currentUser.phone
+      },
+      products: currentUser.carts,
+      paymentMethod: paymentMethod,
+      shippingInfo: currentUser.shippingInfo,
+      shippingFee: shippingFee,
+      amount: tempPrice,
+      totalAmount: tempPrice + shippingFee
+    }
+    const result = await OrderService.createOrder(payload)
+    return result.data
+  }
+
+  const handleChangePaymentMethod = (event) => {
+    setPaymentMethod(event.target.value)
+    if (event.target.value === 'ATM' || event.target.value === 'MOMO') setShippingFee(0)
   }
 
   return _.isEmpty(state.currentUser?.carts) ? <NoItem /> : (
@@ -42,14 +72,14 @@ const Payment = () => {
           <Box key='payment-box-2'>
             <Form>
               <div className="mb-3">
-                <Form.Check label="Thanh toán khi nhận hàng" name="payment-method" type="radio" defaultChecked id={`inline-1`} />
+                <Form.Check label="Thanh toán khi nhận hàng" name="payment-method" value='COD' type="radio" defaultChecked id={`inline-1`} onChange={handleChangePaymentMethod} />
                 <div className='pay-by'>
-                  <Form.Check label="Thanh toán bằng thẻ ATM" name="payment-method" type="radio" id={`inline-2`} />
-                  <span className="discount">Freeship</span>
+                  <Form.Check label="Thanh toán bằng thẻ ATM" name="payment-method" value='ATM' type="radio" id={`inline-2`} onChange={handleChangePaymentMethod} />
+                  <span className="discount">FreeShip</span>
                 </div>
                 <div className='pay-by'>
-                  <Form.Check label="Momo" name="payment-method" type="radio" id={`inline-3`} />
-                  <span className="discount">-{formatCurrency(10000)}</span>
+                  <Form.Check label="Momo" name="payment-method" value='MOMO' type="radio" id={`inline-3`} onChange={handleChangePaymentMethod} />
+                  <span className="discount">FreeShip</span>
                 </div>
               </div>
             </Form>
@@ -69,11 +99,11 @@ const Payment = () => {
           </div>
           <div className="row-price b-b-1">
             <div className="title">Phí vận chuyển:</div>
-            <div className="price">{formatCurrency(15000)}</div>
+            <div className="price">{formatCurrency(shippingFee)}</div>
           </div>
           <div className="row-price">
             <div className="title">Thành tiền:</div>
-            <div className="price total-price">{formatCurrency(tempPrice + 15000)}</div>
+            <div className="price total-price">{formatCurrency(tempPrice + shippingFee)}</div>
           </div>
         </div>
       </Col>

@@ -31,7 +31,7 @@ const Category = () => {
             }
         }
         getProducts()
-    }, [])
+    }, [slug])
 
     const handleClickProductDetail = (productId) => {
         history.push(`/products/${productId}`)
@@ -41,34 +41,27 @@ const Category = () => {
         let catThumb = null
         let catTitle = null
         switch (slug) {
-            case CategoryConstant.Climbing: {
+            case CategoryConstant.Climbing: 
                 catThumb = climbing
                 catTitle = 'Leo Núi'
-            }
             break
-            case CategoryConstant.Camping: {
+            case CategoryConstant.Camping: 
                 catThumb = camping
                 catTitle = 'Cắm trại - dã ngoại'
-            }
             break
-            case CategoryConstant.Traveling: {
+            case CategoryConstant.Traveling: 
                 catThumb = biker
                 catTitle = 'Du lịch bụi'
-            }
             break
-            case CategoryConstant.Trekking: {
+            case CategoryConstant.Trekking: 
                 catThumb = trekking
                 catTitle = 'Trekking - chạy bộ'
-            }
             break
-            case CategoryConstant.OtherThings: {
+            case CategoryConstant.OtherThings: 
                 catThumb = other
                 catTitle = 'Vài thứ khác'
-            }
             break
-            default: {
-
-            }
+            default: return
         }
         return (
             <div className='category-header'>

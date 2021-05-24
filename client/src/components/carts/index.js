@@ -13,22 +13,23 @@ import { SET_LOADING, SET_CURRENT_USER } from '../../store/action'
 import NoItem from '../common/noItem'
 import ShippingInfo from '../common/shipping/info'
 import { updateLocalStorage } from '../../helpers/commonHelper'
+import ShippingInfoModal from '../common/shipping/modal'
 
 import './scss/_cart.scss'
 
-const Cart = (props) => {
+const Cart = ({ currentUser }) => {
   const [carts, setCarts] = useState([])
   const [totalPrice, setTotalPrice] = useState(0)
   const [showShippingModal, setShowShippingModal] = useState(false)
   const [state, dispatch] = useContext(Context)
   const history = useHistory()
-  const totalItem = props.currentUser?.carts.length
+  const totalItem = currentUser?.carts.length
 
   useEffect(() => {
     const getCarts = async () => {
       dispatch({ type: SET_LOADING, payload: true })
       try {
-        const result = await UserService.getCarts(props.currentUser?._id)
+        const result = await UserService.getCarts(currentUser?._id)
         setCarts(result.data)
         const price = _.reduce(result.data, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
         setTotalPrice(price)
@@ -41,8 +42,8 @@ const Cart = (props) => {
   }, [totalItem])
 
   const handleOrder = () => {
-    if (props.currentUser) {
-      if (!props.currentUser.shippingInfo) {
+    if (currentUser) {
+      if (!currentUser.shippingInfo) {
         setShowShippingModal(true)
       } else {
         history.push('/payment')
@@ -65,7 +66,7 @@ const Cart = (props) => {
       const payload = {
         quantity: cart.quantity + (type === 'minus' ? -1 : 1)
       }
-      const result = await UserService.updateCartQuantity(props.currentUser?._id, cart._id, payload)
+      const result = await UserService.updateCartQuantity(currentUser?._id, cart._id, payload)
       return result.data
     } catch (err) {
       console.log(err)
@@ -82,12 +83,13 @@ const Cart = (props) => {
         </div>
       </Col>
       <Col lg={3}>
-        <ShippingInfo shippingInfo={state.currentUser?.shippingInfo} showShippingModal={showShippingModal} />
+        <ShippingInfo shippingInfo={currentUser?.shippingInfo} showShippingModal={showShippingModal} />
         <div className='check-out'>
           Tạm tính: <span className='currency'>{formatCurrency(totalPrice)}</span>
         </div>
         <SoloButton btnStyle='sweet-red btn-check-out' onClick={handleOrder} text={'Đặt hàng'} />
       </Col>
+      <ShippingInfoModal show={showShippingModal} onHide={() => setShowShippingModal(false)} />
     </Row>
 }
 export default withContainer(Cart)

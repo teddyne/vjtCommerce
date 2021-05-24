@@ -40,6 +40,10 @@ import {
     getRegions
 } from '../controllers/region.controller.js'
 import { verifyToken } from '../auth/verifyJwtToken.js'
+import {
+    getOrders,
+    createOrder
+} from '../controllers/order.controller.js'
 
 const Routes = (app) => {
 
@@ -91,6 +95,11 @@ const Routes = (app) => {
 
     /* Region API */
     router.get('/api/regions', getRegions)
+
+    /* Order API */
+    const orderApi = '/api/orders'
+    router.get(orderApi, getOrders)
+    router.post(orderApi, createOrder)
 
     app.use(router)
 }
