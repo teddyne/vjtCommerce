@@ -1,0 +1,21 @@
+@import '../../../../assets/scss/colors';
+
+.shipping-info {
+    background-color: $color-white;
+    padding: 5%;
+    margin-bottom: 10px;
+    .address-box {
+        margin-bottom: 10px;
+        .address-title {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    }
+    .customer-info {
+        margin-bottom: 5px;
+        span {
+            margin-right: 10px;
+            font-weight: 500;
+        }
+    }
+}

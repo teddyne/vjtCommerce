@@ -1,0 +1,19 @@
+@import '../../assets/scss/colors';
+@import '../../assets/scss/variables';
+
+.login-account {
+    line-height: 30px;
+    cursor: pointer;
+    text-align: right;
+    margin-right: 125px;
+    min-height: 37px;
+    .text {
+      font-size: 13px;
+      text-transform: capitalize;
+      font-weight: 500;
+      margin-left: 10px;
+    }
+    @include non-desktop {
+      left: 100%;
+    }
+  }

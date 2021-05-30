@@ -1,0 +1,45 @@
+@import '../../assets/scss/variables';
+@import '../../assets/scss/colors';
+
+.sign-in-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .form-title {
+        span {
+            text-transform: capitalize;
+            font-weight: 400;
+            font-size: 20px;
+        }
+    }
+    .sign-in {
+        background-color: $color-white;
+        width: 600px;
+        height: 300px;
+        margin: 0 auto;
+        .sign-in-form {
+            width: 70%;
+            margin: 0 auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            @include border-radius(5);
+        }
+        .sign-up-redirection {
+            margin-top: 10px;
+            span {
+                color: $color-solo-travel-shop;
+                font-weight: 400;
+            }
+            .text {
+                cursor: pointer;
+                color: $color-red;
+            }
+        }
+    }
+    .btn-sign-in {
+        width: 100%;
+    }
+}

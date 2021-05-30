@@ -1,12 +1,19 @@
 import React from 'react'
 import Toast from 'react-bootstrap/Toast'
-import Button from 'react-bootstrap/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { useHistory } from 'react-router'
+import SoloButton from '../button'
 
 import './scss/customToast.scss'
 
 const CustomToast = ({ isShow, onClose }) => {
+    const history = useHistory()
+
+    const openCart = () => {
+        history.push('/cart')
+    }
+
     return (
         <Toast className='custom-toast'
             onClose={onClose}
@@ -24,10 +31,10 @@ const CustomToast = ({ isShow, onClose }) => {
                 <div className='check-circle'>
                     <FontAwesomeIcon icon={faCheckCircle} color={'green'} />
                 </div>
-                <span>Đã thêm một em vào giỏ hàng!</span>
+                <span>Đã thêm một sản phẩm vào giỏ hàng!</span>
             </Toast.Header>
             <Toast.Body>
-                <Button variant="info">Xem Giỏ hàng và Thanh toán</Button>
+                <SoloButton btnStyle='sweet-red btn-order' onClick={openCart} text={'Xem Giỏ hàng và Thanh toán'} />
             </Toast.Body>
         </Toast>
     )

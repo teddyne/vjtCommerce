@@ -6,7 +6,6 @@ import Container from 'react-bootstrap/Container'
 import ProductStar from './productStar'
 import ReviewChart from './reviewChart'
 import ReviewList from './reviewList'
-import { reviews } from '../.././constants/data'
 
 import './scss/_review.scss'
 
@@ -19,8 +18,8 @@ const Review = ({ numberReviews }) => {
           <Container className="review-star">
             <Row>
               <Col sm={3}>
-                <div className="average-point">4.5</div>
-                <ProductStar psKey={'review'} numberStar={4.5} size={"sm"} />
+                <div className="average-point">0</div>
+                <ProductStar psKey={'review'} numberStar={0} size={"sm"} />
                 <div className="total-reviews">{totalReviews} nhận xét</div>
               </Col>
               <Col sm={9}>
@@ -28,7 +27,7 @@ const Review = ({ numberReviews }) => {
               </Col>
             </Row>
             <div className="review-list">
-              <ReviewList items={reviews} />
+              <ReviewList />
             </div>
           </Container>
         </div>

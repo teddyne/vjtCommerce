@@ -1,5 +1,6 @@
 export const Constant = {
     MAX_ITEM_PER_LINE: 4,
+    SEARCH_MAX_ITEM_PER_LINE: 3,
     MAX_STAR: 5
 }
 
@@ -8,4 +9,12 @@ export const ContactBoxConstant = {
     ViaZalo: "Chat với tụi mình qua Zalo",
     ViaSkype: "Chat với tụi mình qua Zalo",
     CallUs: "Gọi ngay cho tụi mình"
+}
+
+export const CategoryConstant = {
+    Climbing: "leo-nui",
+    Camping: "cam-trai-da-ngoai",
+    Traveling: "du-lich-bui",
+    Trekking: "trekking-chay-bo",
+    OtherThings: "vai-thu-khac"
 }

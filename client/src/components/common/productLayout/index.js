@@ -23,7 +23,7 @@ const ProductLayout = (props) => {
     let currentProducts =
     props.widgets.length === 1
       ? props.products
-      : _.filter(props.products, (p) => _.filter(p.widgets, w => w.name === widget.name).length > 0)
+      : _.filter(props.products, (p) => _.filter(p.widgets, widgetId => widgetId === widget._id).length > 0)
   if (!_.isEmpty(currentProducts)) {
     const totalLines = Math.ceil(
       currentProducts.length / Constant.MAX_ITEM_PER_LINE
@@ -33,16 +33,14 @@ const ProductLayout = (props) => {
       const productItems = _.slice(
         currentProducts,
         index * Constant.MAX_ITEM_PER_LINE,
-        index < totalLines - 1
-          ? (index + 1) * Constant.MAX_ITEM_PER_LINE
-          : Constant.MAX_ITEM_PER_LINE + 1
+        (index + 1) * Constant.MAX_ITEM_PER_LINE
       )
       productLines.push(
-        <ProductLine key={`product_line_index_${index}`}>
-          {_.map(productItems, (item, index) => {
+        <ProductLine key={`${widget._id}_${index}`}>
+          {_.map(productItems, (item) => {
             return (
               <ProductItem
-              key={`product_item_index_${index}`}
+              key={item._id}
                 product={item}
                 onProductItemClick={() => handleClickProductDetail(item._id)}
               />
@@ -51,8 +49,7 @@ const ProductLayout = (props) => {
         </ProductLine>
       )
     }
-
-    return <Box key={`box_${widgetIndex}`} title={widget.name}>{productLines}</Box>
+    return <Box key={widget._id} title={widget.name}>{productLines}</Box>
   }
   return null
   })

@@ -1,37 +1,35 @@
-import React from 'react'
-import { 
-    ApolloClient,
-    InMemoryCache,
-    ApolloProvider
-} from '@apollo/client'
+import React, { useContext } from 'react'
 import DefaultLayout from './defaultLayout'
-import Store from '../store/store'
-
-const client = new ApolloClient({
-    uri: 'http://localhost:4000',
-    cache: new InMemoryCache()
-});
+import { Context } from '../store/store'
+import AdminLayout from './adminLayout'
 
 const withContainer = (Component) => {
-    class ContainerWrapper extends React.PureComponent {
-        render() {
-            return (
-                <ApolloProvider client={client}>
-                    <Component />
-                </ApolloProvider>
-            )
-        }
+    const ContainerWrapper = (props) => {
+        const [state,] = useContext(Context)
+        //const userLs = localStorage.getItem('user')
+        //const currentUser = userLs ? JSON.parse(userLs).user : null
+        //console.log('withContainer - user', state.currentUser)
+        //console.log('withContainer - userLs', userLs)
+        //console.log('render')
+        return <Component {...props} currentUser={state.currentUser} />
     }
     return ContainerWrapper
 }
 
-const withLayout = (component, isHome) => {
-    return (
-        <Store>
-            <DefaultLayout isHome={isHome}>
+const withLayout = (component, isAdmin = false) => {
+    return isAdmin ?
+    (
+        <AdminLayout>
+            {component}
+        </AdminLayout>
+    )
+    :
+    (
+        //<Store>
+            <DefaultLayout>
                 {component}
             </DefaultLayout>
-        </Store>
+        //</Store>
     )
 }
 

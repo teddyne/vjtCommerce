@@ -1,0 +1,54 @@
+@import '../../../../assets/scss/colors';
+@import '../../../../assets/scss/variables';
+
+button {
+    &.solo {
+        color: $color-white;
+        background-color: $color-solo-travel-shop;
+        margin: 2% 0 2% 0;
+        border-color: transparent;
+        font-weight: 600;
+        &:hover {
+            opacity: 0.8;
+            color: $color-white;
+            background-color: $color-solo-travel-shop;
+            border-color: transparent;
+        }
+        &:active {
+            color: $color-white;
+            background-color: $color-solo-travel-shop;
+            border-color: transparent;
+        }
+        &:focus {
+            color: $color-white;
+            background-color: $color-solo-travel-shop;
+            border-color: transparent;
+        }
+    }
+    &.sweet-red {
+        color: $color-white;
+        background-color: $color-sweet-red;
+        margin: 2% 0 2% 0;
+        border-color: transparent;
+        font-weight: 600;
+        &:hover {
+            opacity: 0.8;
+            color: $color-white;
+            background-color: $color-sweet-red;
+            border-color: transparent;
+        }
+        &:active {
+            color: $color-white;
+            background-color: $color-sweet-red;
+            border-color: transparent;
+        }
+        &:focus {
+            color: $color-white;
+            background-color: $color-sweet-red;
+            border-color: transparent;
+        }
+    }
+}
+.icon {
+    margin-right: 5px;
+}

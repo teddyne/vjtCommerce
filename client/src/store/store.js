@@ -3,7 +3,10 @@ import Reducer from './reducer'
 
 const initialState = {
     carts: [],
-    itemQuantity: 1
+    itemQuantity: 1,
+    loading: false,
+    currentUser: null,
+    progress: 0
 }
 
 const Store = ({ children }) => {
@@ -14,5 +17,5 @@ const Store = ({ children }) => {
         </Context.Provider>
     )
 }
-export const Context = createContext(initialState)
+export const Context = createContext()
 export default Store

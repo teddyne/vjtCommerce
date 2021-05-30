@@ -1,0 +1,19 @@
+.confirm-order {
+    .thank {
+        display: flex;
+        align-items: center;
+        .order-number {
+            font-size: 23px;
+        }
+        img {
+            width: 50%;
+        }
+        span {
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    .btn-back-home {
+        text-transform: uppercase;
+    }
+}

@@ -22,9 +22,27 @@
     }
 }
 .cart-item {
+    align-items: center;
     img {
         width: 100%;
     }
     .quantity-input {
+        height:  10%;
+    }
+    .cart-control {
+        margin-top: 10px;
+        cursor: pointer;
+    }
+    .item-price {
+        font-weight: 500;
+    }
+    .product-name {
+        font-weight: 500;
+    }
+    .discount-price {
+        font-size: 12px;
+        .original-price {
+            text-decoration: line-through;
+        }
     }
 }

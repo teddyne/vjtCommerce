@@ -18,7 +18,7 @@ const QuantityInput = ({ isShowText }) => {
   return (
       <div className="quantity-input">
           <span>{isShowText ? 'Số Lượng' : ''}</span>
-        <InputGroup className="mt-3">
+        <InputGroup>
           <InputGroup.Prepend>
             <Button variant="outline-secondary" disabled={state.itemQuantity === 1} onClick={() => handleChangeQuality(QualityActionEnum.Minus)}>-</Button>
           </InputGroup.Prepend>

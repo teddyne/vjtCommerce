@@ -52,24 +52,27 @@
           right: 5px;
           top: 5px;
           color: $color-white;
-          background-color: $color-solo-travel-shop;
+          background-color: $color-sweet-red;
           border-color: transparent;
           font-weight: 600;
           &:hover {
               opacity: 0.8;
               color: $color-white;
-              background-color: $color-solo-travel-shop;
+              background-color: $color-sweet-red;
               border-color: transparent;
           }
-          :active {
+          &:active {
               color: $color-white;
-              background-color: $color-solo-travel-shop;
+              background-color: $color-sweet-red;
               border-color: transparent;
           }
           &:focus {
               color: $color-white;
-              background-color: $color-solo-travel-shop;
+              background-color: $color-sweet-red;
               border-color: transparent;
+          }
+          .search-icon {
+            margin-right: 5px;
           }
         }
       }
@@ -111,7 +114,6 @@
       }
       .header-col-2 {
         display: flex;
-        padding-top: 35px;
       }
     }
 
@@ -128,6 +130,7 @@
           .side-bar-item-content {
               text-decoration: none;
               color: $color-white;
+              cursor: pointer;
               .side-bar-icon {
                   padding-right: 4%;
               }

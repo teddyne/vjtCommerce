@@ -1,3 +1,4 @@
 export const formatCurrency = (number) => {
-    return `${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')} ₫`
+    if (!number || number === 0) return '0₫'
+    return `${number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')}₫`
 }

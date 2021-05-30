@@ -1,4 +1,5 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext, useState } from 'react'
+import _ from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import Row from 'react-bootstrap/Row'
@@ -13,31 +14,39 @@ import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
 import { Context } from '../store/store'
+import Profile from './profile'
+import UserSection from './userSection'
 
 import './scss/_header.scss'
 
 const Header = () => {
   const history = useHistory()
-  const [state] = useContext(Context)
+  const [state, dispatch] = useContext(Context)
+  const [searchText, setSearchText] = useState(null)
 
-  const cartNumber = localStorage.getItem('carts') ?? 0
-  const [, updateState] = React.useState();
-  React.useCallback(() => updateState({}), [state.carts])
-
-  console.log('con cac', cartNumber)
-  console.log('cai lon', state.carts)
-
-  const handleClickLogo = () => {
-    history.push('/')
+  const getQuantity = () => {
+    return _.reduce(state.currentUser?.carts, (s, { quantity }) => s + quantity, 0)
   }
 
-  const handleClickCart = () => {
-    history.push('/cart')
+  const handleRedirect = (path) => {
+    history.push(`/${path}`)
   }
 
-  useEffect(() => {
-    console.log('cartNumber', cartNumber)
-  }, [cartNumber])
+  const handleChangeSearchInput = (event) => {
+    setSearchText(event.target.value)
+  }
+
+  const handleSearch = () => {
+    if (searchText) {
+      history.push(`/search?keyword=${searchText}`)
+    }
+  }
+
+  const handleKeyPress = (event) => {
+    if (searchText && (event.keyCode === 13 || event.key === 'Enter')) {
+      history.push(`/search?keyword=${searchText}`)
+    }
+  }
 
   return (
     <header className="header fixed-top">
@@ -47,49 +56,54 @@ const Header = () => {
       <Container className="site-logo">
         <Row className="wrap-logo">
           <Col lg={3}>
-          <div onClick={handleClickLogo} className="center-logo">
-            <img src={logo} alt='logo' />
-          </div>
+            <div onClick={() => handleRedirect('')} className="center-logo">
+              <img src={logo} alt='logo' />
+            </div>
           </Col>
           <Col lg={9}>
+            <UserSection currentUser={state.currentUser} />
             <div className='header-col-2'>
               <div className='search-box'>
-              <Form.Group>
-                <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua" />
-                <Button className="btn-search"><FontAwesomeIcon icon={faSearch} color={'white'} />Tìm Kiếm</Button>
-              </Form.Group>
+                <Form.Group>
+                  <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua"
+                    value={searchText}
+                    onChange={handleChangeSearchInput}
+                    onKeyPress={handleKeyPress}
+                    />
+                  <Button className="btn-search" onClick={handleSearch}><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
+                </Form.Group>
+              </div>
+              <div onClick={() => handleRedirect('cart')} className="shopping-cart">
+                <img src={ShoppingCart} alt="Shopping cart" />
+                <span className={getQuantity() >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
+                  <span className="qty-text">{getQuantity()}</span>
+                </span>
+              </div>
             </div>
-            <div onClick={handleClickCart} className="shopping-cart">
-              <img src={ShoppingCart} alt="Shopping cart" />
-              <span className={cartNumber >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
-                <span className="qty-text">{cartNumber}</span>
-              </span>
+            <div className='header-menu'>
+              <ul>
+                <li className="side-bar-item">
+                  <a className="side-bar-item-content" onClick={() => handleRedirect('story')}>
+                    <span className="side-bar-icon">
+                      <img src={story} alt='story' />
+                    </span>
+                    <span>Story</span>
+                  </a>
+                </li>
+                <li className="side-bar-item">
+                  <a className="side-bar-item-content" onClick={() => handleRedirect('blog')}>
+                    <span className="side-bar-icon">
+                      <img src={blog} alt='blog' />
+                    </span>
+                    <span>Blog</span>
+                  </a>
+                </li>
+              </ul>
             </div>
-            </div>
-          <div className='header-menu'>
-            <ul>
-              <li className="side-bar-item">
-                <a className="side-bar-item-content" href="#home">
-                  <span className="side-bar-icon">
-                    <img src={story} alt='story' />
-                  </span>
-                  <span>Story</span>
-                </a>
-              </li>
-              <li className="side-bar-item">
-                <a className="side-bar-item-content" href="#home">
-                  <span className="side-bar-icon">
-                    <img src={blog} alt='blog' />
-                  </span>
-                  <span>Blog</span>
-                </a>
-              </li> 
-            </ul>
-          </div>
           </Col>
-        
         </Row>
       </Container>
+      <Profile currentUser={state.currentUser} />
     </header>
   )
 }

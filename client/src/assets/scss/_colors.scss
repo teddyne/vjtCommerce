@@ -6,8 +6,12 @@ $color-black: #000000;
 $color-product-item-box: rgba(0, 0, 0, 0.1);
 $color-red: red;
 $color-gray: #c2c2c2;
+$color-sweet-red: #e62a02;
+$loading-bar-color: #2998ff;
 
 :export {
     color_sts: $color-solo-travel-shop;
     color_gray: $color-gray;
+    sweet_red: $color-sweet-red;
+    loading_bar_color: $loading-bar-color;
 }
