@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import _ from 'lodash'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -21,7 +21,8 @@ import './scss/_header.scss'
 
 const Header = () => {
   const history = useHistory()
-  const [state] = useContext(Context)
+  const [state, dispatch] = useContext(Context)
+  const [searchText, setSearchText] = useState(null)
 
   const getQuantity = () => {
     return _.reduce(state.currentUser?.carts, (s, { quantity }) => s + quantity, 0)
@@ -29,6 +30,22 @@ const Header = () => {
 
   const handleRedirect = (path) => {
     history.push(`/${path}`)
+  }
+
+  const handleChangeSearchInput = (event) => {
+    setSearchText(event.target.value)
+  }
+
+  const handleSearch = () => {
+    if (searchText) {
+      history.push(`/search?keyword=${searchText}`)
+    }
+  }
+
+  const handleKeyPress = (event) => {
+    if (searchText && (event.keyCode === 13 || event.key === 'Enter')) {
+      history.push(`/search?keyword=${searchText}`)
+    }
   }
 
   return (
@@ -39,18 +56,22 @@ const Header = () => {
       <Container className="site-logo">
         <Row className="wrap-logo">
           <Col lg={3}>
-          <div onClick={() => handleRedirect('')} className="center-logo">
-            <img src={logo} alt='logo' />
-          </div>
+            <div onClick={() => handleRedirect('')} className="center-logo">
+              <img src={logo} alt='logo' />
+            </div>
           </Col>
           <Col lg={9}>
             <UserSection currentUser={state.currentUser} />
             <div className='header-col-2'>
               <div className='search-box'>
-              <Form.Group>
-                <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua" />
-                <Button className="btn-search"><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
-              </Form.Group>
+                <Form.Group>
+                  <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua"
+                    value={searchText}
+                    onChange={handleChangeSearchInput}
+                    onKeyPress={handleKeyPress}
+                    />
+                  <Button className="btn-search" onClick={handleSearch}><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
+                </Form.Group>
               </div>
               <div onClick={() => handleRedirect('cart')} className="shopping-cart">
                 <img src={ShoppingCart} alt="Shopping cart" />
@@ -59,26 +80,26 @@ const Header = () => {
                 </span>
               </div>
             </div>
-          <div className='header-menu'>
-            <ul>
-              <li className="side-bar-item">
-                <a className="side-bar-item-content" onClick={() => handleRedirect('story')}>
-                  <span className="side-bar-icon">
-                    <img src={story} alt='story' />
-                  </span>
-                  <span>Story</span>
-                </a>
-              </li>
-              <li className="side-bar-item">
-                <a className="side-bar-item-content" onClick={() => handleRedirect('blog')}>
-                  <span className="side-bar-icon">
-                    <img src={blog} alt='blog' />
-                  </span>
-                  <span>Blog</span>
-                </a>
-              </li> 
-            </ul>
-          </div>
+            <div className='header-menu'>
+              <ul>
+                <li className="side-bar-item">
+                  <a className="side-bar-item-content" onClick={() => handleRedirect('story')}>
+                    <span className="side-bar-icon">
+                      <img src={story} alt='story' />
+                    </span>
+                    <span>Story</span>
+                  </a>
+                </li>
+                <li className="side-bar-item">
+                  <a className="side-bar-item-content" onClick={() => handleRedirect('blog')}>
+                    <span className="side-bar-icon">
+                      <img src={blog} alt='blog' />
+                    </span>
+                    <span>Blog</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </Col>
         </Row>
       </Container>

@@ -38,11 +38,8 @@ const CartItem = ({ cart, onMinus, onAdd, currentUser }) => {
             <Col lg={2}>
                 <img src={cart.thumbnail.thumbnailUrl} alt={cart.name} />
             </Col>
-            <Col lg={6}>
+            <Col lg={5}>
                 <div className='product-name'>{cart.name}</div>
-                <div className='cart-control'>
-                    <FontAwesomeIcon className='search-icon' icon={faTrashAlt} color={'red'} onClick={handleDeleteCart} />
-                </div>
             </Col>
             <Col lg={2}>
                 <div className='item-price'>{formatCurrency(cart.price - ((cart.price * cart.discount) / 100))}</div>
@@ -57,6 +54,11 @@ const CartItem = ({ cart, onMinus, onAdd, currentUser }) => {
                     onClickMinus={onMinus}
                     onClickAdd={onAdd}
                 />
+            </Col>
+            <Col lg={1}>
+            <div className='cart-control'>
+                    <FontAwesomeIcon className='search-icon' icon={faTrashAlt} color={'red'} onClick={handleDeleteCart} />
+                </div>
             </Col>
         </Row>
     )

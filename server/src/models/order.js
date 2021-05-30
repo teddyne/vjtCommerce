@@ -7,7 +7,8 @@ const Schema = mongoose.Schema
 export const orderSchema = Schema({
     orderNumber: {
         type: String,
-        default: uniqueId()
+        //default: uniqueId()
+        required: [true, 'orderNumber is required!']
     },
     user: {
         type: Object,

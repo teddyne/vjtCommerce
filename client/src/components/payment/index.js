@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -7,14 +7,17 @@ import { formatCurrency } from '../../helpers/stringHelper'
 import Box from '../common/box'
 import PaymentItem from './paymentItem'
 import { Context } from '../../store/store'
-import { SET_LOADING, SET_CURRENT_USER } from '../../store/action'
+import {
+  SET_CURRENT_USER
+} from '../../store/action'
 import _ from 'lodash'
 import Form from 'react-bootstrap/Form'
 import NoItem from '../common/noItem'
 import ShippingInfo from '../common/shipping/info'
 import OrderService from '../../services/order.service'
 import UserService from '../../services/user.service'
-import { updateLocalStorage } from '../../helpers/commonHelper'
+import { updateLocalStorage, uniqueId } from '../../helpers/commonHelper'
+import { beginLoading, endLoading } from '../../services/loadingBar.service'
 
 import './scss/_payment.scss'
 
@@ -24,27 +27,33 @@ const Payment = () => {
   const currentUser = state.currentUser
   const carts = state.currentUser?.carts
   const tempPrice = _.reduce(carts, (s, { quantity, discountedPrice }) => s + quantity * discountedPrice, 0)
+  const shippingFeeDefault = 19000
 
+  const [shippingFee, setShippingFee] = useState(shippingFeeDefault)
   const [paymentMethod, setPaymentMethod] = useState('COD')
-  const [shippingFee, setShippingFee] = useState(19000)
+
+  useEffect(() => {
+    beginLoading(dispatch)
+    endLoading(dispatch)
+  }, [])
 
   const handleOrder = async () => {
-    dispatch({ type: SET_LOADING, payload: true })
+    beginLoading(dispatch)
     try {
       const order = await createOrder()
-      console.log('order', order)
       const result = await UserService.deleteAllCarts(state.currentUser._id)
       updateLocalStorage(null, 'cart')
       dispatch({ type: SET_CURRENT_USER, payload: result.data })
-      history.push('/confirm-order')
+      history.push(`/confirm-order/${order.orderNumber}`)
     } catch (error) {
       console.log(error)
     }
-    dispatch({ type: SET_LOADING, payload: false })
+    endLoading(dispatch)
   }
 
   const createOrder = async () => {
     const payload = {
+      orderNumber: uniqueId(),
       user: {
         _id: currentUser._id,
         name: currentUser.name,
@@ -63,7 +72,7 @@ const Payment = () => {
 
   const handleChangePaymentMethod = (event) => {
     setPaymentMethod(event.target.value)
-    if (event.target.value === 'ATM' || event.target.value === 'MOMO') setShippingFee(0)
+    setShippingFee(event.target.value === 'COD' ? shippingFeeDefault : 0)
   }
 
   return _.isEmpty(state.currentUser?.carts) ? <NoItem /> : (
@@ -87,11 +96,11 @@ const Payment = () => {
                 <Form.Check label="Thanh toán khi nhận hàng" name="payment-method" value='COD' type="radio" defaultChecked id={`inline-1`} onChange={handleChangePaymentMethod} />
                 <div className='pay-by'>
                   <Form.Check label="Thanh toán bằng thẻ ATM" name="payment-method" value='ATM' type="radio" id={`inline-2`} onChange={handleChangePaymentMethod} />
-                  <span className="discount">FreeShip</span>
+                  <span className="discount">Freeship</span>
                 </div>
                 <div className='pay-by'>
                   <Form.Check label="Momo" name="payment-method" value='MOMO' type="radio" id={`inline-3`} onChange={handleChangePaymentMethod} />
-                  <span className="discount">FreeShip</span>
+                  <span className="discount">Freeship</span>
                 </div>
               </div>
             </Form>

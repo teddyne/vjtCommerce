@@ -11,6 +11,7 @@ import UserService from '../../services/user.service'
 import { SET_CURRENT_USER } from '../../store/action'
 import { updateLocalStorage } from '../../helpers/commonHelper'
 import _ from 'lodash'
+import { beginLoading, endLoading } from '../../services/loadingBar.service'
 
 import './scss/_productInfo.scss'
 
@@ -21,6 +22,7 @@ const ProductInfo = ({ product }) => {
 
   const handleClickBuyNow = async () => {
     if (state.currentUser) {
+      beginLoading(dispatch)
       setShowingAddedToast(true)
       const payload = {
         _productId: product._id,
@@ -34,6 +36,7 @@ const ProductInfo = ({ product }) => {
       const result = await UserService.updateCarts(state.currentUser._id, payload)
       updateLocalStorage(result.data.carts, 'cart')
       dispatch({ type: SET_CURRENT_USER, payload: result.data })
+      endLoading(dispatch)
     } else {
       history.push(`/sign-in?from=products/${product._id}`)
     }

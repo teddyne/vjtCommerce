@@ -7,12 +7,11 @@ export const updateLocalStorage = (data, type) => {
             default: return
         }
       localStorage.setItem('user', JSON.stringify(dataLs))
-      console.log('setted user ls')
     }
 }
 
-export const uniqueOrderNumber = () => {
-    const randomness = Math.random().toString().substr(2).substr(0, 6)
-    const dateString = Date.now().toString(36).substr(0, 3)
+export const uniqueId = () => {
+    const randomness = Math.random().toString(36).substr(7)
+    const dateString = Date.now().toString(36).substr(5)
     return randomness + dateString
 }

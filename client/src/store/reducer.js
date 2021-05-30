@@ -4,7 +4,8 @@ import {
     DECREASE_ITEM_QUANTITY,
     SET_CURRENT_USER,
     SET_LOADING,
-    LOG_OUT
+    LOG_OUT,
+    SET_LOADING_BAR
 } from '../store/action'
 
 const Reducer = (state, action) => {
@@ -38,7 +39,12 @@ const Reducer = (state, action) => {
             return {
                 ...state,
                 currentUser: null
-            }
+            }      
+        case SET_LOADING_BAR:
+            return {
+                 ...state,
+                 progress: action.payload
+            }    
         default:
             return state
     }

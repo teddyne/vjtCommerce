@@ -10,7 +10,7 @@ import Review from './review'
 import SimilarProduct from '../products/similarProduct'
 import ProductService from '../../services/product.service'
 import { Context } from '../../store/store'
-import { SET_LOADING } from '../../store/action'
+import { beginLoading, endLoading } from '../../services/loadingBar.service'
 
 import './scss/_productDetail.scss'
 
@@ -21,17 +21,17 @@ function ProductDetail() {
 
   useEffect(() => {
     const getProduct = async () => {
-      dispatch({ type: SET_LOADING, payload: true })
+      beginLoading(dispatch)
       try {
         const product = await ProductService.getProductById(productId)
         setProduct(product.data)
       } catch (ex) {
         console.log(ex)
       }
-      dispatch({ type: SET_LOADING, payload: false })
+      endLoading(dispatch)
     }
     getProduct()
-  }, [productId])
+  }, [productId,dispatch])
 
   return (
     <React.Fragment>

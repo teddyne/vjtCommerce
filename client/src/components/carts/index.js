@@ -9,11 +9,12 @@ import SoloButton from '../common/button'
 import UserService from '../../services/user.service.js'
 import { Context } from '../../store/store'
 import { useHistory } from 'react-router-dom'
-import { SET_LOADING, SET_CURRENT_USER } from '../../store/action'
+import { SET_CURRENT_USER } from '../../store/action'
 import NoItem from '../common/noItem'
 import ShippingInfo from '../common/shipping/info'
 import { updateLocalStorage } from '../../helpers/commonHelper'
 import ShippingInfoModal from '../common/shipping/modal'
+import { beginLoading, endLoading } from '../../services/loadingBar.service'
 
 import './scss/_cart.scss'
 
@@ -27,7 +28,7 @@ const Cart = ({ currentUser }) => {
 
   useEffect(() => {
     const getCarts = async () => {
-      dispatch({ type: SET_LOADING, payload: true })
+      beginLoading(dispatch)
       try {
         const result = await UserService.getCarts(currentUser?._id)
         setCarts(result.data)
@@ -36,7 +37,7 @@ const Cart = ({ currentUser }) => {
       } catch (err) {
         console.log(err)
       }
-      dispatch({ type: SET_LOADING, payload: false })
+      endLoading(dispatch)
     }
     getCarts()
   }, [totalItem])

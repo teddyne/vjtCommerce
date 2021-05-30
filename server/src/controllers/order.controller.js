@@ -13,8 +13,25 @@ export const getOrders = async (req, res) => {
     }
 }
 
+export const getOrder = async (req, res) => {
+    try {
+        const queryResult = Order.findOne()
+        if (req.params.id) {
+            queryResult.where('_id').equals(req.query.id)
+        }
+        if (req.params.orderNumber) {
+            queryResult.where('orderNumber').equals(req.params.orderNumber)
+        }
+        const order = await queryResult
+        res.status(200).json(order)
+    } catch (ex) {
+        res.status(404).json({ message: ex.message })
+    }
+}
+
 export const createOrder = async (req, res) => {
     const {
+        orderNumber,
         user,
         products,
         paymentMethod,
@@ -25,6 +42,7 @@ export const createOrder = async (req, res) => {
     } = req.body
     try {
         const newOrder = new Order({
+            orderNumber,
             user,
             products,
             paymentMethod,

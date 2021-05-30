@@ -5,7 +5,8 @@ const initialState = {
     carts: [],
     itemQuantity: 1,
     loading: false,
-    currentUser: null
+    currentUser: null,
+    progress: 0
 }
 
 const Store = ({ children }) => {

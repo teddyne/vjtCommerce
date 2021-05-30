@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
-import { withContainer, withLayout } from './layouts/container'
+import { withLayout } from './layouts/container'
 import ProductDetail from './components/productDetails/index'
-import { BrowserRouter as Router, Switch, Route, useHistory, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Product from './components/products'
 import Cart from './components/carts'
 import Admin from './pages/admin'
@@ -14,6 +14,7 @@ import Payment from './components/payment'
 import { Context } from './store/store'
 import { SET_CURRENT_USER } from './store/action'
 import ConfirmOrder from './components/confirmOrder'
+import Search from './components/search'
 
 const App = () => {
   const [,dispatch] = useContext(Context)
@@ -29,7 +30,7 @@ const App = () => {
       }
     }
     checkSignIn()
-  }, [])
+  }, [dispatch])
 
   const buildPages = () => {
     return [
@@ -37,7 +38,8 @@ const App = () => {
       { path: '/products/:productId', key: 'product-detail', render: () => withLayout(<ProductDetail />) },
       { path: '/cart', key: 'cart', render: () => withLayout(<Cart />) },
       { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
-      { path: '/confirm-order', key: 'confirm-order', render: () => withLayout(<ConfirmOrder />) },
+      { path: '/confirm-order/:orderNumber', key: 'confirm-order', render: () => withLayout(<ConfirmOrder />) },
+      { path: '/search', key: 'search', render: () => withLayout(<Search />) },
       { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
       { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },
@@ -48,6 +50,7 @@ const App = () => {
       { path: `/${CategoryConstant.OtherThings}.html`, key: 'other-things', render: () => withLayout(<Category />) },
       { path: '/story', key: 'story', render: () => withLayout(<PageNotFound h1='TBD' h2='Coming soon...' />) },
       { path: '/blog', key: 'blog', render: () => withLayout(<PageNotFound h1='TBD' h2='Coming soon...' />) },
+      { path: '/not-found', key: 'not-found', render: () => withLayout(<PageNotFound h1='OOPS!' h2='404 - Page not found' />) },
       { render: () => withLayout(<PageNotFound h1='OOPS!' h2='404 - Page not found' />) }
     ]
   }

@@ -43,7 +43,8 @@ import {
 import { verifyToken } from '../auth/verifyJwtToken.js'
 import {
     getOrders,
-    createOrder
+    createOrder,
+    getOrder
 } from '../controllers/order.controller.js'
 
 const Routes = (app) => {
@@ -102,6 +103,7 @@ const Routes = (app) => {
     const orderApi = '/api/orders'
     router.get(orderApi, getOrders)
     router.post(orderApi, createOrder)
+    router.get(`${orderApi}/:orderNumber`, getOrder)
 
     app.use(router)
 }

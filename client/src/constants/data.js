@@ -115,3 +115,30 @@ export const reviews = [
         "title": "Khăn đa năng"
     },
 ]
+
+export const filters = [
+    {
+        "id": "1",
+        "name": "Danh mục sản phẩm",
+        "options": ["Đồ leo núi", "Đồ chạy bộ", "Lều trại - dã ngoại"],
+        "uiType": "link"
+    },
+    {
+        "id": "2",
+        "name": "Thương hiệu",
+        "options": ["Royal", "Yohe", "AGV", "Napoli"],
+        "uiType": "checkbox"
+    },
+    {
+        "id": "3",
+        "name": "Màu sắc",
+        "options": ["Đen", "Trắng", "Đỏ", "Vàng", "Cam"],
+        "uiType": "checkbox"
+    },
+    {
+        "id": "4",
+        "name": "Giá",
+        "options": ["Dưới 500.000", "Từ 500.000 đến 1.500.000", "Tên 1.500.000"],
+        "uiType": "selectTag"
+    }
+]

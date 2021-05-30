@@ -7,6 +7,9 @@ const OrderService = {
     getOrdersByUserId (userId) {
         return http.get(`/orders?userId=${userId}`)
     },
+    getOrderByNumber (orderNumber) {
+        return http.get(`/orders/${orderNumber}`)
+    },
     createOrder (order) {
         return http.post('/orders', order)
     }
