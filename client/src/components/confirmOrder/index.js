@@ -4,7 +4,7 @@ import thankYou from '../../assets/images/thank-you-order.png'
 import SoloButton from '../common/button'
 import Box from '../common/box'
 import PayAccount from '../common/payAccount'
-import { Context } from '../../store/store'
+import { Context } from '../../store'
 import OrderService from '../../services/order.service'
 import { beginLoading, endLoading } from '../../services/loadingBar.service'
 

@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react'
 import { withLayout } from './layouts/container'
-import ProductDetail from './components/productDetails/index'
+import ProductDetail from './components/productDetail'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Product from './components/products'
-import Cart from './components/carts'
+import Product from './components/product'
+import Cart from './components/cart'
 import Admin from './pages/admin'
 import SignIn from './components/signin'
 import SignUp from './components/signup'
@@ -11,10 +11,12 @@ import Category from './components/category'
 import { CategoryConstant } from './constants'
 import PageNotFound from './layouts/pageNotFound'
 import Payment from './components/payment'
-import { Context } from './store/store'
+import { Context } from './store'
 import { SET_CURRENT_USER } from './store/action'
 import ConfirmOrder from './components/confirmOrder'
 import Search from './components/search'
+import Order from './components/user/order'
+import Profile from './components/user/profile'
 
 const App = () => {
   const [,dispatch] = useContext(Context)
@@ -40,7 +42,9 @@ const App = () => {
       { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
       { path: '/confirm-order/:orderNumber', key: 'confirm-order', render: () => withLayout(<ConfirmOrder />) },
       { path: '/search', key: 'search', render: () => withLayout(<Search />) },
-      { path: '/admin', key: 'cart', render: () => withLayout(<Admin />, true) },
+      { path: '/order-history', key: 'order', render: () => withLayout(<Order />) },
+      { path: '/profile', key: 'profile', render: () => withLayout(<Profile />) },
+      { path: '/admin', key: 'admin', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
       { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },
       { path: `/${CategoryConstant.Climbing}.html`, key: 'climbing', render: () => withLayout(<Category />) },

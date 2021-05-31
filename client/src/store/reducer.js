@@ -46,7 +46,7 @@ const Reducer = (state, action) => {
                  progress: action.payload
             }    
         default:
-            return state
+            throw new Error()
     }
 }
 export default Reducer

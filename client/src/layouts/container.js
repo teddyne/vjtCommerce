@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import DefaultLayout from './defaultLayout'
-import { Context } from '../store/store'
+import { Context } from '../store'
 import AdminLayout from './adminLayout'
 
 const withContainer = (Component) => {

@@ -13,8 +13,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo5.png'
-import { Context } from '../store/store'
-import Profile from './profile'
+import { Context } from '../store'
+import UserCircle from './userCircle'
 import UserSection from './userSection'
 
 import './scss/_header.scss'
@@ -103,7 +103,7 @@ const Header = () => {
           </Col>
         </Row>
       </Container>
-      <Profile currentUser={state.currentUser} />
+      <UserCircle currentUser={state.currentUser} />
     </header>
   )
 }

@@ -4,7 +4,7 @@ import Header from './header'
 import Footer from './footer'
 import ContactBox from './contactBox'
 import ScrollTop from '../components/common/scrollTop'
-import { Context } from '../store/store'
+import { Context } from '../store'
 import color from '../assets/scss/_colors.scss'
 import LoadingBar from 'react-top-loading-bar'
 import { SET_LOADING_BAR } from '../store/action'
@@ -29,8 +29,7 @@ const DefaultLayout = (props) => {
       <Footer />
       <ContactBox />
       <ScrollTop />
-      {/* <Spinner loading={state.loading} /> */}
-      <LoadingBar color={color.loading_bar_color} progress={state.progress} onLoaderFinished={onLoadFinishedHandler} />
+      <LoadingBar height={3} waitingTime={600} color={color.loading_bar_color} progress={state.progress} onLoaderFinished={onLoadFinishedHandler} />
     </React.Fragment>
   )
 }

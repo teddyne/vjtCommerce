@@ -6,7 +6,7 @@ import SoloButton from '../../components/common/button'
 import { formatCurrency } from '../../helpers/stringHelper'
 import Box from '../common/box'
 import PaymentItem from './paymentItem'
-import { Context } from '../../store/store'
+import { Context } from '../../store'
 import {
   SET_CURRENT_USER
 } from '../../store/action'

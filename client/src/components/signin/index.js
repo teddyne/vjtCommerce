@@ -5,7 +5,7 @@ import {
   useHistory,
   useLocation
 } from 'react-router-dom'
-import { Context } from '../../store/store'
+import { Context } from '../../store'
 import {
   SET_CURRENT_USER,
   SET_LOADING

@@ -1,5 +1,5 @@
-import http from '../httpCommon'
-import httpFile from '../httpFile'
+import http from '../helpers/httpCommon'
+import httpFile from '../helpers/httpFile'
 
 const ProductAdminService = {
     getCategories() {

@@ -7,7 +7,7 @@ import QuantityInput from '../common/quantityInput2'
 import { formatCurrency } from '../../helpers/stringHelper'
 import UserService from '../../services/user.service'
 import { withContainer } from '../../layouts/container'
-import { Context } from '../../store/store'
+import { Context } from '../../store'
 import { SET_LOADING, SET_CURRENT_USER } from '../../store/action'
 
 const CartItem = ({ cart, onMinus, onAdd, currentUser }) => {
