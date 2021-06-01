@@ -46,6 +46,10 @@ const ConfirmOrder = () => {
         history.push('/')
     }
 
+    const handleBackOrders = () => {
+        history.push('/order-history')
+    }
+
     const renderDirection = () => {
         if (orderInfo.paymentMethod !== 'COD') {
             return <div>Vui lòng thanh toán và gửi mã đơn hàng của bạn tới thông tin tài khoản bên dưới.</div>
@@ -68,6 +72,7 @@ const ConfirmOrder = () => {
                 </div>
                 {orderInfo.paymentMethod !== 'COD' && <PayAccount />}
                 <SoloButton btnStyle='sweet-red btn-back-home' text={'Tiếp tục mua hàng'} onClick={handleBackHome} />
+                <SoloButton btnStyle='sweet-red btn-back-orders' text={'Xem đơn hàng'} onClick={handleBackOrders} />
             </Box>
         </div>
     )

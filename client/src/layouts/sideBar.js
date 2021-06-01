@@ -10,7 +10,7 @@ const SideBar = ({ items }) => {
         {
           _.map(items, (item) => {
             return (
-              <li className='side-bar-item'>
+              <li className={`side-bar-item ${item.isActive ? 'active' : ''}`}>
                 <a className='side-bar-item-content' onClick={_.isFunction(item.onClick) && item.onClick}>
                   <span className='side-bar-icon'>
                     <img src={item.icon} alt={item.iconLabel} />

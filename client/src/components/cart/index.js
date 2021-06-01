@@ -15,6 +15,7 @@ import ShippingInfo from '../common/shipping/info'
 import { updateLocalStorage } from '../../helpers/commonHelper'
 import ShippingInfoModal from '../common/shipping/modal'
 import { beginLoading, endLoading } from '../../services/loadingBar.service'
+import noCarts from '../../assets/images/no-carts.png'
 
 import './scss/_cart.scss'
 
@@ -74,7 +75,7 @@ const Cart = ({ currentUser }) => {
     }
   }
 
-  return _.isEmpty(carts) ? <NoItem /> :
+  return _.isEmpty(carts) ? <NoItem img={noCarts} imgTitle='No carts' text={'Không có sản phẩm nào trong giỏ hàng!'} /> :
     <Row className='cart'>
       <Col lg={9}>
         <div className='cart-list'>

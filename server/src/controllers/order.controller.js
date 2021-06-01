@@ -6,7 +6,7 @@ export const getOrders = async (req, res) => {
         if (req.query.userId) {
             queryResult.where('user._id').equals(req.query.userId)
         }
-        const orders = await queryResult
+        const orders = await queryResult.sort('-createdAt')
         res.status(200).json(orders)
     } catch (ex) {
         res.status(404).json({ message: ex.message })

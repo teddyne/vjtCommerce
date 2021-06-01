@@ -1,5 +1,8 @@
-.order {
+.order-history {
     display: flex;
+    .content-row {
+        width: 100%;
+    }
     .box {
         padding: 2%;
     }

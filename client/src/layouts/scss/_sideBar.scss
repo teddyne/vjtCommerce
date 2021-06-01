@@ -10,7 +10,7 @@
         margin: 10px 10px 10px 20px;
         padding: 0;
         .side-bar-item {
-            padding-bottom: 5%;
+            padding: 2% 2%;
             cursor: pointer;
             .side-bar-item-content {
                 text-decoration: none;
@@ -18,6 +18,9 @@
                 .side-bar-icon {
                     padding-right: 4%;
                 }
+            }
+            &.active {
+                background-color: $color-light-gray;
             }
         }
     }

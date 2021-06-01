@@ -10,7 +10,7 @@ const withContainer = (Component) => {
         //const currentUser = userLs ? JSON.parse(userLs).user : null
         //console.log('withContainer - user', state.currentUser)
         //console.log('withContainer - userLs', userLs)
-        //console.log('render')
+        console.log('withContainer', state.currentUser)
         return <Component {...props} currentUser={state.currentUser} />
     }
     return ContainerWrapper

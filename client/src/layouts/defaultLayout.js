@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import Container from 'react-bootstrap/Container'
 import Header from './header'
 import Footer from './footer'
@@ -12,11 +12,8 @@ import { SET_LOADING_BAR } from '../store/action'
 import './scss/_defaultLayout.scss'
 
 const DefaultLayout = (props) => {
-  const [state, dispatch] = useContext(Context)
 
-  const onLoadFinishedHandler = () => {
-    dispatch({ type: SET_LOADING_BAR, payload: 0 })
-  }
+  const [state, dispatch] = useContext(Context)
 
   return (
     <React.Fragment>
@@ -29,7 +26,13 @@ const DefaultLayout = (props) => {
       <Footer />
       <ContactBox />
       <ScrollTop />
-      <LoadingBar height={3} waitingTime={600} color={color.loading_bar_color} progress={state.progress} onLoaderFinished={onLoadFinishedHandler} />
+      <LoadingBar
+        height={3}
+        waitingTime={600}
+        color={color.loading_bar_color}
+        progress={state.progress}
+        onLoaderFinished={() => dispatch({ type: SET_LOADING_BAR, payload: 0 })} 
+      />
     </React.Fragment>
   )
 }

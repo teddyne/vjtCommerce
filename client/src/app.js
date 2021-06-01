@@ -15,7 +15,7 @@ import { Context } from './store'
 import { SET_CURRENT_USER } from './store/action'
 import ConfirmOrder from './components/confirmOrder'
 import Search from './components/search'
-import Order from './components/user/order'
+import OrderHistory from './components/user/orderHistory'
 import Profile from './components/user/profile'
 
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
       if (localUser) {
         const data = JSON.parse(localUser)
         if (data && data.user) {
+          console.log('set currentUser')
           dispatch({ type: SET_CURRENT_USER, payload: data.user })
         }
       }
@@ -42,8 +43,9 @@ const App = () => {
       { path: '/payment', key: 'payment', render: () => withLayout(<Payment />) },
       { path: '/confirm-order/:orderNumber', key: 'confirm-order', render: () => withLayout(<ConfirmOrder />) },
       { path: '/search', key: 'search', render: () => withLayout(<Search />) },
-      { path: '/order-history', key: 'order', render: () => withLayout(<Order />) },
+      { path: '/order-history', key: 'order-history', render: () => withLayout(<OrderHistory />) },
       { path: '/profile', key: 'profile', render: () => withLayout(<Profile />) },
+      { path: '/love', key: 'love', render: () => withLayout(<PageNotFound h1='TBD' h2='Coming soon...' />) },
       { path: '/admin', key: 'admin', render: () => withLayout(<Admin />, true) },
       { path: '/sign-in', key: 'sign-in', render: () => withLayout(<SignIn />) },
       { path: '/sign-up', key: 'sign-up', render: () => withLayout(<SignUp />) },

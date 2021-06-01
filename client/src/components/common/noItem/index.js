@@ -1,12 +1,11 @@
 import React from 'react'
-import noCarts from '../../../assets/images/no-carts.png'
 import SoloButton from '../button'
 import Box from '../box'
 import { useHistory } from 'react-router-dom'
 
 import './_noItem.scss'
 
-const NoItem = () => {
+const NoItem = ({ img, imgTitle, text, isShowContinueButton }) => {
     const history = useHistory()
 
     const handleBackHome = () => {
@@ -15,13 +14,17 @@ const NoItem = () => {
 
     return (
         <Box>
-            <div className='no-carts'>
-                <img src={noCarts} alt={'No carts'} />
-                <div className="no-carts-text">Không có sản phẩm nào trong giỏ hàng!</div>
-                <SoloButton btnStyle='sweet-red' text={'Tiếp tục mua hàng'} onClick={handleBackHome} />
+            <div className='no-item'>
+                <img src={img} alt={imgTitle} />
+                <div className='no-item-text'>{text}</div>
+                {isShowContinueButton && <SoloButton btnStyle='sweet-red' text={'Tiếp tục mua hàng'} onClick={handleBackHome} />}
             </div>
         </Box>
     )
+}
+
+NoItem.defaultProps = {
+    isShowContinueButton: true
 }
 
 export default NoItem
