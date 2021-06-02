@@ -3,8 +3,6 @@ import Reducer from './reducer'
 
 const initialState = {
     carts: [],
-    itemQuantity: 1,
-    loading: false,
     currentUser: null,
     progress: 0
 }

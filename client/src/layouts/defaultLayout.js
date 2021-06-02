@@ -18,8 +18,8 @@ const DefaultLayout = (props) => {
   return (
     <React.Fragment>
       <Header />
-      <main className="wrap">
-        <Container className="main">
+      <main className='wrap'>
+        <Container className='main'>
           {props.children}
         </Container>
       </main>

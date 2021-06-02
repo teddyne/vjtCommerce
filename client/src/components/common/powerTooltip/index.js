@@ -6,7 +6,7 @@ const PowerTooltip = (props) => {
     const { title } = props
     const renderTooltip = (props) => {
         return (
-        <Tooltip id="button-tooltip" {...props}>
+        <Tooltip id='button-tooltip' {...props}>
             {title}
         </Tooltip>
         )

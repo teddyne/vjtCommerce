@@ -5,7 +5,7 @@ import orderList from '../../../assets/images/user/order-list.png'
 import heart from '../../../assets/images/user/heart.png'
 import { withContainer } from '../../../layouts/container'
 import { Context } from '../../../store'
-import UserLayout from '../components/userLayout'
+import UserLayout from '../../common/userLayout'
 
 import './_profile.scss'
 

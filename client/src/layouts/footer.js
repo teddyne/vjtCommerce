@@ -11,9 +11,9 @@ const Footer = () => {
     }
     
     return (
-        <footer className="footer mt-auto">
-            <div className="copyright">
-                <p>Made with  <Emoji symbol="❤️" label="heart" /> by <span onClick={goToHomePage}>Solo Travel Shop</span></p>
+        <footer className='footer mt-auto'>
+            <div className='copyright'>
+                <p>Made with  <Emoji symbol='❤️' label='heart' /> by <span onClick={goToHomePage}>Solo Travel Shop</span></p>
             </div>
         </footer>
     )

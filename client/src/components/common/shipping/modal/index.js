@@ -10,6 +10,7 @@ import { Context } from '../../../../store'
 import { SET_CURRENT_USER } from '../../../../store/action'
 import { updateLocalStorage } from '../../../../helpers/commonHelper'
 import { useHistory, useLocation } from 'react-router-dom'
+import { LocalStorageType } from '../../../../enums'
 
 import './_shipping.scss'
 
@@ -126,7 +127,7 @@ const ShippingInfoModal = (props) => {
         try {
             const result = await UserService.updateShippingInfo(userId, shippingInfo)
             if (result.data) {
-                updateLocalStorage(result.data, 'user')
+                updateLocalStorage(result.data, LocalStorageType.USER)
                 dispatch({ type: SET_CURRENT_USER, payload: result.data })
             }
             props.onHide()
@@ -142,40 +143,40 @@ const ShippingInfoModal = (props) => {
     return (
         <Modal
             {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
+            size='lg'
+            aria-labelledby='contained-modal-title-vcenter'
         >
             <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Chỉ một chút thôi...<Emoji symbol="🙌" />
+                <Modal.Title id='contained-modal-title-vcenter'>
+                    Chỉ một chút thôi...<Emoji symbol='🙌' />
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <span className="modal-descr">Vui lòng nhập địa chỉ nhận hàng<Emoji symbol="📦" /> bạn nhé! <Emoji symbol="🥰" times={3} /></span>
-                <Form className="shipping-info-form">
-                    <Form.Group controlId="phone">
+                <span className='modal-descr'>Vui lòng nhập địa chỉ nhận hàng<Emoji symbol='📦' /> bạn nhé! <Emoji symbol='🥰' times={3} /></span>
+                <Form className='shipping-info-form'>
+                    <Form.Group controlId='phone'>
                         <Form.Label>Tên Người Nhận</Form.Label>
-                        <Form.Control type="text" required placeholder="Tên Người Nhận" value={shippingInfo.name} onChange={handleChangeName} />
+                        <Form.Control type='text' required placeholder='Tên Người Nhận' value={shippingInfo.name} onChange={handleChangeName} />
                     </Form.Group>
-                    <Form.Group controlId="phone">
+                    <Form.Group controlId='phone'>
                         <Form.Label>Số Điện Thoại</Form.Label>
-                        <Form.Control type="text" required placeholder="Số Điện Thoại" value={shippingInfo.phone} onChange={handleChangePhone} />
+                        <Form.Control type='text' required placeholder='Số Điện Thoại' value={shippingInfo.phone} onChange={handleChangePhone} />
                     </Form.Group>
-                    <Form.Group controlId="district">
+                    <Form.Group controlId='district'>
                         <Form.Label>Tỉnh/Thành Phố</Form.Label>
-                        <Select placeholder="Chọn Tỉnh/Thành Phố" options={regions} onChange={handleChangeRegions} defaultValue={shippingInfo.region} />
+                        <Select placeholder='Chọn Tỉnh/Thành Phố' options={regions} onChange={handleChangeRegions} defaultValue={shippingInfo.region} />
                     </Form.Group>
-                    <Form.Group controlId="district">
+                    <Form.Group controlId='district'>
                         <Form.Label>Quận/Huyện</Form.Label>
-                        <Select placeholder="Chọn Quận/Huyện" options={districts} onChange={handleChangeDistricts} defaultValue={shippingInfo.district} />
+                        <Select placeholder='Chọn Quận/Huyện' options={districts} onChange={handleChangeDistricts} defaultValue={shippingInfo.district} />
                     </Form.Group>
-                    <Form.Group controlId="ward">
+                    <Form.Group controlId='ward'>
                         <Form.Label>Phường/Xã</Form.Label>
-                        <Select placeholder="Chọn Phường/Xã" options={wards} defaultValue={shippingInfo.ward} onChange={handleChangeWards} />
+                        <Select placeholder='Chọn Phường/Xã' options={wards} defaultValue={shippingInfo.ward} onChange={handleChangeWards} />
                     </Form.Group>
-                    <Form.Group controlId="name">
+                    <Form.Group controlId='name'>
                         <Form.Label>Địa Chỉ</Form.Label>
-                        <Form.Control type="text" required placeholder="Nhập Địa Chỉ. VD: 23 Cộng Hòa" value={shippingInfo.address} onChange={handleChangeAddress} />
+                        <Form.Control type='text' required placeholder='Nhập Địa Chỉ. VD: 23 Cộng Hòa' value={shippingInfo.address} onChange={handleChangeAddress} />
                     </Form.Group>
                 </Form>
             </Modal.Body>

@@ -1,0 +1,35 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/colors';
+
+.sign-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30%;
+    .form-title {
+        font-weight: normal;
+        margin-bottom: 2%;
+        span {
+            text-transform: capitalize;
+            font-weight: 400;
+            font-size: 20px;
+        }
+    }
+    .sign {
+        background-color: $color-white;
+        height: 350px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        @include border-radius(10);
+        .sign-form {
+            width: 70%;
+            margin: 0 auto;
+        }
+    }
+    .btn-sign {
+        width: 100%;
+    }
+}

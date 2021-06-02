@@ -1,0 +1,41 @@
+@import '../../../../assets/scss/colors';
+@import '../../../../assets/scss/variables';
+
+.review-item {
+    margin-top: 2%;
+ .review-general-info {
+     display: flex;
+     .review-avatar {
+         img {
+             width: 50px;
+             border-radius: 50%;
+         }
+     }
+ }
+ .review-info {
+     margin-left: 2%;
+     width: 30%;
+    .review-user {
+        display: flex;
+        .review-name {
+            font-weight: bold;
+        }
+        .review-bought {
+            margin-left: 5%;
+            display: flex;
+            width: 40%;
+            .bougth-verified {
+                margin-left: 1%;
+            }
+            .review-check-circle {
+                margin-left: 5px;
+            }
+        }
+    }
+  }
+  .review-star {
+      .product-star {
+        text-align: left;
+      }
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../../assets/scss/variables';
+@import '../../../assets/scss/colors';
+
+.sign-up-redirection {
+    margin-top: 10px;
+    span {
+        color: $color-solo-travel-shop;
+        font-weight: 400;
+    }
+    .text {
+        cursor: pointer;
+        color: $color-red;
+    }
+}
+.btn-sign-in {
+     width: 100%;
+}

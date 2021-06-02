@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row'
 
 const ProductLine = (props) => {
     return (
-        <div className="product-line">
+        <div className='product-line'>
             <Row>
                 {props.children}
             </Row>

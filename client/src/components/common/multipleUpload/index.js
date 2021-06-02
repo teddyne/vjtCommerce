@@ -18,10 +18,10 @@ const MultipleUpload = (props) => {
 
     return (
         <>
-            <div className="multi-preview">
-                { _.map(images, (url, index) => (<img key={index} style={imgStyle} src={url} alt="..." />))}
+            <div className='multi-preview'>
+                { _.map(images, (url, index) => (<img key={index} style={imgStyle} src={url} alt='...' />))}
             </div>
-            <Form.Control type="file" multiple onChange={handleUploadMultipleFiles} />
+            <Form.Control type='file' multiple onChange={handleUploadMultipleFiles} />
         </>
     )
 }

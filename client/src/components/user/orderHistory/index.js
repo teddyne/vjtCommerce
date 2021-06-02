@@ -12,7 +12,7 @@ import NoItem from '../../common/noItem'
 import noOrders from '../../../assets/images/no-carts.png'
 import { Context } from '../../../store'
 import { beginLoading, endLoading } from '../../../services/loadingBar.service'
-import UserLayout from '../components/userLayout'
+import UserLayout from '../../common/userLayout'
 import { formatCurrency } from '../../../helpers/stringHelper'
 
 import './_orderHistory.scss'

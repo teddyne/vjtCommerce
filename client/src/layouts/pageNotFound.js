@@ -11,9 +11,9 @@ const PageNotFound = ({ h1, h2}) => {
 	}
 
     return (
-		<div id="notfound">
-			<div class="notfound">
-				<div class="notfound-404">
+		<div id='notfound'>
+			<div class='notfound'>
+				<div class='notfound-404'>
 					<h1>{h1}</h1>
 					<h2>{h2}</h2>
 				</div>

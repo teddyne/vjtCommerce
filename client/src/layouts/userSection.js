@@ -12,14 +12,14 @@ const UserSection = ({ currentUser }) => {
         return currentUser ? null
             : (
                 <React.Fragment>
-                    <span className="text" onClick={() => handleRedirect('sign-in')}>Đăng Nhập</span>
-                    <span className="text" onClick={() => handleRedirect('sign-up')}>Đăng Ký</span>
+                    <span className='text' onClick={() => handleRedirect('sign-in')}>Đăng Nhập</span>
+                    <span className='text' onClick={() => handleRedirect('sign-up')}>Đăng Ký</span>
                 </React.Fragment>
             )
     }
 
     return (
-        <div className="login-account">
+        <div className='login-account'>
             {renderSection()}
         </div>
     )

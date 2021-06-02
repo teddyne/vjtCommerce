@@ -1,0 +1,12 @@
+@import '../../../assets/scss/colors';
+@import '../../../assets/scss/variables';
+
+.quantity-input {
+    .input-group
+    {
+        margin-top: 5px;
+        input {
+            text-align: center;
+        }
+    }
+}

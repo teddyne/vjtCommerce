@@ -12,7 +12,7 @@ const ScrollTop = () => {
             setShow(scrollTopValue > 200 ? true : false)
         }
         window.addEventListener('scroll', onScroll)
-        return () => window.removeEventListener("scroll", onScroll)
+        return () => window.removeEventListener('scroll', onScroll)
       }, [])
 
     const scrollToTop = () => {

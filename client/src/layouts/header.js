@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
-import logo from '../assets/images/logo5.png'
+import logo from '../assets/images/logo.png'
 import { Context } from '../store'
 import UserCircle from './userCircle'
 import UserSection from './userSection'
@@ -49,14 +49,14 @@ const Header = () => {
   }
 
   return (
-    <header className="header fixed-top">
-      <div className="hamberger-menu">
-        <FontAwesomeIcon icon={faBars} size="2x" color="white" />
+    <header className='header fixed-top'>
+      <div className='hamberger-menu'>
+        <FontAwesomeIcon icon={faBars} size='2x' color='white' />
       </div>
-      <Container className="site-logo">
-        <Row className="wrap-logo">
+      <Container className='site-logo'>
+        <Row className='wrap-logo'>
           <Col lg={3}>
-            <div onClick={() => handleRedirect('')} className="center-logo">
+            <div onClick={() => handleRedirect('')} className='center-logo'>
               <img src={logo} alt='logo' />
             </div>
           </Col>
@@ -65,34 +65,34 @@ const Header = () => {
             <div className='header-col-2'>
               <div className='search-box'>
                 <Form.Group>
-                  <Form.Control className="search-input" size="lg" type="text" placeholder="Tìm sản phẩm bạn cần mua"
+                  <Form.Control className='search-input' size='lg' type='text' placeholder='Tìm sản phẩm bạn cần mua'
                     value={searchText}
                     onChange={handleChangeSearchInput}
                     onKeyPress={handleKeyPress}
                     />
-                  <Button className="btn-search" onClick={handleSearch}><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
+                  <Button className='btn-search' onClick={handleSearch}><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
                 </Form.Group>
               </div>
-              <div onClick={() => handleRedirect('cart')} className="shopping-cart">
-                <img src={ShoppingCart} alt="Shopping cart" />
+              <div onClick={() => handleRedirect('cart')} className='shopping-cart'>
+                <img src={ShoppingCart} alt='Shopping cart' />
                 <span className={getQuantity() >= 10 ? 'item-cart-qty-large' : 'item-cart-qty'}>
-                  <span className="qty-text">{getQuantity()}</span>
+                  <span className='qty-text'>{getQuantity()}</span>
                 </span>
               </div>
             </div>
             <div className='header-menu'>
               <ul>
-                <li className="side-bar-item">
-                  <a className="side-bar-item-content" onClick={() => handleRedirect('story')}>
-                    <span className="side-bar-icon">
+                <li className='side-bar-item'>
+                  <a className='side-bar-item-content' onClick={() => handleRedirect('story')}>
+                    <span className='side-bar-icon'>
                       <img src={story} alt='story' />
                     </span>
                     <span>Story</span>
                   </a>
                 </li>
-                <li className="side-bar-item">
-                  <a className="side-bar-item-content" onClick={() => handleRedirect('blog')}>
-                    <span className="side-bar-icon">
+                <li className='side-bar-item'>
+                  <a className='side-bar-item-content' onClick={() => handleRedirect('blog')}>
+                    <span className='side-bar-icon'>
                       <img src={blog} alt='blog' />
                     </span>
                     <span>Blog</span>

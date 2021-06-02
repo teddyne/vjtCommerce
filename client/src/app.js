@@ -1,20 +1,20 @@
 import React, { useContext, useEffect } from 'react'
 import { withLayout } from './layouts/container'
-import ProductDetail from './components/productDetail'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Product from './components/product'
-import Cart from './components/cart'
+import ProductDetail from './components/product/detail'
+import Cart from './components/checkout/cart'
 import Admin from './pages/admin'
-import SignIn from './components/signin'
-import SignUp from './components/signup'
-import Category from './components/category'
+import SignIn from './components/user/signin'
+import SignUp from './components/user/signup'
+import Category from './components/product/category'
 import { CategoryConstant } from './constants'
 import PageNotFound from './layouts/pageNotFound'
-import Payment from './components/payment'
+import Payment from './components/checkout/payment'
 import { Context } from './store'
 import { SET_CURRENT_USER } from './store/action'
-import ConfirmOrder from './components/confirmOrder'
-import Search from './components/search'
+import ConfirmOrder from './components/checkout/confirmOrder'
+import Search from './components/product/search'
 import OrderHistory from './components/user/orderHistory'
 import Profile from './components/user/profile'
 
@@ -27,7 +27,6 @@ const App = () => {
       if (localUser) {
         const data = JSON.parse(localUser)
         if (data && data.user) {
-          console.log('set currentUser')
           dispatch({ type: SET_CURRENT_USER, payload: data.user })
         }
       }

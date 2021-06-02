@@ -15,16 +15,16 @@ const ContactBox = () => {
     }
     return (
         <div className='contact-box'>
-            <PowerTooltip placement="left" delay={delay} title={ContactBoxConstant.ViaMessenger}>
+            <PowerTooltip placement='left' delay={delay} title={ContactBoxConstant.ViaMessenger}>
                 <img src={messaenger} alt={ContactBoxConstant.ViaMessenger} />
             </PowerTooltip>
-            <PowerTooltip placement="left" delay={delay} title={ContactBoxConstant.ViaZalo}>
+            <PowerTooltip placement='left' delay={delay} title={ContactBoxConstant.ViaZalo}>
                 <img src={zalo} alt={ContactBoxConstant.ViaZalo} />
             </PowerTooltip>
-            <PowerTooltip placement="left" delay={delay} title={ContactBoxConstant.ViaSkype}>
+            <PowerTooltip placement='left' delay={delay} title={ContactBoxConstant.ViaSkype}>
                 <img src={skype} alt={ContactBoxConstant.ViaSkype} />
             </PowerTooltip>
-            <PowerTooltip placement="left" delay={delay} title={ContactBoxConstant.CallUs}>
+            <PowerTooltip placement='left' delay={delay} title={ContactBoxConstant.CallUs}>
                 <img src={phone} alt={ContactBoxConstant.CallUs} />
             </PowerTooltip>
         </div>

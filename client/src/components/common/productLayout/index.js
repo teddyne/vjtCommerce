@@ -13,7 +13,7 @@ const ProductLayout = (props) => {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  })
+  }, [])
 
   const handleClickProductDetail = (productId) => {
     history.push(`/products/${productId}`)

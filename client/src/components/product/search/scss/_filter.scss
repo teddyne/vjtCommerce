@@ -1,0 +1,12 @@
+@import '../../../../assets/scss/colors';
+
+.filter {
+    .filter-section {
+        margin-bottom: 5%;
+        .filter-name {
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 2%;
+        }
+    }
+}
