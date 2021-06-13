@@ -7,14 +7,17 @@
     right: 0;
     bottom: 0;
     cursor: pointer;
-    @include non-desktop {
+    img {
+        margin-top: 10%;
+    }
+    @include small-devices {
         display: inline;
         text-align: center;
         right: 15px;
-        bottom: 40px;
         width: 100%;
-    }
-    img {
-        margin-top: 10%;
+        img {
+            margin-right: 1%;
+            width: 13%;
+        }
     }
 }

@@ -13,6 +13,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import blog from '../assets/images/menu/blog.png'
 import story from '../assets/images/menu/story.png'
 import logo from '../assets/images/logo.png'
+import textLogo from '../assets/images/text-logo.png'
 import { Context } from '../store'
 import UserCircle from './userCircle'
 import UserSection from './userSection'
@@ -55,12 +56,13 @@ const Header = () => {
       </div>
       <Container className='site-logo'>
         <Row className='wrap-logo'>
-          <Col lg={3}>
-            <div onClick={() => handleRedirect('')} className='center-logo'>
-              <img src={logo} alt='logo' />
+          <Col className='left' sm={12} md={3} lg={3}>
+            <div className='center-logo' onClick={() => handleRedirect('')}>
+              <img className='logo' src={logo} alt='logo' />
+              <img className='text-logo' src={textLogo} alt='text-logo' />
             </div>
           </Col>
-          <Col lg={9}>
+          <Col className='right' md={9} lg={9}>
             <UserSection currentUser={state.currentUser} />
             <div className='header-col-2'>
               <div className='search-box'>
@@ -69,7 +71,7 @@ const Header = () => {
                     value={searchText}
                     onChange={handleChangeSearchInput}
                     onKeyPress={handleKeyPress}
-                    />
+                  />
                   <Button className='btn-search' onClick={handleSearch}><FontAwesomeIcon className='search-icon' icon={faSearch} color={'white'} />Tìm Kiếm</Button>
                 </Form.Group>
               </div>

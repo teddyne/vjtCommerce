@@ -13,7 +13,7 @@
       font-weight: 500;
       margin-left: 10px;
     }
-    @include non-desktop {
+    @include small-devices {
       left: 100%;
     }
   }
