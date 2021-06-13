@@ -1,5 +1,4 @@
 import User from '../models/user.js'
-import { secretKey } from  '../config/config.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
@@ -17,21 +16,21 @@ export const signUp = async (req, res) => {
         await user.save()
         res.status(201).json(user)
     } catch (error) {
-        res.status(500).json('Error: '+ error)
+        res.status(500).json('Error: ' + error)
     }
 }
 
 export const signIn = async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.body.email})
+        const user = await User.findOne({ email: req.body.email })
         if (!user) {
-            res.status(200).json({ auth: false, error: 'User not found.'})
+            res.status(200).json({ auth: false, error: 'User not found.' })
         }
         const isValidPassword = await bcrypt.compare(req.body.password, user.password)
         if (!isValidPassword) {
             res.status(200).json({ auth: false, accessToken: null, error: 'Invalid password' })
         }
-        const token = jwt.sign({ id: user._id }, secretKey, {
+        const token = jwt.sign({ id: user._id }, process.env.AUTH_SECRET || 'secretKey', {
             expiresIn: 86400 // expires in 24 hours
         })
 

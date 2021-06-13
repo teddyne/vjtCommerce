@@ -1,0 +1,32 @@
+{
+  "name": "vjt-commerce",
+  "version": "1.0.0",
+  "description": "A simple e-commerce built with MERN",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "build": "cd client && npm run build",
+    "client-install": "cd client && npm install",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "cd client && npm start",
+    "heroku-postbuild": "npm run client-install && npm run build",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "Vu Nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^5.11.15",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.7",
+    "uuid": "^8.3.2"
+  }
+}

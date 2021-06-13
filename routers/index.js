@@ -21,10 +21,10 @@ import {
     multipleUpload,
     download
 } from '../controllers/file.controller.js'
-import { 
+import {
     getCarts,
-     addCart,
-     updateCart
+    addCart,
+    updateCart
 } from '../controllers/cart.controller.js'
 import {
     getUsers,

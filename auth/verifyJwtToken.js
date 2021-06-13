@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import { secretKey } from '../config/config.js'
 
 export const verifyToken = (req, res, next) => {
     const token = req.headers['authorization']
@@ -10,7 +9,7 @@ export const verifyToken = (req, res, next) => {
         })
     }
 
-    jwt.verify(token.split(' ')[1], secretKey, (err, decoded) => {
+    jwt.verify(token.split(' ')[1], process.env.AUTH_SECRET || 'secretKey', (err, decoded) => {
         if (err) {
             return res.status(500).json({
                 auth: false,

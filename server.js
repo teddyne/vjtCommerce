@@ -1,17 +1,27 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import path from 'path'
 import connectDb from './config/db.config.js'
-import Routes from './routers/index.js'
+import routes from './routers/index.js'
+
+const __dirname = path.resolve()
+dotenv.config()
 
 connectDb()
-
-dotenv.config()
 
 const app = express()
 app.use(cors())
 app.use(express.json())
-Routes(app)
+
+routes(app)
+
+if (process.env.NODE_ENV === 'development') {
+    app.use(express.static('client/build'))
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
 
 const PORT = process.env.PORT || 5000
 
