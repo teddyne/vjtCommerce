@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosApiInstance = axios.create({
-  baseURL: 'http://localhost:5000/api'
+  baseURL: '/api'
 })
 
 axiosApiInstance.interceptors.request.use(
@@ -18,7 +18,7 @@ axiosApiInstance.interceptors.request.use(
   },
   error => {
     Promise.reject(error)
-})
+  })
 
 // axiosApiInstance.interceptors.response.use((response) => {
 //   return response
